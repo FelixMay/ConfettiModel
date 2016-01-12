@@ -47,7 +47,7 @@ public:
 	double r_max;
 	double aRec;
 	double aHab;   // Habitat sensitivity: 0 ... no habitat effects,
-                  //1 ... as in data
+                  // 1 ... as in data
 						// > 1 ... strong habitat effects
 	double aSurv;
 	double bSurv;
@@ -177,6 +177,13 @@ public:
 	int** Map;
 	int nHabTypes;
 
+	//int smooth_habitat; //number of neighborhood grid cells for habitat proportion calculation
+	                    // 1 ... 9 neighbors
+	                    // 2 ... 25 neighbors
+
+   //double*** HabitatProp; //Habitat grid with proportions of nHabTypes habitats
+   //                       //Dimensions MapXCells x MapYCells x nHabTypes
+
 	//relative habitat densities from the field data
 	std::vector<std::vector<double> > RelHabDensData;
 
@@ -262,7 +269,7 @@ public:
 	//Private functions
 	inline int GetRandSpec(); //draw a species from the species pool
 
-	inline double Overlap2(CTree* pTree1, CTree* pTree2, double d);
+	//inline double Overlap2(CTree* pTree1, CTree* pTree2, double d);
 	inline double Distance(double x1, double y1, double x2, double y2);
 
 	inline void PeriodBound(double& xx, double& yy);
@@ -288,12 +295,12 @@ public:
 
 //public:
 	CForest(int seed,
-			double xmax, double ymax,
-			double map_cell,
-			char* map_file,
-			char* rel_dens_file,
-			int n_hab_types
-			);
+			  double xmax, double ymax,
+			  double map_cell,
+			  char* map_file,
+			  char* rel_dens_file,
+			  int n_hab_types
+			  );
 	~CForest();
 
 	//void SetPars(CPara* pars);

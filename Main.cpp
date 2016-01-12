@@ -76,8 +76,8 @@ int main(int argc, char* argv[])
 
 	CPara* pPara = new CPara();
 
-	int seed = (int) start;
-	//int seed = 99;
+	//int seed = (int) start;
+	int seed = 99;
 
 	double xmax, ymax, map_cell_size;
 	char* map_file_name;
@@ -88,6 +88,7 @@ int main(int argc, char* argv[])
 		xmax = 1000;
 		ymax = 500;
 		map_cell_size = 20.0;
+      //map_file_name = "InOut\\HabitatMapBCI_Harms2001.txt";
 		map_file_name = "InOut\\HabitatMapBCI_Harms_nomixed.txt";
 		//map_file_name = "InOut\\HabitatMapBCI_fake.txt";
 

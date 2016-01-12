@@ -77,13 +77,13 @@ void PredFDP(int* nGen,
 							 );
 
 	CForest* pForest = new CForest(seed[0],
-								   xmax[0],ymax[0],
-								   map_cell_size[0],
-								   map_file[0],
-								   rel_dens_file[0],
-								   n_hab_types[0]);
+                                  xmax[0],ymax[0],
+                                  map_cell_size[0],
+                                  map_file[0],
+                                  rel_dens_file[0],
+                                  n_hab_types[0]);
 
-	pForest->Pars = pPara;
+   pForest->Pars = pPara;
 
 	bool StepsOut = false;
 	bool R_Mode = true;
@@ -158,12 +158,10 @@ void PredFDP(int* nGen,
 		SAR2_sd[ir] = pForest->SAR2_sd[ir];
 	}
 
-
-
 	pForest->ClearForest();
 
-	delete pForest;
-	delete pPara;
+   delete pForest;
+   delete pPara;
 }
 
 }  //end extern "C"

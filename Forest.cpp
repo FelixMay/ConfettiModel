@@ -38,6 +38,79 @@ CForest::CForest(int seed, double xmax, double ymax, double map_cell,
 	}
 	MapFile.close();
 
+//	//Calculate habitat proportions in neighborhood
+//   int smooth_habitat = 0; //9 neighbors
+//
+//   HabitatProp = new double**[MapXcells];
+//   for (int x = 0; x < MapXcells; x++){
+//		HabitatProp[x] = new double*[MapYcells];
+//		for (int y = 0; y < MapYcells; y++)
+//		   HabitatProp[x][y] = new double [nHabTypes];
+//   }
+//
+//   //init
+//   for (int x = 0; x < MapXcells; x++)
+//		for (int y = 0; y < MapYcells; y++)
+//         for (int ihab = 0; ihab < nHabTypes; ihab++)
+//            HabitatProp[x][y][ihab] = 0.0;
+//
+//   //calculate
+//   int* hab_prop = new int[nHabTypes];
+//   int ncells;
+//
+//   int x2, y2;
+//
+//   for (int x = 0; x < MapXcells; x++){
+//      for (int y = 0; y < MapYcells; y++){
+//
+//         for (int ihab=0; ihab < nHabTypes; ihab++)
+//            hab_prop[ihab] = 0;
+//         ncells = 0;
+//
+//         // loop over neighboring cells
+//         for (int dx = -smooth_habitat; dx <= smooth_habitat; dx++) {
+//            for (int dy = -smooth_habitat; dy <= smooth_habitat; dy++) {
+//
+//               //boundary condition
+//               x2 = x + dx;
+//               y2 = y + dy;
+//               if (((x2 >= 0) && (x2 < MapXcells)) && ((y2 >= 0) && (y2 < MapYcells))){
+//                  hab_type = Map[x2][y2];
+//                  if (hab_type <= nHabTypes)
+//                     hab_prop[hab_type]++;
+//                  ncells++;
+//               }
+//
+//            } // for dy
+//         } // for dx
+//
+//         for (int ihab=0; ihab < nHabTypes; ihab++)
+//            HabitatProp[x][y][ihab] = (double) hab_prop[ihab]/ncells;
+//
+//      } //for y
+//   } // for x
+//
+//   delete[] hab_prop;
+
+//   ofstream SmoothMap;
+//   SmoothMap.open("InOut\\SmoothMap.txt");
+//
+//   // write out realized habitat map
+//   double hab_avg;
+//   for (int x = 0; x < MapXcells; x++){
+//      for (int y = 0; y < MapYcells; y++){
+//         hab_avg = 0.0;
+//         for (int ihab=0; ihab < nHabTypes; ihab++)
+//            hab_avg += HabitatProp[x][y][ihab]*ihab;
+//         SmoothMap<<hab_avg<<"\t";
+//         //SmoothMap<<HabitatProp[x][y][3]<<"\t";
+//      }
+//      SmoothMap<<endl;
+//   }
+//
+//   SmoothMap.close();
+
+
 	// read species relative densities calculated from the data
 	ifstream RelHabDensFile;
 	RelHabDensFile.open(rel_dens_file);
@@ -151,6 +224,14 @@ CForest::~CForest() {
 	for (int x = 0; x < MapXcells; x++)
 		delete[] Map[x];
 	delete[] Map;
+
+//   //  Deallocate 3D array
+//   for(int x = 0; x < MapXcells; x++){
+//      for(int y = 0; y < MapYcells; y++)
+//         delete[] HabitatProp[x][y];
+//      delete[] HabitatProp[x];
+//   }
+//   delete[] HabitatProp;
 
 	for (int x = 0; x < XCells; x++)
 		delete[] Grid[x];
@@ -306,7 +387,6 @@ void CForest::FileOpen(string label) {
 			SAR2_File << SAR2_scales[SAR2_n-1] <<endl;
 		}
 	}
-
 
 	/*
 	FileName = "InOut\\Lf20_" + FileNameEnd;
@@ -859,13 +939,24 @@ double CForest::GetProbRecruit(double x1, double y1, unsigned int spec_id)
 	iX1 = (int) floor(x1 / MapCellSize);
 	iY1 = (int) floor(y1 / MapCellSize);
 
+
+   //calculate average recruitment probability in habitat here
 	int hab_type =  Map[iX1][iY1];
 	double rel_dens =  SpecPars[spec_id].RelHabDens[hab_type];
 
-	if (Pars->aHab > 0.0001)
-		prob_rec1 = prob_rec1*pow(rel_dens,Pars->aHab);
+//	double rel_dens = 0;
+//	for (int ihab = 0; ihab < nHabTypes; ihab++){
+//      //double test = HabitatProp[iX1][iY1][ihab];
+//      //double test2 = SpecPars[spec_id].RelHabDens[ihab];
+//      rel_dens += HabitatProp[iX1][iY1][ihab] * SpecPars[spec_id].RelHabDens[ihab];
+//	}
 
-	return(prob_rec1);
+	double prob_rec2;
+	if (Pars->aHab > 0.0001)
+		prob_rec2 = prob_rec1*pow(rel_dens,Pars->aHab);
+   else prob_rec2 = prob_rec1;
+
+	return(prob_rec2);
 }
 
 // ---------------------------------------------------------------------------
@@ -1124,15 +1215,16 @@ bool CForest::BirthDeathAsync() {
 
       // mother tree within the plot - local recruitment
       else {
-         pMotherTree = TreeList[RandGen1->IRandom(0, TreeList.size() - 1)];
-         ID_Spec = pMotherTree->SpecID;
-
          do {
+            pMotherTree = TreeList[RandGen1->IRandom(0, TreeList.size() - 1)];
+            ID_Spec = pMotherTree->SpecID;
+
             xnew = pMotherTree->X;
             ynew = pMotherTree->Y;
             GetNewXY(xnew, ynew, ID_Spec);
 
             ProbRecruit = GetProbRecruit(xnew,ynew,ID_Spec);
+
             ++ntrials;
             if (RandGen1->Random() < ProbRecruit)
                recruit = true;
@@ -1202,10 +1294,9 @@ void CForest::OneRun(int isim, int irep, int ngen, bool steps_out, bool r_mode)
 		}
 	}  // while BD_total < BD_max
 
-
 	unsigned int nCensusOut = 0;
 
-    /*
+	/*
 	for (int icensus=0; icensus < nCensusOut; ++icensus) {
 		// one loop representing five years = NTrees test for survival/mortality
 		BD_5years = 0;
@@ -1230,8 +1321,8 @@ void CForest::OneRun(int isim, int irep, int ngen, bool steps_out, bool r_mode)
 		GetPPA();
 		GetSAR2();
 		WriteOutput(BD_total,isim,irep);
-		WriteTreesTime(1);
-		WriteSpecPar();
+		//WriteTreesTime(1);
+		//WriteSpecPar();
 	}
 }
 
