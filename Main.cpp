@@ -15,7 +15,7 @@ int StringToInt(std::string S)
 
 int main(int argc, char* argv[])
 {
-	int NRep = 1;  //number replicates
+	int NRep = 3;  //number replicates
 	int NGen = 100;  //number generations (# complete turnover of community)
 	bool StepsOut = false;
 	bool R_Mode = false;
@@ -76,8 +76,8 @@ int main(int argc, char* argv[])
 
 	CPara* pPara = new CPara();
 
-	//int seed = (int) start;
-	int seed = 99;
+	int seed = (int) start;
+	//int seed = 99;
 
 	double xmax, ymax, map_cell_size;
 	char* map_file_name;

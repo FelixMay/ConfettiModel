@@ -177,12 +177,12 @@ public:
 	int** Map;
 	int nHabTypes;
 
-	//int smooth_habitat; //number of neighborhood grid cells for habitat proportion calculation
+	int smooth_habitat; //number of neighborhood grid cells for habitat proportion calculation
 	                    // 1 ... 9 neighbors
 	                    // 2 ... 25 neighbors
 
-   //double*** HabitatProp; //Habitat grid with proportions of nHabTypes habitats
-   //                       //Dimensions MapXCells x MapYCells x nHabTypes
+   double*** HabitatProp; //Habitat grid with proportions of nHabTypes habitats
+                          //Dimensions MapXCells x MapYCells x nHabTypes
 
 	//relative habitat densities from the field data
 	std::vector<std::vector<double> > RelHabDensData;

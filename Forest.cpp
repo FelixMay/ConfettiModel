@@ -38,78 +38,82 @@ CForest::CForest(int seed, double xmax, double ymax, double map_cell,
 	}
 	MapFile.close();
 
-//	//Calculate habitat proportions in neighborhood
-//   int smooth_habitat = 0; //9 neighbors
-//
-//   HabitatProp = new double**[MapXcells];
-//   for (int x = 0; x < MapXcells; x++){
-//		HabitatProp[x] = new double*[MapYcells];
-//		for (int y = 0; y < MapYcells; y++)
-//		   HabitatProp[x][y] = new double [nHabTypes];
-//   }
-//
-//   //init
-//   for (int x = 0; x < MapXcells; x++)
-//		for (int y = 0; y < MapYcells; y++)
-//         for (int ihab = 0; ihab < nHabTypes; ihab++)
-//            HabitatProp[x][y][ihab] = 0.0;
-//
-//   //calculate
-//   int* hab_prop = new int[nHabTypes];
-//   int ncells;
-//
-//   int x2, y2;
-//
-//   for (int x = 0; x < MapXcells; x++){
-//      for (int y = 0; y < MapYcells; y++){
-//
-//         for (int ihab=0; ihab < nHabTypes; ihab++)
-//            hab_prop[ihab] = 0;
-//         ncells = 0;
-//
-//         // loop over neighboring cells
-//         for (int dx = -smooth_habitat; dx <= smooth_habitat; dx++) {
-//            for (int dy = -smooth_habitat; dy <= smooth_habitat; dy++) {
-//
-//               //boundary condition
-//               x2 = x + dx;
-//               y2 = y + dy;
-//               if (((x2 >= 0) && (x2 < MapXcells)) && ((y2 >= 0) && (y2 < MapYcells))){
-//                  hab_type = Map[x2][y2];
-//                  if (hab_type <= nHabTypes)
-//                     hab_prop[hab_type]++;
-//                  ncells++;
-//               }
-//
-//            } // for dy
-//         } // for dx
-//
-//         for (int ihab=0; ihab < nHabTypes; ihab++)
-//            HabitatProp[x][y][ihab] = (double) hab_prop[ihab]/ncells;
-//
-//      } //for y
-//   } // for x
-//
-//   delete[] hab_prop;
+	//Calculate habitat proportions in neighborhood
+   int smooth_habitat = 1; //9 neighbors
 
-//   ofstream SmoothMap;
-//   SmoothMap.open("InOut\\SmoothMap.txt");
-//
-//   // write out realized habitat map
-//   double hab_avg;
-//   for (int x = 0; x < MapXcells; x++){
-//      for (int y = 0; y < MapYcells; y++){
-//         hab_avg = 0.0;
-//         for (int ihab=0; ihab < nHabTypes; ihab++)
-//            hab_avg += HabitatProp[x][y][ihab]*ihab;
-//         SmoothMap<<hab_avg<<"\t";
-//         //SmoothMap<<HabitatProp[x][y][3]<<"\t";
-//      }
-//      SmoothMap<<endl;
-//   }
-//
-//   SmoothMap.close();
+   HabitatProp = new double**[MapXcells];
+   for (int x = 0; x < MapXcells; x++){
+		HabitatProp[x] = new double*[MapYcells];
+		for (int y = 0; y < MapYcells; y++)
+		   HabitatProp[x][y] = new double [nHabTypes];
+   }
 
+   //init
+   for (int x = 0; x < MapXcells; x++)
+		for (int y = 0; y < MapYcells; y++)
+         for (int ihab = 0; ihab < nHabTypes; ihab++)
+            HabitatProp[x][y][ihab] = 0.0;
+
+   //calculate
+   int* hab_prop = new int[nHabTypes];
+   int ncells;
+
+   int x2, y2;
+
+   for (int x = 0; x < MapXcells; x++){
+      for (int y = 0; y < MapYcells; y++){
+
+         for (int ihab=0; ihab < nHabTypes; ihab++)
+            hab_prop[ihab] = 0;
+
+         // loop over neighboring cells
+         ncells = 0;
+         for (int dx = -smooth_habitat; dx <= smooth_habitat; dx++) {
+            for (int dy = -smooth_habitat; dy <= smooth_habitat; dy++) {
+
+               //boundary condition
+               x2 = x + dx;
+               y2 = y + dy;
+               if (((x2 >= 0) && (x2 < MapXcells)) && ((y2 >= 0) && (y2 < MapYcells))){
+                  hab_type = Map[x2][y2];
+                  if (hab_type < nHabTypes)
+                     hab_prop[hab_type]++;
+                  ncells++;
+               }
+
+            } // for dy
+         } // for dx
+
+         for (int ihab=0; ihab < nHabTypes; ihab++)
+            HabitatProp[x][y][ihab] = (double) hab_prop[ihab]/ncells;
+
+      } //for y
+   } // for x
+
+   delete[] hab_prop;
+
+   /*
+   ofstream SmoothMap;
+   SmoothMap.open("InOut\\SmoothMap.txt");
+
+   SmoothMap<<"X\tY\t";
+   for (int ihab=0; ihab < nHabTypes; ihab++)
+      SmoothMap<<"Hab"<<ihab<<"\t";
+   SmoothMap<<endl;
+
+   // write out realized habitat map
+   for (int x = 0; x < MapXcells; x++){
+      for (int y = 0; y < MapYcells; y++){
+         SmoothMap<<x*MapCellSize<<"\t"
+                  <<y*MapCellSize<<"\t";
+         for (int ihab=0; ihab < nHabTypes; ihab++)
+            SmoothMap<<HabitatProp[x][y][ihab]<<"\t";
+         SmoothMap<<"\n";
+      }
+   }
+
+   SmoothMap.close();
+   */
 
 	// read species relative densities calculated from the data
 	ifstream RelHabDensFile;
@@ -141,9 +145,12 @@ CForest::CForest(int seed, double xmax, double ymax, double map_cell,
 	XCells = (int)Xmax / CellSize;
 	YCells = (int)Ymax / CellSize;
 
-	Grid = new (CCell*[XCells]);
+	//Grid = new (CCell*[XCells]);
+	Grid = new CCell*[XCells];
 	for (int x = 0; x < XCells; x++)
-		Grid[x] = new (CCell[YCells]);
+		//Grid[x] = new (CCell[YCells]);
+		Grid[x] = new CCell[YCells];
+
 
 	// Random number generators
 	// int seed = (int) time(0);            // random seed
@@ -225,13 +232,13 @@ CForest::~CForest() {
 		delete[] Map[x];
 	delete[] Map;
 
-//   //  Deallocate 3D array
-//   for(int x = 0; x < MapXcells; x++){
-//      for(int y = 0; y < MapYcells; y++)
-//         delete[] HabitatProp[x][y];
-//      delete[] HabitatProp[x];
-//   }
-//   delete[] HabitatProp;
+   //  Deallocate 3D array
+   for(int x = 0; x < MapXcells; x++){
+      for(int y = 0; y < MapYcells; y++)
+         delete[] HabitatProp[x][y];
+      delete[] HabitatProp[x];
+   }
+   delete[] HabitatProp;
 
 	for (int x = 0; x < XCells; x++)
 		delete[] Grid[x];
@@ -294,7 +301,7 @@ void CForest::FileOpen(string label) {
 		}
 	}
 
-	///*
+
 	FileName = "InOut\\Abund" + FileNameEnd;
 	AbundFile.open(FileName.c_str(), ios::in); {
 		if (AbundFile.good()) {
@@ -306,7 +313,6 @@ void CForest::FileOpen(string label) {
 			AbundFile.open(FileName.c_str(), ios::out);
 		}
 	}
-	// */
 
 	FileName = "InOut\\SAD" + FileNameEnd;
 	SAD_File.open(FileName.c_str(), ios::in); {
@@ -941,15 +947,12 @@ double CForest::GetProbRecruit(double x1, double y1, unsigned int spec_id)
 
 
    //calculate average recruitment probability in habitat here
-	int hab_type =  Map[iX1][iY1];
-	double rel_dens =  SpecPars[spec_id].RelHabDens[hab_type];
+	//int hab_type =  Map[iX1][iY1];
+	//double rel_dens =  SpecPars[spec_id].RelHabDens[hab_type];
 
-//	double rel_dens = 0;
-//	for (int ihab = 0; ihab < nHabTypes; ihab++){
-//      //double test = HabitatProp[iX1][iY1][ihab];
-//      //double test2 = SpecPars[spec_id].RelHabDens[ihab];
-//      rel_dens += HabitatProp[iX1][iY1][ihab] * SpecPars[spec_id].RelHabDens[ihab];
-//	}
+	double rel_dens = 0;
+	for (int ihab = 0; ihab < nHabTypes; ihab++)
+      rel_dens += HabitatProp[iX1][iY1][ihab] * SpecPars[spec_id].RelHabDens[ihab];
 
 	double prob_rec2;
 	if (Pars->aHab > 0.0001)
@@ -1268,6 +1271,9 @@ void CForest::OneRun(int isim, int irep, int ngen, bool steps_out, bool r_mode)
 	int count = 0;
 	bool stoprun = false;
 
+	int nspec = GetSAD();
+
+	//while (nspec > 1){
 	while (BD_total < BD_max) {
 
 		// one loop representing five years = NTrees test for survival/mortality
@@ -1282,16 +1288,20 @@ void CForest::OneRun(int isim, int irep, int ngen, bool steps_out, bool r_mode)
 		count++;
 
 		// if (kill && steps_out){
-		if (count % 1  == 0) {
+		if (count % 200  == 0) {
 			if (steps_out) {
 				cout << "     Step " << BD_total << endl;
+				cout << "     Species "<<nspec<<"\n";
 				GetPPA();
 				GetSAR2();
 				WriteOutput(BD_total, isim, irep);
 				// WriteTrees();
-				WriteTreesTime(count);
+				//WriteTreesTime(count);
 			}
 		}
+
+		nspec = GetSAD();
+
 	}  // while BD_total < BD_max
 
 	unsigned int nCensusOut = 0;
@@ -1340,7 +1350,6 @@ void CForest::WriteOutput(int istep, int isim = 1, int irep = 1) {
 		SAD_File << SAD[i] << "; ";
 	SAD_File << SAD[MaxSAD-1] << endl;
 
-	// PCF, PropCon, SAR1
 	for (int ibin1 = 0; ibin1 < (nBins1-1); ++ibin1) {
 		PCF_File << PCF_all[ibin1] << "; ";
 		PropConFile << PropCon[ibin1] << "; ";
@@ -1349,7 +1358,6 @@ void CForest::WriteOutput(int istep, int isim = 1, int irep = 1) {
 	PCF_File << PCF_all[nBins1-1] << endl;
 	PropConFile << PropCon[nBins1-1] << endl;
 	SAR1_File << SAR[nBins1-1] << endl;
-
 
 	// Species data ------------------------------------------------------------
 
@@ -1392,8 +1400,8 @@ void CForest::WriteOutput(int istep, int isim = 1, int irep = 1) {
 	Kcon20_File<<endl;
 	Khet20_File<<endl;
 
-	//xPOD_File<<endl;
-	//NNDist_File<<endl;
+//	xPOD_File<<endl;
+//	NNDist_File<<endl;
 
 	for (int iscale = 0; iscale < SAR2_n; ++iscale)
 		SAR2_File << SAR2_m[iscale] << "; ";
@@ -2172,9 +2180,11 @@ void CForest::GetSRLocal(double sq_size, double& m_SR, double& sd_SR) {
 
 	CSpecSquare** SRgrid;
 
-	SRgrid = new(CSpecSquare*[Xsq]);
+	//SRgrid = new (CSpecSquare*[Xsq]);
+	SRgrid = new CSpecSquare*[Xsq];
 	for (int iX = 0; iX < Xsq; iX++)
-		SRgrid[iX] = new(CSpecSquare[Ysq]);
+		//SRgrid[iX] = new (CSpecSquare[Ysq]);
+		SRgrid[iX] = new CSpecSquare[Ysq];
 
 	for (int iX = 0; iX < Xsq; ++iX)
 		for (int iY = 0; iY < Ysq; ++iY)
