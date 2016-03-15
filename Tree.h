@@ -3,7 +3,7 @@
 #ifndef TreeH
 #define TreeH
 
-#include <math.h>
+#include <cmath>
 #include <vector>
 #include <map>
 #include "Cell.h"

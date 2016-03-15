@@ -3,21 +3,13 @@
 
 #include <R.h>
 #include "Forest.h"
-using namespace std;
+#include <fstream>
+using std::string;
 
 extern "C" {
 
-void PredFDP(int* nGen,
-			    int* seed,
-             //model settings
-			    double* xmax,
-			    double* ymax,
-			    int* ntrees,
-			    int* jmeta,
-			    double* map_cell_size,
-			    char** map_file,
-			    char** rel_dens_file,
-			    int* n_hab_types,
+void PredFDP(int* seed,
+             char** settings_file,
              //parameters
              double* theta,
 			    double* m,
@@ -41,9 +33,7 @@ void PredFDP(int* nGen,
 			    int* BDtotal,
 			    double* PCF,
 			    double* PropCon,
-			    double* SAR1,
-			    double* SAR2_m,
-			    double* SAR2_sd,
+			    double* SARq,
 			    //species specific patterns
 			    //double* MetaRelAbund,
 			    //double* muDisp,
@@ -60,77 +50,93 @@ void PredFDP(int* nGen,
 			    //int* sp
 			    )
 {
+
+	CModelSettings* pSettings = new CModelSettings();
+
+	//string SettingsFileName = "Input\\Settings_R1.txt";
+	string SettingsFileName(settings_file[0]);
+
+//	std::ofstream Test;
+//	Test.open("Test.txt");
+//	Test<<SettingsFileName;
+//	Test<<settings_file[0]<<"\n";
+// Test.close();
+
+   pSettings->ReadSettings(SettingsFileName);
+
+	int metaSR = 0;
+	double metaCV = 0.0;
+
 	//create parameter set
-	CPara* pPara = new CPara(ntrees[0],
-							 jmeta[0],
-							 theta[0],
-							 m[0],
-							 rmax[0],
-							 a_rec[0],
-							 a_hab[0],
-							 a_surv[0],
-							 b_surv[0],
-							 m_dm_spec[0],
-							 sd_dm_spec[0],
-							 m_JC[0],
-							 sd_JC[0]
-							 );
+	CPara* pPara = new CPara(theta[0],
+                            metaSR,
+                            metaCV,
+                            m[0],
+                            rmax[0],
+                            a_rec[0],
+                            a_hab[0],
+                            a_surv[0],
+                            b_surv[0],
+                            m_dm_spec[0],
+                            sd_dm_spec[0],
+                            m_JC[0],
+                            sd_JC[0]
+                           );
 
-	CForest* pForest = new CForest(seed[0],
-                                  xmax[0],ymax[0],
-                                  map_cell_size[0],
-                                  map_file[0],
-                                  rel_dens_file[0],
-                                  n_hab_types[0]);
+   CForest* pForest = new CForest(seed[0], pSettings);
 
-   pForest->Pars = pPara;
+   pForest->pPars = pPara;
 
-	bool StepsOut = false;
-	bool R_Mode = true;
+	//may override values in Settings file
+	pSettings->steps_out = false;
+	pSettings->R_mode = true;
 
-	//pForest->FileOpen("1");
+	pForest->FileOpen("1");
 
-	pForest->OneRun(1,1,nGen[0],StepsOut,R_Mode);
+	pForest->OneRun(1,1);
 
 	NSpec[0] = pForest->SpecAbund.size();
 	Shannon[0] = pForest->GetShannon();
 	BD5[0] = pForest->BD_5years;
 	BDtotal[0] = pForest->BD_total;
+
+	//Annual mortality assuming that one model time step equals five years
 	AnnualMort[0] = (log(pForest->NTrees) - log(pForest->NTrees - pForest->BD_5years))/5.0 * 100.0;
 
 	pForest->GetSAD();
 	for (int iclass = 0; iclass < nClassSAD[0]; ++iclass)
 		SAD[iclass] = pForest->SAD[iclass];
 
-
 	pForest->GetPPA();
-	pForest->GetSAR2();
+	pForest->GetSARq();
 
 	//pForest->WriteOutput(1,1,1);
 
-	map<int,int>::iterator spec_it1;
-	map<int,int>::iterator spec_it2;
+	std::map<int,int>::iterator spec_it1;
+	std::map<int,int>::iterator spec_it2;
 
 	int i1 = 0, i2 = 0, i3 = 0;
-	int minAbund = pForest->minAbund;
+
+	int i10m = floor(10.0/pSettings->bw2) - 1;
+	int i50m = floor(50.0/pSettings->bw2) - 1;
 
 	for (spec_it1 = pForest->SpecAbund.begin(); spec_it1!=pForest->SpecAbund.end(); ++spec_it1){
 
 		Abund[i1] = spec_it1->second;
 		++i1;
 
-		if (spec_it1->second >= minAbund){
+		if (spec_it1->second >= pSettings->minAbund){
 
-			Kcon10[i2] = pForest->KSpecIJ[spec_it1->first][spec_it1->first][1];
-			Kcon50[i2] = pForest->KSpecIJ[spec_it1->first][spec_it1->first][9];
+			Kcon10[i2] = pForest->KSpecIJ[spec_it1->first][spec_it1->first][i10m];
+			Kcon50[i2] = pForest->KSpecIJ[spec_it1->first][spec_it1->first][i50m];
 			++i2;
 
 			for (spec_it2 = pForest->SpecAbund.begin(); spec_it2!=pForest->SpecAbund.end(); ++spec_it2){
-				if (spec_it2->second >= minAbund){
+				if (spec_it2->second >= pSettings->minAbund){
 					if (spec_it1->first != spec_it2->first){
 
-						Khet10[i3] = pForest->KSpecIJ[spec_it1->first][spec_it2->first][1];
-						Khet50[i3] = pForest->KSpecIJ[spec_it1->first][spec_it2->first][9];
+						Khet10[i3] = pForest->KSpecIJ[spec_it1->first][spec_it2->first][i10m];
+						Khet50[i3] = pForest->KSpecIJ[spec_it1->first][spec_it2->first][i50m];
 
 						//Dhet10[i3] = pForest->DSpecIJ[spec_it1->first][spec_it2->first][1];
 						//Dhet50[i3] = pForest->DSpecIJ[spec_it1->first][spec_it2->first][9];
@@ -147,21 +153,21 @@ void PredFDP(int* nGen,
 		}
 	}
 
-	for (int ir=0; ir<pForest->nBins1; ir++){
+	for (int ir=0; ir<pForest->nBins1; ++ir){
 		PCF[ir] = pForest->PCF_all[ir];
 		PropCon[ir] = pForest->PropCon[ir];
-		SAR1[ir] = pForest->SAR[ir];
+		//SAR1[ir] = pForest->SAR[ir];
 	}
 
-	for (int ir=0; ir<pForest->SAR2_n; ir++){
-		SAR2_m[ir] = pForest->SAR2_m[ir];
-		SAR2_sd[ir] = pForest->SAR2_sd[ir];
-	}
+	for (int ir=0; ir<pForest->SARq_n; ++ir)
+		SARq[ir] = pForest->SARq_m[ir];
+
 
 	pForest->ClearForest();
 
    delete pForest;
    delete pPara;
+   delete pSettings;
 }
 
 }  //end extern "C"

@@ -2,7 +2,15 @@
 #include "Forest.h"
 #include <time.h>
 #include <string>
-using namespace std;
+using std::string;
+
+#include <fstream>
+using std::ifstream;
+
+#include <iostream>
+using std::cout;
+using std::cin;
+using std::endl;
 
 //---------------------------------------------------------------------------
 int StringToInt(std::string S)
@@ -15,57 +23,39 @@ int StringToInt(std::string S)
 
 int main(int argc, char* argv[])
 {
-	int NRep = 3;  //number replicates
-	int NGen = 100;  //number generations (# complete turnover of community)
-	bool StepsOut = false;
-	bool R_Mode = false;
+	string SettingsFileName = "Input\\Settings1.txt";
 
-	string forest = "BCI";
-	//string forest = "Sin";
-	string SimFileName = "Para";
-	string FileLabel = "1";
+	//string ParaFileName = "Para";
+	//string FileLabel = "1";
+
+	//uniform initialization in C++11
+	string ParaFileName{"Para"};
+	string FileLabel{"1"};
 
 	if (argc == 2){
-		SimFileName = argv[1];
+		ParaFileName = argv[1];
 	}
 
 	if (argc == 3){
-		SimFileName = argv[1];
+		ParaFileName = argv[1];
 		FileLabel = argv[2];
 	}
 
-	if (argc == 4){
-		SimFileName = argv[1];
-		FileLabel = argv[2];
-		NGen = StringToInt(argv[3]);
-	}
+	CModelSettings* pSettings = new CModelSettings();
 
-	if (argc == 5){
-		SimFileName = argv[1];
-		FileLabel = argv[2];
-		NGen = StringToInt(argv[3]);
-		NRep = StringToInt(argv[4]);
-	}
+	pSettings->ReadSettings(SettingsFileName);
 
-	if (argc == 6){
-		SimFileName = argv[1];
-		FileLabel = argv[2];
-		NGen = StringToInt(argv[3]);
-		NRep = StringToInt(argv[4]);
-		forest = argv[5];
-	}
-
-	SimFileName = "InOut\\"+SimFileName + FileLabel +".txt";
-	//SimFileName = "InOut\\"+SimFileName +".txt";
+	ParaFileName = "Input\\"+ParaFileName + FileLabel +".txt";
 
 	ifstream InFile;
-	InFile.open(SimFileName.c_str());
+	InFile.open(ParaFileName.c_str());
 
-	cout<<"Input-File:\t"<<SimFileName<<endl;
+	cout<<"Settings-File:\t"<<SettingsFileName<<endl;
+	cout<<"Parameter-File:\t"<<ParaFileName<<endl;
 	cout<<"Sim-Label:\t"<<FileLabel<<endl;
-	cout<<"Generations:\t"<<NGen<<endl;
-	cout<<"Replicates:\t"<<NRep<<endl;
-	cout<<"Forest plot:\t"<<forest<<endl<<endl;
+	cout<<"Generations:\t"<<pSettings->nGen<<endl;
+	cout<<"Replicates:\t"<<pSettings->nRep<<endl;
+
 
 	time_t start, end;
 
@@ -77,39 +67,19 @@ int main(int argc, char* argv[])
 	CPara* pPara = new CPara();
 
 	int seed = (int) start;
-	//int seed = 99;
+   //int seed = 99;
 
-	double xmax, ymax, map_cell_size;
-	char* map_file_name;
-	char* rel_dens_file_name;
-	int n_hab_types;
+//	else if (forest == "Sin") {
+//		xmax = 500;
+//		ymax = 500;
+//		map_cell_size = 500.0/26.0;
+//		map_file_name = "InOut\\HabitatMapSinharaja_Ruwan1.txt";
+//		rel_dens_file_name = "InOut\\RelativeDensitySinharaja_Ruwan_n50.txt";
+//		n_hab_types = 5;
+//	}
+//	else cout<<"Error Forest Name"<<endl;
 
-	if (forest == "BCI"){
-		xmax = 1000;
-		ymax = 500;
-		map_cell_size = 20.0;
-      //map_file_name = "InOut\\HabitatMapBCI_Harms2001.txt";
-		map_file_name = "InOut\\HabitatMapBCI_Harms_nomixed.txt";
-		//map_file_name = "InOut\\HabitatMapBCI_fake.txt";
-
-		rel_dens_file_name = "InOut\\RelativeDensityBCI_harms_nomixed_n50.txt";
-		n_hab_types = 6;
-	}
-	else if (forest == "Sin") {
-		xmax = 500;
-		ymax = 500;
-		map_cell_size = 500.0/26.0;
-		map_file_name = "InOut\\HabitatMapSinharaja_Ruwan1.txt";
-		rel_dens_file_name = "InOut\\RelativeDensitySinharaja_Ruwan_n50.txt";
-		n_hab_types = 5;
-	}
-	else cout<<"Error Forest Name"<<endl;
-
-	CForest* pForest = new CForest(seed, xmax, ymax,
-								   map_cell_size,
-								   map_file_name,
-								   rel_dens_file_name,
-								   n_hab_types);
+	CForest* pForest = new CForest(seed, pSettings);
 	pForest->FileOpen(FileLabel);
 
 	int isim;
@@ -118,9 +88,9 @@ int main(int argc, char* argv[])
 
 		//read first parameter set
 		InFile>>isim;
-		InFile>>pPara->NTrees;
-		InFile>>pPara->Jmeta;
 		InFile>>pPara->theta;
+		InFile>>pPara->metaSR;
+		InFile>>pPara->metaCV;
 		InFile>>pPara->m;
 		InFile>>pPara->r_max;
 		InFile>>pPara->aRec;
@@ -132,26 +102,24 @@ int main(int argc, char* argv[])
 		InFile>>pPara->m_JCspec;
 		InFile>>pPara->sd_JCspec;
 
-		//pPara->GetMuSigma();
-
 		while (InFile.good()) {
 
 			cout<<"Sim "<<isim<<endl;
-			pForest->Pars = pPara;
+			pForest->pPars = pPara;
 
 			//run simulations
-			for (int irep=1; irep <= NRep; ++irep) {
+			for (int irep=1; irep <= pSettings->nRep; ++irep) {
 
 				cout<<"  Rep "<<irep<<endl;
-				pForest->OneRun(isim, irep, NGen, StepsOut, R_Mode);
+				pForest->OneRun(isim, irep);
 				pForest->ClearForest();
 			}  // end irep
 
 			//try to read new parameter set
 			InFile>>isim;
-			InFile>>pPara->NTrees;
-			InFile>>pPara->Jmeta;
 			InFile>>pPara->theta;
+			InFile>>pPara->metaSR;
+         InFile>>pPara->metaCV;
 			InFile>>pPara->m;
 			InFile>>pPara->r_max;
 			InFile>>pPara->aRec;
@@ -162,14 +130,13 @@ int main(int argc, char* argv[])
 			InFile>>pPara->sd_dm_spec;
 			InFile>>pPara->m_JCspec;
 			InFile>>pPara->sd_JCspec;
-
-			//pPara->GetMuSigma();
 		}
 	}
 	else cout<<"Error SimFile"<<endl;
 
 	delete pForest;
 	delete pPara;
+	delete pSettings;
 
 	end = time(0);
 
