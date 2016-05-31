@@ -15,8 +15,8 @@
 class CForest
 {
 public:
-	CPara* pPars;
-	CModelSettings* pSettings;
+	CPara *pPars;
+	CModelSettings *pSettings;
 
 	//Immigration rate
 	double m;
@@ -49,7 +49,7 @@ public:
 	int YCells;
 	int grid_steps;
 
-	CCell** Grid;
+	CCell **Grid;
 
 	//HabitatMap
 	double MapCellSize;
@@ -69,8 +69,8 @@ public:
 	std::vector<std::vector<double> > RelHabDensData;
 
 	//random number generators
-	CRandomMersenne* RandGen1;
-	StochasticLib1* RandGen2;
+	CRandomMersenne *RandGen1;
+	StochasticLib1 *RandGen2;
 
 	//Point pattern variables
 	int nBins1;
@@ -177,17 +177,18 @@ public:
 	void FileOpen(std::string label);
 	void CreateHabitatMap();
 	void ReadSADFile();
-	void Init();
+	void initTrees();
+	void initSpecies();
 	void BirthDeathLoop();
 	bool BirthDeathAsync();
 	void UpdateTrees();
-	void ClearForest();
+	void clearTrees();
+	void clearSpecies();
 	//void Loop1(int NSteps, bool output);
-	//void WriteTrees();
 	void WriteTrees(int isim, int irep);
 	void WriteTreesTime(int isim, int irep, int tstep);
-	void WriteSpecPar();
-	void WriteInteractMat(int isim, int irep);
+	void writeSpecies(int isim, int irep = 0);
+	void writeInteractMat(int isim, int irep = 0);
 	void WriteOutput(int istep, int isim, int irep);
 	void GetPPA();
 	double GetShannon();

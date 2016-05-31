@@ -513,25 +513,24 @@ void CForest::FileOpen(string label) {
 }
 
 // ---------------------------------------------------------------------------
-void CForest::ClearForest() {
-
+void CForest::clearTrees()
+{
 	for (TreeIterV itree = TreeList.begin(); itree != TreeList.end(); ++itree)
 		delete (*itree);
 	TreeList.clear();
 
+	SpecAbund.clear();
+}
+
+// ---------------------------------------------------------------------------
+void CForest::clearSpecies()
+{
 	for (unsigned int ispec = 0; ispec < SpecMax; ispec++)
 		delete[] InteractMat[ispec];
    delete[] InteractMat;
 
-	/*
-	for (TreeIterV itree = RecruitList.begin(); itree != RecruitList.end(); ++itree)
-	delete (*itree);
-	RecruitList.clear();
-	 */
-
-	SpecAbund.clear();
 	CumRelAbundMeta.clear();
-	// SpecPars.clear();
+	SpecPars.clear();
 }
 
 // ---------------------------------------------------------------------------
@@ -721,23 +720,8 @@ vector<double> CForest::LognormSAD(unsigned int nSpecies, unsigned int nIndividu
 }
 
 // ---------------------------------------------------------------------------
-void CForest::Init() {
-
-	CTree* pTree1;
-
-	int iX1, iY1;
-
-	BD_5years = 0;
-	BD_total = 0;
-
-	// Init Grid Cells
-	for (iX1 = 0; iX1 < XCells; ++iX1)
-		for (iY1 = 0; iY1 < YCells; ++iY1)
-			Grid[iX1][iY1].InitCell(iX1, iY1,1);
-
-	//grid_steps = (int) ceil(2.0 * Pars->r_max / CellSize);
-	grid_steps = (int) ceil(pPars->r_max / pSettings->cellSize);
-
+void CForest::initSpecies()
+{
 	// Init metacommunity if not read from file
 	CumRelAbundMeta.clear();
 
@@ -757,12 +741,6 @@ void CForest::Init() {
          CumRelAbundMeta = SeqConstruct(pSettings->Jm, pPars->theta);
 	}
 	SpecMax = CumRelAbundMeta.size();
-
-//	if (pSettings->read_sad_file == false){
-//
-//      CumRelAbundMeta = SeqConstruct(pSettings->Jm, pPars->theta);
-//
-//	}
 
 	double meanD_spec, sdD_spec, JC_spec;
 
@@ -826,20 +804,19 @@ void CForest::Init() {
 		//JC_spec = 1.0 + Pars->m_JCspec * (log10(relabund) + Pars->sd_dm_spec);
 
 		//Random species interactions
-		//for (unsigned int jspec = 0; jspec < SpecMax; jspec++){
-         //InteractMat[ispec][jspec] = RandGen2->Normal(5.0,2.0);
+		for (unsigned int jspec = 0; jspec < SpecMax; jspec++){
+         InteractMat[ispec][jspec] = RandGen2->Normal(pPars->m_JCspec,pPars->sd_JCspec);
          //InteractMat[ispec][jspec] = RandGen1->Random()*10;
 
-         //if (InteractMat[ispec][jspec]<0)
-         //   InteractMat[ispec][jspec] = 0;
-		//}
-
+         if (InteractMat[ispec][jspec]<0)
+            InteractMat[ispec][jspec] = 0;
+		}
 
 		// HABITAT ASSOCIATIONS
 		//int irand = RandGen1->IRandom(0, RelHabDensData.size() - 1);
 		//SpecPars[ispec] = CSpecPara(meanD_spec,sdD_spec,JC_spec,RelHabDensData[irand]);
 
-		SpecPars[ispec] = CSpecPara(meanD_spec,sdD_spec,JC_spec);
+		SpecPars[ispec] = CSpecPara(meanD_spec,sdD_spec);
 		if (pSettings->habitat){
          int irand = RandGen1->IRandom(0, RelHabDensData.size() - 1);
 		   SpecPars[ispec].RelHabDens = RelHabDensData[irand];
@@ -851,22 +828,34 @@ void CForest::Init() {
 		m = (2 * Xmax + 2 * Ymax) * pPars->m_dm_spec / (Pi * Xmax * Ymax);
 	else
 		m = pPars->m;
+}
 
-	// Init Trees
-	double x, y;
-	int SpecID;
 
-//	for (unsigned int i=0; i < SpecMax; i++){
-//      SpecAbund[i] = 0;
-//      SpecAbundWin[i] = 0;
-//	}
+// ---------------------------------------------------------------------------
+void CForest::initTrees() {
 
-	SpecAbund.clear();
-	//SpecAbundWin.clear();
+	CTree *pTree1;
+
+	int iX1, iY1;
+
+	BD_5years = 0;
+	BD_total = 0;
+
+	// Init Grid Cells
+	for (iX1 = 0; iX1 < XCells; ++iX1)
+		for (iY1 = 0; iY1 < YCells; ++iY1)
+			Grid[iX1][iY1].InitCell(iX1, iY1,1);
+
+	//grid_steps = (int) ceil(2.0 * Pars->r_max / CellSize);
+	grid_steps = (int) ceil(pPars->r_max / pSettings->cellSize);
 
 	// random init
 	TreeID = 0;
 	NTrees = pSettings->nTrees;
+
+	double x,y;
+	int SpecID;
+
 	for (int i = 0; i < NTrees; ++i) {
 		x = RandGen1->Random() * Xmax;
 		y = RandGen1->Random() * Ymax;
@@ -1380,7 +1369,8 @@ bool CForest::BirthDeathAsync() {
 // ---------------------------------------------------------------------------
 void CForest::OneRun(int isim, int irep)
 {
-	Init();
+	//initSpecies();
+	initTrees();
 
 	if (pSettings->steps_out){
 		//GetPPA();
@@ -1425,32 +1415,32 @@ void CForest::OneRun(int isim, int irep)
 
 	}  // while BD_total < BD_max
 
-	unsigned int nCensusOut = 6;
+	unsigned int nCensusOut = 0;
 
-	for (int icensus=0; icensus < nCensusOut; ++icensus) {
-		// one loop representing five years = NTrees test for survival/mortality
-		BD_5years = 0;
-		for (int i = 0; i < NTrees; ++i) {
-			stoprun = BirthDeathAsync();
-			if (stoprun == true) break;
-		}
-
-		if (stoprun == true) break;
-
-		count++;
-
-		cout << "     Step " << BD_total << endl;
-		GetPPA();
-		GetSARq();
-		WriteOutput(BD_total, isim, irep);
-		WriteTreesTime(isim,irep,icensus+1);
-	}
+//	for (int icensus=0; icensus < nCensusOut; ++icensus) {
+//		// one loop representing five years = NTrees test for survival/mortality
+//		BD_5years = 0;
+//		for (int i = 0; i < NTrees; ++i) {
+//			stoprun = BirthDeathAsync();
+//			if (stoprun == true) break;
+//		}
+//
+//		if (stoprun == true) break;
+//
+//		count++;
+//
+//		cout << "     Step " << BD_total << endl;
+//		GetPPA();
+//		GetSARq();
+//		WriteOutput(BD_total, isim, irep);
+//		WriteTreesTime(isim,irep,icensus+1);
+//	}
 
 	if ((!pSettings->steps_out && !pSettings->R_mode) && (nCensusOut==0)){
-      GetPPA();
-		GetSARq();
+      //GetPPA();
+		//GetSARq();
 		WriteOutput(BD_total,isim,irep);
-		//WriteTrees(isim,irep);
+		WriteTrees(isim,irep);
 		//WriteInteractMat(isim,irep);
 		//WriteSpecPar();
 	}
@@ -1531,29 +1521,31 @@ void CForest::WriteOutput(int istep, int isim = 1, int irep = 1) {
 }
 
 // ---------------------------------------------------------------------------
-void CForest::WriteSpecPar() {
+void CForest::writeSpecies(int isim, int irep) {
 
-	ofstream OutFile1("InOut\\SpecOut1.txt");
+	string FileName = "Output\\SpeciesOut_sim" + IntToString(isim) + ".csv";
 
-	OutFile1 << "SpecID\t"
-			   << "MetaAbund\t"
-			   << "muDisp\t"
-			   << "sigmaDisp\t"
-			   << "JC\t";
-	for (int ihab=0; ihab < nHabTypes; ++ihab)
-		OutFile1 << "RelDens"<<ihab<<"\t";
+	ofstream OutFile(FileName.c_str());
 
-	OutFile1 << "LocalAbund\t"
-		      << "Kcon20"
+	OutFile  << "SpecID" << ";"
+			   << "MetaRelAbund"
+//			   << "muDisp\t"
+//			   << "sigmaDisp\t"
+//			   << "JC\t";
+//	for (int ihab=0; ihab < nHabTypes; ++ihab)
+//		OutFile1 << "RelDens"<<ihab<<"\t";
+//
+//	OutFile << "LocalAbund\t"
+//		      << "Kcon20"
 		      << endl;
 
-   ofstream OutFile2("InOut\\InteractMat1.txt");
 
 	//map<int, CSpecPara>::iterator spec_it1;
 
-	double relabund, Kcon20;
+   double relabund;
 
-	int i20m = (int) floor(20.0/pSettings->bw2) - 1;
+// double Kcon20;
+//	int i20m = (int) floor(20.0/pSettings->bw2) - 1;
 
 	//for (spec_it1 = SpecPars.begin(); spec_it1!=SpecPars.end(); ++spec_it1){
 	for (unsigned int i=0; i < SpecMax; ++i) {
@@ -1561,37 +1553,33 @@ void CForest::WriteSpecPar() {
 		if (i==0) relabund = CumRelAbundMeta[i];
 		else      relabund = CumRelAbundMeta[i] -  CumRelAbundMeta[i-1];
 
-		if (SpecAbund[i] >= pSettings->minAbund)
-         Kcon20 = KSpecIJ[i][i][i20m];
-		else
-		   Kcon20 = 0.0;
+//		if (SpecAbund[i] >= pSettings->minAbund)
+//         Kcon20 = KSpecIJ[i][i][i20m];
+//		else
+//		   Kcon20 = 0.0;
 
-		OutFile1<< i <<"\t"
-				<<relabund <<"\t"
-				<<SpecPars[i].muDisp<<"\t"
-				<<SpecPars[i].sigmaDisp<<"\t"
-				<<SpecPars[i].JCfac<<"\t";
-
-		for (int ihab=0; ihab < nHabTypes; ++ihab)
-			OutFile1<<SpecPars[i].RelHabDens[ihab]<<"\t";
-
-		OutFile1<<SpecAbund[i]<<"\t"
-				<<Kcon20
+		OutFile<< i <<";"
+				 << relabund //<<"\t"
+//				<<SpecPars[i].muDisp<<"\t"
+//				<<SpecPars[i].sigmaDisp<<"\t"
+//				<<SpecPars[i].JCfac<<"\t";
+//
+//		for (int ihab=0; ihab < nHabTypes; ++ihab)
+//			OutFile1<<SpecPars[i].RelHabDens[ihab]<<"\t";
+//
+//		OutFile1<<SpecAbund[i]<<"\t"
+//				<<Kcon20
 				<<endl;
-
-		for (unsigned int j=0; j < (SpecMax-1); ++j)
-         OutFile2<<InteractMat[i][j]<<"\t";
-      OutFile2<<InteractMat[i][SpecMax-1]<<endl;
-
 	}
-	OutFile1.close();
-
+	OutFile.close();
 }
 
 // ---------------------------------------------------------------------------
-void CForest::WriteInteractMat(int isim, int irep) {
+void CForest::writeInteractMat(int isim, int irep) {
 
-   string FileName = "Output\\InteractMat_sim" + IntToString(isim) + "_rep" + IntToString(irep) + ".csv";
+   //string FileName = "Output\\InteractMat_sim" + IntToString(isim) + "_rep" + IntToString(irep) + ".csv";
+	string FileName = "Output\\InteractMat_sim" + IntToString(isim) + ".csv";
+
 	ofstream OutFile(FileName.c_str());
 
 	for (int i=0; i < SpecMax; ++i) {
@@ -1691,8 +1679,8 @@ void CForest::WriteTreesTime(int isim, int irep, int tstep) {
 // ---------------------------------------------------------------------------
 void CForest::WriteTrees(int isim, int irep)
 {
-	//string FileName = "Output\\Trees_sim" + IntToString(isim) + "_rep" + IntToString(irep) + ".csv";
-	string FileName = "Output\\Trees_sim" + IntToString(isim) + ".csv";
+	string FileName = "Output\\Trees_sim" + IntToString(isim) + "_rep" + IntToString(irep) + ".csv";
+	//string FileName = "Output\\Trees_sim" + IntToString(isim) + ".csv";
 
 	std::fstream OutFile1;
 
@@ -1706,7 +1694,7 @@ void CForest::WriteTrees(int isim, int irep)
 			OutFile1.open(FileName.c_str(), std::ios::out);
 			OutFile1 << "SimNr;"
 			         << "RepNr;"
-			         << "TreeNr;"
+			         //<< "TreeNr;"
 			         << "X;"
 			         << "Y;"
 			         << "SpecID"
@@ -1734,7 +1722,7 @@ void CForest::WriteTrees(int isim, int irep)
 
       OutFile1 << isim << ";"
                << irep << ";"
-               << i << ";"
+               //<< i << ";"
 				   << pTree->X<< ";"
 				   << pTree->Y << ";"
 				   << pTree->SpecID

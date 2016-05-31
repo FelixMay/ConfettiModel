@@ -128,17 +128,17 @@ class CSpecPara
 public:
 	double muDisp;
 	double sigmaDisp;
-	double JCfac;
+	//double JCfac;
 
 	std::vector<double> RelHabDens; //relative density in habitat types
 
 	CSpecPara(){};
 
-	CSpecPara(double meanDisp, double sdDisp, double jc)
+	CSpecPara(double meanDisp, double sdDisp)
 	{
 		sigmaDisp = sqrt(log(1.0 + (sdDisp*sdDisp)/(meanDisp*meanDisp)));
 		muDisp = log(meanDisp) - 0.5 * sigmaDisp*sigmaDisp;
-		JCfac = jc;
+		//JCfac = jc;
 		RelHabDens.clear();
 	};
 
