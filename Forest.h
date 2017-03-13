@@ -10,6 +10,7 @@
 #include "stocc.h"
 #include <fstream>
 #include <sstream>
+#include <deque>
 
 //---------------------------------------------------------------------------
 class CForest
@@ -39,7 +40,7 @@ public:
 	//std::map<int,int> SpecAbundWin;  // abundances only in sampling window
 	std::map<int,CSpecPara> SpecPars;
 
-	double** InteractMat;      //matrix with species-specific interaction coefficients
+	double **InteractMat;      //matrix with species-specific interaction coefficients
 
 	//Runtime
 	int64_t BD_max;
@@ -90,7 +91,7 @@ public:
 
 	std::map <int,int> Mff;
 	std::map <int,int> Mfo;
-	std::map <int,double> Lf;
+	//std::map <int,double> Lf;
 
 	std::map<int, std::map<int, std::vector<int> > > nSpecIJ;  //count of individuals
 	std::map<int, std::map<int, std::vector<double> > > gSpecIJ; // pair-correlation function
@@ -135,7 +136,7 @@ public:
 
 	//Output Variables
 	int BD_5years;   //counter for birth-death events per loop
-	int BD_total;
+	int64_t BD_total;
 
 	static const int MaxSAD = 12;
 	int SAD[MaxSAD];      //Species abundance distributions as octave curve 2^0 - 2^11
@@ -166,9 +167,9 @@ public:
 
 	//int GetSpecMaxAbund();
 	void GetNewXY(double &x1, double &y1, int idspec);
-	std::vector<double> SeqConstruct(unsigned int J1, double theta1, double m1 = 1.0); //log-series SAD
-	std::vector<double> UniformSAD(unsigned int nSpecies);
-	std::vector<double> LognormSAD(unsigned int nSpecies, unsigned int nIndividuals, double cv_abund);
+	std::vector<double> SeqConstruct(int J1, double theta1, double m1 = 1.0); //log-series SAD
+	std::vector<double> UniformSAD(int nSpecies);
+	std::vector<double> LognormSAD(int nSpecies, int nIndividuals, double cv_abund);
 
 //public:
 	CForest(int seed, CModelSettings* pset);
@@ -179,19 +180,19 @@ public:
 	void ReadSADFile();
 	void initTrees();
 	void initSpecies();
-	void BirthDeathLoop();
 	bool BirthDeathAsync();
 	void UpdateTrees();
 	void clearTrees();
 	void clearSpecies();
 	//void Loop1(int NSteps, bool output);
-	void WriteTrees(int isim, int irep);
-	void WriteTreesTime(int isim, int irep, int tstep);
+	void WriteTrees(int isim, int irep, int istep);
 	void writeSpecies(int isim, int irep = 0);
 	void writeInteractMat(int isim, int irep = 0);
-	void WriteOutput(int istep, int isim, int irep);
+	void WriteOutput(int isim, int irep);
 	void GetPPA();
 	double GetShannon();
+	void GetDiversity(int &nspec, double &shannon, double &simpson);
+	double getQueueCV(std::deque<double> &queue);
 	int GetSAD();
 	void GetSARq();
 	void OneRun(int isim, int irep);

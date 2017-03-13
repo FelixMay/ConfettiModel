@@ -12,14 +12,11 @@
 class CSpecSquare
 {
 public:
-	int iX;
-	int iY;
+	int iX = 0;
+	int iY = 0;
 	std::map<int,int> Spec;
 
-	CSpecSquare(){
-		iX = 0;
-		iY = 0;
-	};
+	CSpecSquare(){};
 
 	~CSpecSquare() {Spec.clear();};
 
@@ -38,42 +35,42 @@ class CModelSettings
 {
 public:
    //technical settings
-   int nRep;  //number replicates
-	int nGen;  //number generations (# complete turnover of community)
-	bool steps_out;
-	bool R_mode;
-	double cellSize;  // size of neighborhood grid
+   int nRep = 1;  //number replicates
+	int nGen = 100;  //number generations (# complete turnover of community)
+	bool steps_out = false;
+	bool R_mode = false;
+	double cellSize = 5.0;  // size of neighborhood grid
 
    //metacommunity
-   int metaSAD;                  //mode for metacommunity
-                                 //0 ... logseries (theta)
+   int metaSAD = 0;              //mode for metacommunity
+                                 //0 ... logseries (theta, Jm)
                                  //1 ... uniform (metaSR)
                                  //2 ... lognormal (metaSR, metaCV)
                                  //3 ... read from file
-                                 //other value... logseries (theta)
-   std::string sad_file_name;    //file name
-   int Jm;                       //metacommunity size in number of individuals
+                                 //other value... logseries (theta, Jm)
+   //std::string sad_file_name;    //file name
+   //int Jm = 2000000;             //metacommunity size in number of individuals
 
    //local community size - total extent of the simulated forest
-   int nTrees;                   //number of trees in local community
-   double Xext;
-   double Yext;
+   int nTrees = 21000;           //number of trees in local community
+   double Xext = 1000.0;
+   double Yext = 500.0;
 
    //point pattern output
-   double rmax;      //maximum neighborhood radius for point pattern
-   double bw1;       //bandwidth for community level patterns
-   double bw2;       //bandwidth for species level patterns
-   int    minAbund;  //abundance threshold for species level point patterns
+   double rmax = 100.0;     //maximum neighborhood radius for point pattern
+   double bw1 = 50.0;       //bandwidth for community level patterns
+   double bw2 = 50.0;       //bandwidth for species level patterns
+   int    minAbund = 50;    //abundance threshold for species level point patterns
 
-   //windows for sampling output
-   double xmin;
-   double xmax;
-   double ymin;
-   double ymax;
+//   //windows for sampling output
+//   double xmin;
+//   double xmax;
+//   double ymin;
+//   double ymax;
 
    //habitat map file
-   bool habitat;
-   double map_cell_size;
+   bool habitat = false;
+   double map_cell_size = 20;
    std::string map_file_name;
 	std::string rel_dens_file_name;
 	int n_hab_types;
@@ -88,24 +85,28 @@ public:
 class CPara
 {
 public:
-	double theta;
-	int    metaSR;  //species richness in case of uniform or log-normal metacommunity
-	double metaCV;  //cv of abundances for log-normal metacommunity
-	double m;
-	double r_max;
-	double aRec;
-	double aHab;   // Habitat sensitivity: 0 ... no habitat effects,
-                  // 1 ... as in data
-						// > 1 ... strong habitat effects
-	double aSurv;
-	double bSurv;
-	double m_dm_spec;
-	double sd_dm_spec;
-	double m_JCspec;
-	double sd_JCspec;  // factor to calculate heterospecific competition relative to conspecific competition
+	double theta = 50.0;
+	int    Jm    = 2000000; //metacommunity size in number of individuals
+	int    metaSR = 400;    //species richness in case of uniform or log-normal metacommunity
+	double metaCV = 1.0;    //cv of abundances for log-normal metacommunity
+	double m = 0.1;
+	double r_max = 10.0;
+	double aRec = 0.005;
+	double aHab = 1.0;   // Habitat sensitivity: 0 ... no habitat effects,
+                        // 1 ... as in data
+						      // > 1 ... strong habitat effects
+	double aSurv = 999.0;
+	double bSurv = 0.89;
+	double m_dm_spec = 30.0;
+	double sd_dm_spec = 0.0;
+	double m_JCspec = 1.0;   // factor to calculate heterospecific competition relative to conspecific competition
+	double cv_JCspec = 0.0;  // coefficient of variation among CNDD of species
+	double sd_JCspec = 0.0;  // = mJC_spec * cv_JCspec
+	double sigma_comp = 0.0; // niche width for species competition, see Scheffer and van Nes (2006) PNAS Eq. 4
 
-	CPara();
+	CPara(){};
 	CPara(double theta1,
+         int Jm1,
          int    metaSR1,
          double metaCV1,
          double m1,
@@ -117,28 +118,33 @@ public:
          double m_dm_spec1,
          double sd_dm_spec1,
          double m_JCspec1,
-         double sd_JCspec1
+         double cv_JCspec1,
+         double sigma_comp1
         );
-	~CPara();
+	~CPara(){};
 };
 
 //---------------------------------------------------------------------------
 class CSpecPara
 {
 public:
-	double muDisp;
+	double meanDisp; //mean dispersal distance
+
+	double muDisp;   //parameters of log-normal dispersal kernel
 	double sigmaDisp;
-	//double JCfac;
+
+	double comp_trait;
+
+	//double pRec;     //recruitment probability without competition
 
 	std::vector<double> RelHabDens; //relative density in habitat types
 
 	CSpecPara(){};
 
-	CSpecPara(double meanDisp, double sdDisp)
+	CSpecPara(double mDisp, double sdDisp, double trait_val) : meanDisp{mDisp}, comp_trait{trait_val}
 	{
 		sigmaDisp = sqrt(log(1.0 + (sdDisp*sdDisp)/(meanDisp*meanDisp)));
 		muDisp = log(meanDisp) - 0.5 * sigmaDisp*sigmaDisp;
-		//JCfac = jc;
 		RelHabDens.clear();
 	};
 
