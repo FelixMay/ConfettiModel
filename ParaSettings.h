@@ -43,13 +43,13 @@ public:
 
    //metacommunity
    int metaSAD = 0;              //mode for metacommunity
-                                 //0 ... logseries (theta)
+                                 //0 ... logseries (theta, Jm)
                                  //1 ... uniform (metaSR)
                                  //2 ... lognormal (metaSR, metaCV)
                                  //3 ... read from file
-                                 //other value... logseries (theta)
-   std::string sad_file_name;    //file name
-   int Jm = 2000000;             //metacommunity size in number of individuals
+                                 //other value... logseries (theta, Jm)
+   //std::string sad_file_name;    //file name
+   //int Jm = 2000000;             //metacommunity size in number of individuals
 
    //local community size - total extent of the simulated forest
    int nTrees = 21000;           //number of trees in local community
@@ -86,8 +86,9 @@ class CPara
 {
 public:
 	double theta = 50.0;
-	int    metaSR = 400;  //species richness in case of uniform or log-normal metacommunity
-	double metaCV = 1.0;  //cv of abundances for log-normal metacommunity
+	int    Jm    = 2000000; //metacommunity size in number of individuals
+	int    metaSR = 400;    //species richness in case of uniform or log-normal metacommunity
+	double metaCV = 1.0;    //cv of abundances for log-normal metacommunity
 	double m = 0.1;
 	double r_max = 10.0;
 	double aRec = 0.005;
@@ -98,12 +99,14 @@ public:
 	double bSurv = 0.89;
 	double m_dm_spec = 30.0;
 	double sd_dm_spec = 0.0;
-	double m_JCspec = 1.0; // factor to calculate heterospecific competition relative to conspecific competition
-	double cv_JCspec = 0.0;
-	double sd_JCspec = 0.0;
+	double m_JCspec = 1.0;   // factor to calculate heterospecific competition relative to conspecific competition
+	double cv_JCspec = 0.0;  // coefficient of variation among CNDD of species
+	double sd_JCspec = 0.0;  // = mJC_spec * cv_JCspec
+	double sigma_comp = 0.0; // niche width for species competition, see Scheffer and van Nes (2006) PNAS Eq. 4
 
 	CPara(){};
 	CPara(double theta1,
+         int Jm1,
          int    metaSR1,
          double metaCV1,
          double m1,
@@ -115,7 +118,8 @@ public:
          double m_dm_spec1,
          double sd_dm_spec1,
          double m_JCspec1,
-         double cv_JCspec1
+         double cv_JCspec1,
+         double sigma_comp1
         );
 	~CPara(){};
 };

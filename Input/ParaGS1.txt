@@ -1,0 +1,2 @@
+SimNr	theta	metaSR	metaCV	m	Rmax	aRec	aHab	aSurv	bSurv	m_dm_spec	sd_dm_spec	m_Jcspec	sd_Jcspec
+1	0	200	1	0.05	20	0.01	1	999	0.89	20	0	1	0
