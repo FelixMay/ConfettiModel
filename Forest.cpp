@@ -350,7 +350,9 @@ void CForest::FileOpen(string label) {
 		else {
 			DivFile.clear();
 			DivFile.open(FileName.c_str(), std::ios::out);
-			DivFile << "SimNr; RepNr; BD_total; BD_step; NSpec; Shannon; PIE" << endl;
+			DivFile << "SimNr; RepNr; theta; Jm; metaSR; metaCV; m; Rmax; aRec; aHab;"
+                 << "aSurv; bSurv; m_dm_spec; sd_dm_spec; m_Jcspec; cv_Jcspec; sigmaC;"
+                 << "BD_total; BD_step; NSpec; Shannon; PIE" << endl;
 		}
 	}
 
@@ -427,7 +429,7 @@ void CForest::FileOpen(string label) {
 				SARq_File << "m" << SARq_scales[i] << "; ";
 			for (int i = 0; i < (SARq_n-1); i++)
 				SARq_File << "sd" << SARq_scales[i] << "; ";
-			SARq_File << SARq_scales[SARq_n-1] <<endl;
+			SARq_File <<  "sd" << SARq_scales[SARq_n-1] <<endl;
 		}
 	}
 
@@ -878,7 +880,7 @@ void CForest::initTrees() {
 	for (int i = 0; i < NTrees; ++i) {
 		x = RandGen1->Random() * Xmax;
 		y = RandGen1->Random() * Ymax;
-		
+
 		SpecID = GetRandSpec();
 
 		pTree1 = new CTree(TreeID, x, y, SpecID, pPars->r_max, pPars->bSurv);
@@ -1543,6 +1545,21 @@ void CForest::WriteOutput(int isim, int irep) {
 
 	DivFile << isim  << "; "
            << irep  << "; "
+           << pPars->theta << "; "
+           << pPars->Jm << "; "
+           << pPars->metaSR << "; "
+           << pPars->metaCV << "; "
+           << pPars->m << "; "
+           << pPars->r_max << "; "
+           << pPars->aRec << "; "
+           << pPars->aHab << "; "
+           << pPars->aSurv << "; "
+           << pPars->bSurv<< "; "
+           << pPars->m_dm_spec << "; "
+           << pPars->sd_dm_spec << "; "
+           << pPars->m_JCspec << "; "
+           << pPars->cv_JCspec << "; "
+           << pPars->sigma_comp << "; "
            << BD_total << "; "
            << BD_5years << "; "
            << nspec << "; "
