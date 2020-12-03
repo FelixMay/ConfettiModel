@@ -1,3 +1,0 @@
-Input\Settings_R1.txtInput\Settings_R1.txt
-1
-Input\HabitatMapBCI_Harms_nomixed.txt
