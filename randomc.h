@@ -98,16 +98,16 @@
 
 // Define integer types with known size: int32_t, uint32_t, int64_t, uint64_t.
 // If this doesn't work then insert compiler-specific definitions here:
-#if defined(__GNUC__)
-  // Compilers supporting C99 or C++0x have inttypes.h defining these integer types
-  #include <inttypes.h>
+#if defined(__GNUC__) || (defined(_MSC_VER) && _MSC_VER >= 1600)
+  // Compilers supporting C99 or C++0x have stdint.h defining these integer types
+  #include <stdint.h>
   #define INT64_SUPPORTED // Remove this if the compiler doesn't support 64-bit integers
 #elif defined(_WIN16) || defined(__MSDOS__) || defined(_MSDOS) 
-   // 16 bit systems use long int for 32 bit integer
+  // 16 bit systems use long int for 32 bit integer.
   typedef   signed long int int32_t;
   typedef unsigned long int uint32_t;
 #elif defined(_MSC_VER)
-  // Microsoft have their own definition
+  // Older Microsoft compilers have their own definition
   typedef   signed __int32  int32_t;
   typedef unsigned __int32 uint32_t;
   typedef   signed __int64  int64_t;

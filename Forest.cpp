@@ -350,9 +350,9 @@ void CForest::FileOpen(string label) {
 		else {
 			DivFile.clear();
 			DivFile.open(FileName.c_str(), std::ios::out);
-			DivFile << "SimNr; RepNr; theta; Jm; metaSR; metaCV; m; Rmax; aRec; aHab;"
-                 << "aSurv; bSurv; m_dm_spec; sd_dm_spec; m_Jcspec; cv_Jcspec; sigmaC;"
-                 << "BD_total; BD_step; NSpec; Shannon; PIE" << endl;
+			DivFile << "SimNr, RepNr, theta, Jm, metaSR, metaCV, m, Rmax, aRec, aHab,"
+                 << "aSurv, bSurv, m_dm_spec, sd_dm_spec, m_Jcspec, cv_Jcspec, sigmaC,"
+                 << "BD_total, BD_step, NSpec, Shannon, PIE" << endl;
 		}
 	}
 
@@ -396,7 +396,7 @@ void CForest::FileOpen(string label) {
 			PCF_File.clear();
 			PCF_File.open(FileName.c_str(), std::ios::out);
 			for (int ibin1 = 0; ibin1 < (nBins1-1); ibin1++)
-				PCF_File << rvec1[ibin1] << "; ";
+				PCF_File << rvec1[ibin1] << ", ";
 			PCF_File << rvec1[nBins1-1] << endl;
 		}
 	}
@@ -411,7 +411,7 @@ void CForest::FileOpen(string label) {
 			PropConFile.clear();
 			PropConFile.open(FileName.c_str(), std::ios::out);
 			for (int ibin1 = 0; ibin1 < (nBins1-1); ibin1++)
-				PropConFile << rvec1[ibin1] << "; ";
+				PropConFile << rvec1[ibin1] << ", ";
 			PropConFile << rvec1[nBins1-1] <<endl;
 		}
 	}
@@ -426,9 +426,9 @@ void CForest::FileOpen(string label) {
 			SARq_File.clear();
 			SARq_File.open(FileName.c_str(), std::ios::out);
 			for (int i = 0; i < SARq_n; i++)
-				SARq_File << "m" << SARq_scales[i] << "; ";
+				SARq_File << "m" << SARq_scales[i] << ", ";
 			for (int i = 0; i < (SARq_n-1); i++)
-				SARq_File << "sd" << SARq_scales[i] << "; ";
+				SARq_File << "sd" << SARq_scales[i] << ", ";
 			SARq_File <<  "sd" << SARq_scales[SARq_n-1] <<endl;
 		}
 	}
@@ -1075,7 +1075,7 @@ double CForest::GetProbRecruit(double x1, double y1, unsigned int spec_id)
 
                         //hyperbolic interaction kernel following Uriarte et al. 2004 JEcol
                         if (d12 < 0.0001) d12 = 0.0001;
-                        NCI = NCI + InteractMat[spec_id][pTree2->SpecID]/d12;
+                           NCI = NCI + InteractMat[spec_id][pTree2->SpecID]/d12;
 
                      } // if overlap
                } // end tree 2
@@ -1490,10 +1490,10 @@ void CForest::OneRun(int isim, int irep)
          cvShannon = getQueueCV(shannonQueue);
 
          cout << "     Step " << istep <<"\t"
-				     << "BD total " << BD_total <<"\t"
-                 << "Species " << nspec <<"\t"
-                 << "cvShannon " << cvShannon
-                 << endl;
+              << "BD total " << BD_total <<"\t"
+              << "Species " << nspec <<"\t"
+              << "cvShannon " << cvShannon
+              << endl;
 
 			if (pSettings->steps_out) {
 				GetPPA();
@@ -1540,30 +1540,30 @@ void CForest::WriteOutput(int isim, int irep) {
 	int nspec;
 	double shannon;
 	double simpson;
-	GetDiversity(nspec,shannon,simpson);
+	GetDiversity(nspec, shannon, simpson);
 	double PIE = 1.0 - simpson; //Probability of Interspecific Encounter
 
-	DivFile << isim  << "; "
-           << irep  << "; "
-           << pPars->theta << "; "
-           << pPars->Jm << "; "
-           << pPars->metaSR << "; "
-           << pPars->metaCV << "; "
-           << pPars->m << "; "
-           << pPars->r_max << "; "
-           << pPars->aRec << "; "
-           << pPars->aHab << "; "
-           << pPars->aSurv << "; "
-           << pPars->bSurv<< "; "
-           << pPars->m_dm_spec << "; "
-           << pPars->sd_dm_spec << "; "
-           << pPars->m_JCspec << "; "
-           << pPars->cv_JCspec << "; "
-           << pPars->sigma_comp << "; "
-           << BD_total << "; "
-           << BD_5years << "; "
-           << nspec << "; "
-           << shannon << "; "
+	DivFile << isim  << ", "
+           << irep  << ", "
+           << pPars->theta << ", "
+           << pPars->Jm << ", "
+           << pPars->metaSR << ", "
+           << pPars->metaCV << ", "
+           << pPars->m << ", "
+           << pPars->r_max << ", "
+           << pPars->aRec << ", "
+           << pPars->aHab << ", "
+           << pPars->aSurv << ", "
+           << pPars->bSurv<< ", "
+           << pPars->m_dm_spec << ", "
+           << pPars->sd_dm_spec << ", "
+           << pPars->m_JCspec << ", "
+           << pPars->cv_JCspec << ", "
+           << pPars->sigma_comp << ", "
+           << BD_total << ", "
+           << BD_5years << ", "
+           << nspec << ", "
+           << shannon << ", "
            << PIE << endl;
 
  //  GetSAD();
@@ -1586,9 +1586,9 @@ void CForest::WriteOutput(int isim, int irep) {
 
 	for (spec_it1 = SpecAbund.begin(); spec_it1 != SpecAbund.end(); ++spec_it1){
 
-		if (spec_it1 != SpecAbund.begin())
+      if (spec_it1 != SpecAbund.begin())
          AbundFile <<";";
-		AbundFile << spec_it1->second;
+      AbundFile << spec_it1->second;
 
 //		if (spec_it1->second >= minAbund){
 //
@@ -1617,7 +1617,7 @@ void CForest::WriteOutput(int isim, int irep) {
 
 	}  // for spec1
 
-	AbundFile<<endl;
+   AbundFile<<endl;
 
 //	Kcon20_File<<endl;
 //	Khet20_File<<endl;
@@ -1626,9 +1626,9 @@ void CForest::WriteOutput(int isim, int irep) {
 //	NNDist_File<<endl;
 
 	for (int iscale = 0; iscale < SARq_n; ++iscale)
-		SARq_File << SARq_m[iscale] << "; ";
+		SARq_File << SARq_m[iscale] << ", ";
 	for (int iscale = 0; iscale < (SARq_n - 1); ++iscale)
-		SARq_File << SARq_sd[iscale] << "; ";
+		SARq_File << SARq_sd[iscale] << ", ";
 	SARq_File <<  SARq_sd[SARq_n-1] << endl;
 }
 
@@ -1703,7 +1703,7 @@ void CForest::writeInteractMat(int isim, int irep) {
 
 	for (int i = 0; i < SpecMax; ++i) {
 		for (int j = 0; j < (SpecMax-1); ++j)
-         OutFile<<InteractMat[i][j] << ";";
+         OutFile<<InteractMat[i][j] << ", ";
       OutFile<<InteractMat[i][SpecMax-1]<<endl;
 
 	}

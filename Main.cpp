@@ -58,7 +58,7 @@ int main(int argc, char* argv[])
    CModelSettings* pSettings = new CModelSettings();
 	pSettings->ReadSettings(SettingsFileName);
 
-	ParaFileName = "Input/"+ParaFileName + InFileID +".txt";
+	ParaFileName = "Input/"+ParaFileName + InFileID +".csv";
 
 	ifstream InFile;
 	InFile.open(ParaFileName.c_str());
@@ -86,26 +86,27 @@ int main(int argc, char* argv[])
 
 	int isim;
 	double jm;
+	char delim;
 
 	if (InFile.good()) {
 
 		//read first parameter set
-		InFile>>isim;
-		InFile>>pPara->theta;
-		InFile>>jm;
+		InFile>>isim>>delim;
+		InFile>>pPara->theta>>delim;
+		InFile>>jm>>delim;
       pPara->Jm = static_cast<int>(jm);
-		InFile>>pPara->metaSR;
-		InFile>>pPara->metaCV;
-		InFile>>pPara->m;
-		InFile>>pPara->r_max;
-		InFile>>pPara->aRec;
-		InFile>>pPara->aHab;
-		InFile>>pPara->aSurv;
-		InFile>>pPara->bSurv;
-		InFile>>pPara->m_dm_spec;
-		InFile>>pPara->sd_dm_spec;
-		InFile>>pPara->m_JCspec;
-		InFile>>pPara->cv_JCspec;
+		InFile>>pPara->metaSR>>delim;
+		InFile>>pPara->metaCV>>delim;
+		InFile>>pPara->m>>delim;
+		InFile>>pPara->r_max>>delim;
+		InFile>>pPara->aRec>>delim;
+		InFile>>pPara->aHab>>delim;
+		InFile>>pPara->aSurv>>delim;
+		InFile>>pPara->bSurv>>delim;
+		InFile>>pPara->m_dm_spec>>delim;
+		InFile>>pPara->sd_dm_spec>>delim;
+		InFile>>pPara->m_JCspec>>delim;
+		InFile>>pPara->cv_JCspec>>delim;
 		InFile>>pPara->sigma_comp;
 
 		while (InFile.good()) {
@@ -122,15 +123,15 @@ int main(int argc, char* argv[])
 
 				cout<<"  Rep "<< irep <<endl;
 
-            pForest->initSpecies();
-            //pForest->writeInteractMat(isim, irep);
+                pForest->initSpecies();
+                //pForest->writeInteractMat(isim, irep);
 
-            pForest->initTrees();
+                pForest->initTrees();
 
 				pForest->OneRun(isim, irep);
 
 				//pForest->GetPPA();
-				pForest->writeSpecies(isim, irep);
+				//pForest->writeSpecies(isim, irep);
 
 				pForest->clearTrees();
 				pForest->clearSpecies();
@@ -139,22 +140,22 @@ int main(int argc, char* argv[])
 			//pForest->clearSpecies();
 
 			//try to read new parameter set
-			InFile>>isim;
-			InFile>>pPara->theta;
-			InFile>>jm;
+			InFile>>isim>>delim;
+			InFile>>pPara->theta>>delim;
+			InFile>>jm>>delim;
          pPara->Jm = static_cast<int>(jm);
-			InFile>>pPara->metaSR;
-         InFile>>pPara->metaCV;
-			InFile>>pPara->m;
-			InFile>>pPara->r_max;
-			InFile>>pPara->aRec;
-			InFile>>pPara->aHab;
-			InFile>>pPara->aSurv;
-			InFile>>pPara->bSurv;
-			InFile>>pPara->m_dm_spec;
-			InFile>>pPara->sd_dm_spec;
-			InFile>>pPara->m_JCspec;
-			InFile>>pPara->cv_JCspec;
+			InFile>>pPara->metaSR>>delim;
+         InFile>>pPara->metaCV>>delim;
+			InFile>>pPara->m>>delim;
+			InFile>>pPara->r_max>>delim;
+			InFile>>pPara->aRec>>delim;
+			InFile>>pPara->aHab>>delim;
+			InFile>>pPara->aSurv>>delim;
+			InFile>>pPara->bSurv>>delim;
+			InFile>>pPara->m_dm_spec>>delim;
+			InFile>>pPara->sd_dm_spec>>delim;
+			InFile>>pPara->m_JCspec>>delim;
+			InFile>>pPara->cv_JCspec>>delim;
 			InFile>>pPara->sigma_comp;
 		}
 	}

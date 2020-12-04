@@ -1,7 +1,7 @@
 /*****************************   stocc.h   **********************************
 * Author:        Agner Fog
 * Date created:  2004-01-08
-* Last modified: 2008-11-28
+* Last modified: 2013-09-20
 * Project:       randomc.h
 * Source URL:    www.agner.org/random
 *
@@ -18,7 +18,7 @@
 * System-specific exit code. You may modify this to make it fit your
 * user interface.
 *
-* void FatalError(char * ErrorText);
+* void FatalError(const char * ErrorText);
 * Used for outputting error messages from the other functions and classes.
 * You may have to modify this function to make it fit your user interface.
 *
@@ -193,7 +193,7 @@
 * noncentral hypergeometric distributions and theoretical explanations of 
 * the methods for calculating and sampling from these.
 *
-* Copyright 2004-2008 by Agner Fog. 
+* Copyright 2004-2013 by Agner Fog. 
 * GNU General Public License http://www.gnu.org/licenses/gpl.html
 *******************************************************************************/
 
@@ -214,8 +214,6 @@
 
 // STOC_BASE defines which base class to use for the non-uniform
 // random number generator classes StochasticLib1, 2, and 3.
-#define STOC_BASE CRandomMersenne     // define random number generator base class
-
 #ifndef STOC_BASE
    #ifdef R_BUILD
       // Inherit from StocRBase when building for R-language interface
