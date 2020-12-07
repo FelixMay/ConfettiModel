@@ -1,5 +1,4 @@
 bin/
-Input/
 obj/
 Output/
 *.dll
@@ -8,3 +7,4 @@ Output/
 *.o
 *.R
 *.txt
+*.layout
