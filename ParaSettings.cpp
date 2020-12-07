@@ -10,9 +10,9 @@ CModelSettings::CModelSettings()
 {
    //sad_file_name = "Input/MetacommunitySAD1.txt";
 
-   map_file_name = "Input/HabitatMapBCI_Harms_nomixed.txt";
-   rel_dens_file_name = "Input/RelativeDensityBCI_harms_nomixed_n50.txt";
-   n_hab_types = 6;
+   //map_file_name = "Input/HabitatMapBCI_Harms_nomixed.txt";
+   //rel_dens_file_name = "Input/RelativeDensityBCI_harms_nomixed_n50.txt";
+   //n_hab_types = 6;
 
 //   //Sinharaja settings
 //   map_cell_size = 500.0/26.0;//   map_file_name = "Input/HabitatMapBCI_Harms_nomixed.txt";
@@ -50,12 +50,12 @@ void CModelSettings::ReadSettings(std::string file_name)
 //      InFile>>dummy>>xmax;
 //      InFile>>dummy>>ymin;
 //      InFile>>dummy>>ymax;
-      InFile>>dummy>>habitat;
-      if (habitat == true){
-         InFile>>dummy>>map_cell_size;         InFile>>dummy>>map_file_name;
-         InFile>>dummy>>rel_dens_file_name;
-         InFile>>dummy>>n_hab_types;
-      }
+//      InFile>>dummy>>habitat;
+//      if (habitat == true){
+//         InFile>>dummy>>map_cell_size;//         InFile>>dummy>>map_file_name;
+//         InFile>>dummy>>rel_dens_file_name;
+//         InFile>>dummy>>n_hab_types;
+//      }
    }
    else std::cout<<"Error settings file"<<std::endl;
    InFile.close();
@@ -76,7 +76,7 @@ CPara::CPara(double theta1,
              double sd_dm_spec1,
              double m_JCspec1,
              double cv_JCspec1,
-             double sigma_comp1
+             double niche_breadth1
              ) :
    theta{theta1},
    Jm{Jm1},
@@ -93,7 +93,7 @@ CPara::CPara(double theta1,
    m_JCspec{m_JCspec1},
    cv_JCspec{cv_JCspec1},
    sd_JCspec{m_JCspec * cv_JCspec1},
-   sigma_comp{sigma_comp1}
+   niche_breadth{niche_breadth1}
 {
 }
 
