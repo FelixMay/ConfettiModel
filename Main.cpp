@@ -123,10 +123,10 @@ int main(int argc, char* argv[])
 
 				cout<<"  Rep "<< irep <<endl;
 
-                pForest->initSpecies();
-                //pForest->writeInteractMat(isim, irep);
+            pForest->initSpecies();
+            //pForest->writeInteractMat(isim, irep);
 
-                pForest->initTrees();
+            pForest->initTrees();
 
 				pForest->OneRun(isim, irep);
 

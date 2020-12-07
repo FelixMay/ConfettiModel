@@ -365,6 +365,7 @@ void CForest::FileOpen(string label) {
 		else {
 			AbundFile.clear();
 			AbundFile.open(FileName.c_str(), std::ios::out);
+			AbundFile << "SimNr, RepNr, SpecID, Abundance" <<endl;
 		}
 	}
 
@@ -425,11 +426,14 @@ void CForest::FileOpen(string label) {
 		else {
 			SARq_File.clear();
 			SARq_File.open(FileName.c_str(), std::ios::out);
+			SARq_File << "SimNr, RepNr, scale_m2, S_mean, S_sd" <<endl;
+			/*
 			for (int i = 0; i < SARq_n; i++)
 				SARq_File << "m" << SARq_scales[i] << ", ";
 			for (int i = 0; i < (SARq_n-1); i++)
 				SARq_File << "sd" << SARq_scales[i] << ", ";
 			SARq_File <<  "sd" << SARq_scales[SARq_n-1] <<endl;
+			*/
 		}
 	}
 
@@ -532,7 +536,7 @@ void CForest::clearTrees()
 // ---------------------------------------------------------------------------
 void CForest::clearSpecies()
 {
-	for (unsigned int ispec = 0; ispec < SpecMax; ispec++)
+	for (int ispec = 0; ispec < SpecMax; ispec++)
 		delete[] InteractMat[ispec];
    delete[] InteractMat;
 
@@ -611,8 +615,8 @@ inline int CForest::GetRandSpec() {
 
 // ---------------------------------------------------------------------------
 vector<double> CForest::SeqConstruct(int J, double theta, double m) {
-	unsigned int a = 0, s = 0;
-	unsigned int index;
+	int a = 0, s = 0;
+	int index;
 
 	double I, R1, R2, x, y;
 
@@ -623,7 +627,7 @@ vector<double> CForest::SeqConstruct(int J, double theta, double m) {
 	if (m < 1.0)
 		I = m * (J - 1) / (1 - m);
 
-	for (unsigned int j = 1; j <= J; ++j) {
+	for (int j = 1; j <= J; ++j) {
 		if (m < 1.0)
 			R1 = I / (I + j - 1);
 		else
@@ -654,11 +658,11 @@ vector<double> CForest::SeqConstruct(int J, double theta, double m) {
 		// check = SpecLabelInd[j-1];
 	}
 
-	unsigned int Smax = s;
+	int Smax = s;
 
 	// convert to abundance
 	vector<int> Abund(Smax, 0);
-	for (unsigned int j = 0; j < J; ++j) {
+	for (int j = 0; j < J; ++j) {
 		++Abund[SpecLabelInd[j] - 1];
 	}
 
@@ -666,7 +670,7 @@ vector<double> CForest::SeqConstruct(int J, double theta, double m) {
 	vector<double>RelAbund(Smax, 0);
 	vector<double>CumRelAbund(Smax, 0);
 
-	for (unsigned int is = 0; is < Smax; ++is) {
+	for (int is = 0; is < Smax; ++is) {
 		RelAbund[is] = static_cast<double>(Abund[is]) / J;
 		if (is == 0)
 			CumRelAbund[is] = RelAbund[is];
@@ -683,7 +687,7 @@ vector<double> CForest::UniformSAD(int nSpecies)
    vector<double>RelAbund(nSpecies, 0);
    vector<double>CumRelAbund(nSpecies, 0);
 
-   for (unsigned int is = 0; is < nSpecies; ++is) {
+   for (int is = 0; is < nSpecies; ++is) {
 		RelAbund[is] = 1.0/nSpecies;
 		if (is == 0)
 			CumRelAbund[is] = RelAbund[is];
@@ -710,12 +714,12 @@ vector<double> CForest::LognormSAD(int nSpecies, int nIndividuals, double cv_abu
 
    int sum = 0;
 
-   for (unsigned int is = 0; is < nSpecies; ++is) {
+   for (int is = 0; is < nSpecies; ++is) {
 		Abund[is] = exp(RandGen2->Normal(mu,sigma));
 		sum += Abund[is];
    }
 
-   for (unsigned int is = 0; is < nSpecies; ++is) {
+   for (int is = 0; is < nSpecies; ++is) {
 		RelAbund[is] = static_cast<double>(Abund[is])/sum;
 		if (is == 0)
 			CumRelAbund[is] = RelAbund[is];
@@ -753,24 +757,25 @@ void CForest::initSpecies()
 	double meanD_spec, sdD_spec, JC_spec, trait;
 
 	//Init species parameters
-	double sigma_dm = sqrt(log(1.0 + (pPars->sd_dm_spec*pPars->sd_dm_spec)
-												 /(pPars->m_dm_spec*pPars->m_dm_spec)));
-	double mu_dm = log(pPars->m_dm_spec) - 0.5 * sigma_dm*sigma_dm;
+
+	//double sigma_dm = sqrt(log(1.0 + (pPars->sd_dm_spec*pPars->sd_dm_spec)
+	//											 /(pPars->m_dm_spec*pPars->m_dm_spec)));
+	//double mu_dm = log(pPars->m_dm_spec) - 0.5 * sigma_dm*sigma_dm;
 
 	pPars->sd_JCspec = pPars->m_JCspec * pPars->cv_JCspec;
 
-	double sigma_JC = sqrt(log(1.0 + (pPars->sd_JCspec *pPars->sd_JCspec)
-												 /(pPars->m_JCspec*pPars->m_JCspec)));
-	double mu_JC = log(pPars->m_JCspec) - 0.5 * sigma_JC*sigma_JC;
+	//double sigma_JC = sqrt(log(1.0 + (pPars->sd_JCspec *pPars->sd_JCspec)
+	//											 /(pPars->m_JCspec*pPars->m_JCspec)));
+	//double mu_JC = log(pPars->m_JCspec) - 0.5 * sigma_JC*sigma_JC;
 
 	//Construct species interaction matrix
 	InteractMat = new double*[SpecMax];
-   for (unsigned int ispec = 0; ispec < SpecMax; ++ispec)
+   for (int ispec = 0; ispec < SpecMax; ++ispec)
       InteractMat[ispec] = new double[SpecMax];
 
    //Initialize interaction matrix
-   for (unsigned int ispec = 0; ispec < SpecMax; ++ispec)
-      for (unsigned int jspec = 0; jspec<SpecMax; ++jspec)
+   for (int ispec = 0; ispec < SpecMax; ++ispec)
+      for (int jspec = 0; jspec<SpecMax; ++jspec)
          //InteractMat[ispec][jspec] = 0.0;
          InteractMat[ispec][jspec] = 1.0;
 
@@ -811,12 +816,13 @@ void CForest::initSpecies()
    }
 
    //SPECIES INTERACTIONS ------------------------------------------------
-   for (unsigned int ispec = 0; ispec < SpecMax; ++ispec){
+   for (int ispec = 0; ispec < SpecMax; ++ispec){
 
       //trait based interactions following Scheffer and van Nes 2006 PNAS
+		/*
 		if (pPars->sigma_comp > 0.001){
 
-         for (unsigned int jspec = 0; jspec<SpecMax; ++jspec){
+         for (int jspec = 0; jspec<SpecMax; ++jspec){
 
             InteractMat[ispec][jspec] = exp(-(SpecPars[ispec].comp_trait * SpecPars[ispec].comp_trait +
                                               SpecPars[jspec].comp_trait * SpecPars[jspec].comp_trait -
@@ -825,6 +831,7 @@ void CForest::initSpecies()
 
          } //for jspec
 		} // if sigma comp > 0.001
+		*/
 
 		//log-normal distribution
 
@@ -1014,7 +1021,7 @@ void CForest::initTrees() {
 }
 
 // ---------------------------------------------------------------------------
-double CForest::GetProbRecruit(double x1, double y1, unsigned int spec_id)
+double CForest::GetProbRecruit(double x1, double y1, int spec_id)
 {
 	int iX1 = floor(x1/pSettings->cellSize);
 	int iY1 = floor(y1/pSettings->cellSize);
@@ -1110,7 +1117,9 @@ double CForest::GetProbRecruit(double x1, double y1, unsigned int spec_id)
          prob_rec2 = prob_rec1*pow(rel_dens,pPars->aHab);
       else prob_rec2 = prob_rec1;
    }
-   else prob_rec2 = prob_rec1;
+   else {
+      prob_rec2 = prob_rec1;
+   }
 
 	return(prob_rec2);
 }
@@ -1271,8 +1280,6 @@ void CForest::GetNewXY(double &x1, double &y1, int idspec) {
 
 	double x0 = x1;
 	double y0 = y1;
-
-	double r_dist{0.0};
 
 	if (pPars->m_dm_spec < 999.0) {
 
@@ -1453,7 +1460,7 @@ void CForest::OneRun(int isim, int irep)
 
    deque<int> nSpecQueue;
    deque<double> shannonQueue;
-   int lengthQueue = 10;
+   unsigned int lengthQueue = 10;
 
    int nspec{0};
    double shannon{0.0}, pie{0.0};
@@ -1504,9 +1511,9 @@ void CForest::OneRun(int isim, int irep)
 		}
 	}  // while BD_total < BD_max
 
-	unsigned int nCensusOut = 0;
+	int nCensusOut = 0;
 
-	for (int icensus=0; icensus < nCensusOut; ++icensus) {
+	for (int icensus = 0; icensus < nCensusOut; ++icensus) {
 		// one loop representing five years = NTrees test for survival/mortality
 		BD_5years = 0;
 		for (int i = 0; i < NTrees; ++i) {
@@ -1586,9 +1593,12 @@ void CForest::WriteOutput(int isim, int irep) {
 
 	for (spec_it1 = SpecAbund.begin(); spec_it1 != SpecAbund.end(); ++spec_it1){
 
-      if (spec_it1 != SpecAbund.begin())
-         AbundFile <<";";
-      AbundFile << spec_it1->second;
+      //if (spec_it1 != SpecAbund.begin())
+      //   AbundFile <<", ",
+      if (spec_it1->second > 0)
+         AbundFile << isim << ", " << irep << ", "
+                   << "spec" <<spec_it1->first << ", " << spec_it1->second
+                   << endl;
 
 //		if (spec_it1->second >= minAbund){
 //
@@ -1617,7 +1627,7 @@ void CForest::WriteOutput(int isim, int irep) {
 
 	}  // for spec1
 
-   AbundFile<<endl;
+//   AbundFile<<endl;
 
 //	Kcon20_File<<endl;
 //	Khet20_File<<endl;
@@ -1625,11 +1635,22 @@ void CForest::WriteOutput(int isim, int irep) {
 //	xPOD_File<<endl;
 //	NNDist_File<<endl;
 
+	/* Old SAR output formatting
 	for (int iscale = 0; iscale < SARq_n; ++iscale)
 		SARq_File << SARq_m[iscale] << ", ";
 	for (int iscale = 0; iscale < (SARq_n - 1); ++iscale)
 		SARq_File << SARq_sd[iscale] << ", ";
 	SARq_File <<  SARq_sd[SARq_n-1] << endl;
+	*/
+
+	// SAR file
+	for (int iscale = 0; iscale < SARq_n; ++iscale){
+      SARq_File << isim << ", " << irep << ", "
+                << SARq_scales[iscale] << ", "
+                << SARq_m[iscale] << ", "
+                << SARq_m[iscale]
+                << endl;
+   }
 }
 
 // ---------------------------------------------------------------------------
@@ -1715,13 +1736,13 @@ void CForest::WriteTrees(int isim, int irep, int istep) {
 
 	string FileName = "Output/Trees_sim" + IntToString(isim) +
 	                               "_rep" + IntToString(irep) +
-	                               "_step" + IntToString(istep) + ".txt";
+	                               "_step" + IntToString(istep) + ".csv";
 
 	ofstream OutFile1(FileName.c_str());
 	OutFile1 //<< "Nr;"
-			   << "TreeID" << "\t"
-			   << "X" << "\t"
-			   << "Y" << "\t"
+			   << "TreeID" << ", "
+			   << "X" << ", "
+			   << "Y" << ", "
 			   << "SpecID"
 			   << endl;
 
@@ -1734,9 +1755,9 @@ void CForest::WriteTrees(int isim, int irep, int istep) {
 		pTree = TreeList[i];
 
 		OutFile1 //<< i << ";"
-				   <<pTree->TreeID << "\t"
-				   <<pTree->X << "\t"
-				   <<pTree->Y << "\t"
+				   <<pTree->TreeID << ", "
+				   <<pTree->X << ", "
+				   <<pTree->Y << ", "
 				   <<pTree->SpecID
 				   << endl;
 	}

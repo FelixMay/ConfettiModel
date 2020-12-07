@@ -33,10 +33,10 @@ public:
 class CTree
 {
 public:
-	unsigned int TreeID;
+	int TreeID;
 	double X;
 	double Y;
-	unsigned int SpecID;
+	int SpecID;
 
 	double R; //ZOI Radius
 	double NCI; // neighbourhood crowding index
@@ -45,7 +45,7 @@ public:
 	std::list <CCell*> CellList; //list of grid cells overlapped by the tree
 	std::map<int,double> NNDistSpec; //nearest neighbour distance to each species
 
-	CTree(unsigned int id, double x, double y, int spec, double r, double p_surv)
+	CTree(int id, double x, double y, int spec, double r, double p_surv)
 	{
 		TreeID = id;
 		X = x; Y = y;
