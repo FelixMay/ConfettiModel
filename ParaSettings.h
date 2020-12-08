@@ -69,11 +69,11 @@ public:
 //   double ymax;
 
    //habitat map file
-   bool habitat = false;
-   double map_cell_size = 20;
-   std::string map_file_name;
-	std::string rel_dens_file_name;
-	int n_hab_types;
+//   bool habitat = false;
+//   double map_cell_size = 20;
+//   std::string map_file_name;
+//	std::string rel_dens_file_name;
+//	int n_hab_types;
 
    CModelSettings();
    ~CModelSettings();
@@ -99,10 +99,11 @@ public:
 	double bSurv = 0.89;
 	double m_dm_spec = 30.0;
 	double sd_dm_spec = 0.0;
-	double m_JCspec = 1.0;   // factor to calculate heterospecific competition relative to conspecific competition
-	double cv_JCspec = 0.0;  // coefficient of variation among CNDD of species
-	double sd_JCspec = 0.0;  // = mJC_spec * cv_JCspec
-	double sigma_comp = 0.0; // niche width for species competition, see Scheffer and van Nes (2006) PNAS Eq. 4
+	double m_JCspec = 1.0;      // factor to calculate heterospecific competition relative to conspecific competition
+	double cv_JCspec = 0.0;     // coefficient of variation among CNDD of species
+	double sd_JCspec = 0.0;     // = mJC_spec * cv_JCspec
+	double niche_breadth = 1.0; // niche breadth (see Gravel et al. 2005 EcolLett, Eq. 3)
+	//double sigma_comp = 0.0; // niche width for species competition, see Scheffer and van Nes (2006) PNAS Eq. 4
 
 	CPara(){};
 	CPara(double theta1,
@@ -119,7 +120,8 @@ public:
          double sd_dm_spec1,
          double m_JCspec1,
          double cv_JCspec1,
-         double sigma_comp1
+         double niche_breadth
+         //double sigma_comp1
         );
 	~CPara(){};
 };
@@ -133,7 +135,9 @@ public:
 	double muDisp;   //parameters of log-normal dispersal kernel
 	double sigmaDisp;
 
-	double comp_trait;
+	double muEnvir;  //environmental optimum, see Gravel et al. 2006 Ecology Letters, Eq. 3
+
+	//double comp_trait;
 
 	//double pRec;     //recruitment probability without competition
 
@@ -141,7 +145,7 @@ public:
 
 	CSpecPara(){};
 
-	CSpecPara(double mDisp, double sdDisp, double trait_val) : meanDisp{mDisp}, comp_trait{trait_val}
+	CSpecPara(double mDisp, double sdDisp, double trait_val) : meanDisp{mDisp}, muEnvir(trait_val)  //comp_trait{trait_val}
 	{
 		sigmaDisp = sqrt(log(1.0 + (sdDisp*sdDisp)/(meanDisp*meanDisp)));
 		muDisp = log(meanDisp) - 0.5 * sigmaDisp*sigmaDisp;

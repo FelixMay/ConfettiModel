@@ -43,8 +43,8 @@ CForest::CForest(int seed, CModelSettings* pset){
 //      ReadSADFile();
 
 	//Read habitat map file
-	if (pSettings->habitat == true)
-      CreateHabitatMap();
+	//if (pSettings->habitat == true)
+   //   CreateHabitatMap();
 
 	// Grid
 	XCells = Xmax / pSettings->cellSize;
@@ -127,6 +127,7 @@ CForest::~CForest() {
 	delete[] Map;
 
    //  Deallocate 3D array
+   /*
    if (pSettings->habitat == true){
       for(int x = 0; x < MapXcells; ++x){
          for(int y = 0; y < MapYcells; ++y)
@@ -135,6 +136,7 @@ CForest::~CForest() {
       }
       delete[] HabitatProp;
    }
+   */
 
 	for (int x = 0; x < XCells; ++x)
 		delete[] Grid[x];
@@ -207,6 +209,7 @@ CForest::~CForest() {
 //}
 
 // ----------------------------------------------------------------------------
+/*
 void CForest::CreateHabitatMap()
 {
    MapCellSize = pSettings->map_cell_size;
@@ -335,6 +338,7 @@ void CForest::CreateHabitatMap()
 
 	RelHabDensFile.close();
 }
+*/
 
 // ----------------------------------------------------------------------------
 void CForest::FileOpen(string label) {
@@ -804,15 +808,17 @@ void CForest::initSpecies()
 		meanD_spec = pPars->m_dm_spec;
 		sdD_spec = pPars->sd_dm_spec;
 
-		trait = RandGen1->Random();
+		muEnvir = RandGen1->Random();
 
-		SpecPars[ispec] = CSpecPara(meanD_spec, sdD_spec, trait);
+		SpecPars[ispec] = CSpecPara(meanD_spec, sdD_spec, muEnvir);
 
 		//habitat associations
+		/*
 		if (pSettings->habitat){
          int irand = RandGen1->IRandom(0, RelHabDensData.size() - 1);
 		   SpecPars[ispec].RelHabDens = RelHabDensData[irand];
 		}
+		*/
    }
 
    //SPECIES INTERACTIONS ------------------------------------------------
@@ -1100,6 +1106,7 @@ double CForest::GetProbRecruit(double x1, double y1, int spec_id)
 	else prob_rec1 = 1.0 - densNCI/(pPars->aRec + densNCI);
 
    // Habitat effect
+	/*
 	if (pSettings->habitat == true){
 
       iX1 = (int) floor(x1 / MapCellSize);
@@ -1117,9 +1124,10 @@ double CForest::GetProbRecruit(double x1, double y1, int spec_id)
          prob_rec2 = prob_rec1*pow(rel_dens,pPars->aHab);
       else prob_rec2 = prob_rec1;
    }
-   else {
+   */
+   //else {
       prob_rec2 = prob_rec1;
-   }
+   //}
 
 	return(prob_rec2);
 }
@@ -1566,7 +1574,7 @@ void CForest::WriteOutput(int isim, int irep) {
            << pPars->sd_dm_spec << ", "
            << pPars->m_JCspec << ", "
            << pPars->cv_JCspec << ", "
-           << pPars->sigma_comp << ", "
+           << pPars->niche_breadth << ", "
            << BD_total << ", "
            << BD_5years << ", "
            << nspec << ", "
@@ -1671,9 +1679,11 @@ void CForest::writeSpecies(int isim, int irep) {
             << "Kcon10" << "\t"
             << "Kcon50";
 
+   /*
    if (pSettings->habitat)
       for (int ihab=0; ihab < nHabTypes; ++ihab)
          OutFile << "\t" << "RelDens" <<ihab;
+   */
 
    OutFile <<endl;
 
@@ -1700,15 +1710,18 @@ void CForest::writeSpecies(int isim, int irep) {
 				  << relabund <<"\t"
 				  << SpecPars[i].muDisp << "\t"
 				  << SpecPars[i].sigmaDisp << "\t"
-				  << SpecPars[i].comp_trait << "\t"
+				  << SpecPars[i].muEnvir << "\t"
+				  //<< SpecPars[i].comp_trait << "\t"
 				  << InteractMat[i][i] << "\t"
 				  << SpecAbund[i] << "\t"
               << Kcon10 << "\t"
               << Kcon50;
 
+      /*
       if (pSettings->habitat)
          for (int ihab=0; ihab < nHabTypes; ++ihab)
             OutFile << "\t" << SpecPars[i].RelHabDens[ihab];
+      */
       OutFile << endl;
 	}
 	OutFile.close();
