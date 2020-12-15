@@ -29,6 +29,14 @@ using std::endl;
 #include <deque>
 using std::deque;
 
+//! \brief Constructor for Forest object
+//!
+//! This function creates the Forest object. The settings
+//! are the same for all simulation runs with this object
+//!
+//! \param seed The seed for the random number generator
+//! \param pset Settings for all model runs
+//!
 // ---------------------------------------------------------------------------
 CForest::CForest(int seed, CModelSettings* pset){
 
@@ -339,6 +347,8 @@ void CForest::CreateHabitatMap()
 	RelHabDensFile.close();
 }
 */
+
+
 
 // ----------------------------------------------------------------------------
 void CForest::FileOpen(string label) {

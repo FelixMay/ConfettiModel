@@ -13,42 +13,45 @@
 #include <deque>
 
 //---------------------------------------------------------------------------
+//! \brief Main class for all model processes
+//!
+//! This class includes all simulated individuals and the functions
+//! for all model processes, specifically reproduction, dispersal,
+//! mortality, competition and immigration from a metacommunity
+//!
+
 class CForest
 {
 public:
-	CPara *pPars;
-	CModelSettings *pSettings;
+	CPara *pPars;                /**< Object with ecological model parameters */
+	CModelSettings *pSettings;   /**< Object with technical model settings */
 
-	//Immigration rate
-	double m;
+	double m; /**< Immigration rate - probability that a recruit is from the metacommunity */
 
-	//Landscape
-	double Xmax;
-	double Ymax;
+	double Xmax;  /**< Extent of the landscape in x-direction */
+	double Ymax;  /**< Extent of the landscape in y-direction */
 
-	//Trees
-	int NTrees;
-	std::vector<CTree*> TreeList;
-	int64_t TreeID;
+   //Trees
+	int NTrees;                     /**< Constant number of trees (zero-sum assumption */
+	std::vector<CTree*> TreeList;   /**< Vector with all tree individuals */
+	int64_t TreeID;                 /**< Unique ID for each tree */
 
-	//Species
-	int SpecMax;
-	std::vector<double> CumRelAbundMeta;
-	//std::vector<double> CumProbImmi;
+	int SpecMax;                         /**< Maximum number of species. Equal to species number in the metacommunity */
+	std::vector<double> CumRelAbundMeta; /**< Relative abundance of species in the metacommunity */
 
-	std::map<int,int> SpecAbund;     // map with first --> key, second --> abund
-	//std::map<int,int> SpecAbundWin;  // abundances only in sampling window
-	std::map<int,CSpecPara> SpecPars;
+	std::map<int,int> SpecAbund;  /**< Species abundances in the landscape: first -> key, second -> abundance */
 
-	double **InteractMat;      //matrix with species-specific interaction coefficients
+	std::map<int,CSpecPara> SpecPars; /**< Species specific parameters */
+
+	double **InteractMat;    /**<  matrix with species-specific interaction coefficients */
 
 	//Runtime
-	int64_t BD_max;
+	int64_t BD_max; /**<  Maximum number of birth-death events */
 
-	//Grid
-	int XCells;
-	int YCells;
-	int grid_steps;
+	//Helper grid to evaluate local interactions
+	int XCells; /**< Number of grid-cells in x-direction */
+	int YCells; /**< Number of grid cells in y-direction */
+	int grid_steps; /**< Steps in each direction that have to be considered depending on the parameter CPara::r_max */
 
 	CCell **Grid;
 

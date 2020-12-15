@@ -1,0 +1,7 @@
+C:/Users/felix/Documents/Confetti_Source/mersenne.cpp:27: warning: documented symbol 'void CRandomMersenne::Init0' was not declared or defined.
+C:/Users/felix/Documents/Confetti_Source/mersenne.cpp:36: warning: documented symbol 'void CRandomMersenne::RandomInit' was not declared or defined.
+C:/Users/felix/Documents/Confetti_Source/mersenne.cpp:45: warning: documented symbol 'void CRandomMersenne::RandomInitByArray' was not declared or defined.
+C:/Users/felix/Documents/Confetti_Source/mersenne.cpp:73: warning: documented symbol 'uint32_t CRandomMersenne::BRandom' was not declared or defined.
+C:/Users/felix/Documents/Confetti_Source/mersenne.cpp:108: warning: documented symbol 'double CRandomMersenne::Random' was not declared or defined.
+C:/Users/felix/Documents/Confetti_Source/mersenne.cpp:115: warning: documented symbol 'int CRandomMersenne::IRandom' was not declared or defined.
+C:/Users/felix/Documents/Confetti_Source/mersenne.cpp:128: warning: documented symbol 'int CRandomMersenne::IRandomX' was not declared or defined.
