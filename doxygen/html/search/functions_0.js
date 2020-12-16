@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['cforest_51',['CForest',['../class_c_forest.html#a39e630bdb1a27ba7d72879cbfa9f0b25',1,'CForest']]]
+  ['addtree_432',['AddTree',['../class_c_forest.html#ab4bfe9795df4052ff23e5a0ce7e54a29',1,'CForest']]]
 ];

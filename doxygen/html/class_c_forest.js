@@ -5,7 +5,6 @@ var class_c_forest =
     [ "AddTree", "class_c_forest.html#ab4bfe9795df4052ff23e5a0ce7e54a29", null ],
     [ "BirthDeathAsync", "class_c_forest.html#ade486e16b159abdbd86e147e75a9488b", null ],
     [ "BoundGrid", "class_c_forest.html#a8a023b62111d56f08c7adee081784903", null ],
-    [ "BoundIntGrid", "class_c_forest.html#a3c5ff04ebd6e5a2236eac5497ea5ac64", null ],
     [ "clearSpecies", "class_c_forest.html#a81c787cec112b105c71b9ce11a7c9870", null ],
     [ "clearTrees", "class_c_forest.html#a283bb934126954e54d418a761b921f58", null ],
     [ "CreateHabitatMap", "class_c_forest.html#ae18f9c66f916f59f8eb97d61db5f8667", null ],

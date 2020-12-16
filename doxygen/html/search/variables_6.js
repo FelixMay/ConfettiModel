@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['ppars_60',['pPars',['../class_c_forest.html#af1729be1b62b2f05301f670bf3ca588c',1,'CForest']]],
-  ['psettings_61',['pSettings',['../class_c_forest.html#a73b00f67ddabba53c5e4ab59af0c8a98',1,'CForest']]]
+  ['grid_630',['Grid',['../class_c_forest.html#a79829283525591bd4e1db8aa6ea18f7b',1,'CForest']]],
+  ['grid_5fsteps_631',['grid_steps',['../class_c_forest.html#af5c47d74c650e750f34a8ca5735fca65',1,'CForest']]],
+  ['gspecij_632',['gSpecIJ',['../class_c_forest.html#ae8b2d27b176792b6903c939cf26ce57e',1,'CForest']]]
 ];

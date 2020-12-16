@@ -221,7 +221,7 @@ void CForest::FileOpen(string label) {
 		else {
 			DivFile.clear();
 			DivFile.open(FileName.c_str(), std::ios::out);
-			DivFile << "SimNr, RepNr, theta, Jm, metaSR, metaCV, m, Rmax, aRec, aHab,"
+			DivFile << "SimNr, RepNr, theta, Jm, metaSR, metaCV, m, Rmax, aRec, "
                  << "aSurv, bSurv, m_dm_spec, sd_dm_spec, m_Jcspec, cv_Jcspec, sigmaC,"
                  << "BD_total, BD_step, NSpec, Shannon, PIE" << endl;
 		}
@@ -1459,7 +1459,6 @@ void CForest::WriteOutput(int isim, int irep) {
            << pPars->m << ", "
            << pPars->r_max << ", "
            << pPars->aRec << ", "
-           << pPars->aHab << ", "
            << pPars->aSurv << ", "
            << pPars->bSurv<< ", "
            << pPars->m_dm_spec << ", "

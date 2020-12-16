@@ -85,7 +85,7 @@ $(document).ready(function(){initNavTree('_tree_8h_source.html',''); initResizab
 <div class="title">Tree.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//---------------------------------------------------------------------------</span></div>
+<a href="_tree_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//---------------------------------------------------------------------------</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#ifndef TreeH</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#define TreeH</span></div>
@@ -93,26 +93,26 @@ $(document).ready(function(){initNavTree('_tree_8h_source.html',''); initResizab
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;cmath&gt;</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;map&gt;</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;Cell.h&quot;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_cell_8h.html">Cell.h</a>&quot;</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">//---------------------------------------------------------------------------</span></div>
 <div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="class_c_s_a_r___point.html">   12</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_c_s_a_r___point.html">CSAR_Point</a></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;{</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        <span class="keywordtype">double</span> X;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        <span class="keywordtype">double</span> Y;</div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="class_c_s_a_r___point.html#ad0474960551a57dd82c37f3d915facd0">   15</a></span>&#160;        <span class="keywordtype">double</span> <a class="code" href="class_c_s_a_r___point.html#ad0474960551a57dd82c37f3d915facd0">X</a>;</div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="class_c_s_a_r___point.html#ab618bed0a6731b653c718489d7656450">   16</a></span>&#160;        <span class="keywordtype">double</span> <a class="code" href="class_c_s_a_r___point.html#ab618bed0a6731b653c718489d7656450">Y</a>;</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        std::map&lt;int,double&gt; NNDistSpec; <span class="comment">//nearest neighbour distance to each species</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="class_c_s_a_r___point.html#a936c50fc7f3287a3f4e87a07489ec179">   18</a></span>&#160;        std::map&lt;int,double&gt; <a class="code" href="class_c_s_a_r___point.html#a936c50fc7f3287a3f4e87a07489ec179">NNDistSpec</a>; <span class="comment">//nearest neighbour distance to each species</span></div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <a class="code" href="class_c_s_a_r___point.html">CSAR_Point</a>(<span class="keywordtype">double</span> x, <span class="keywordtype">double</span> y)</div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="class_c_s_a_r___point.html#a3431b3888e6f30bb4baab4e7f2161097">   20</a></span>&#160;        <a class="code" href="class_c_s_a_r___point.html#a3431b3888e6f30bb4baab4e7f2161097">CSAR_Point</a>(<span class="keywordtype">double</span> x, <span class="keywordtype">double</span> y)</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        {</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;                X = x; Y = y;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;                NNDistSpec.clear();</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;                <a class="code" href="class_c_s_a_r___point.html#ad0474960551a57dd82c37f3d915facd0">X</a> = x; <a class="code" href="class_c_s_a_r___point.html#ab618bed0a6731b653c718489d7656450">Y</a> = y;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;                <a class="code" href="class_c_s_a_r___point.html#a936c50fc7f3287a3f4e87a07489ec179">NNDistSpec</a>.clear();</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        };</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        ~<a class="code" href="class_c_s_a_r___point.html">CSAR_Point</a>()</div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="class_c_s_a_r___point.html#a6e9a1e36ae14bc67b1db2e8add989038">   26</a></span>&#160;        <a class="code" href="class_c_s_a_r___point.html#a6e9a1e36ae14bc67b1db2e8add989038">~CSAR_Point</a>()</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        {</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;                NNDistSpec.clear();</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;                <a class="code" href="class_c_s_a_r___point.html#a936c50fc7f3287a3f4e87a07489ec179">NNDistSpec</a>.clear();</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        };</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;};</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
@@ -120,32 +120,32 @@ $(document).ready(function(){initNavTree('_tree_8h_source.html',''); initResizab
 <div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="class_c_tree.html">   33</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_c_tree.html">CTree</a></div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;{</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <span class="keywordtype">int</span> TreeID;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="keywordtype">double</span> X;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <span class="keywordtype">double</span> Y;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <span class="keywordtype">int</span> SpecID;</div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="class_c_tree.html#aa32d08b8423a2ec4f812ab4652aee729">   36</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="class_c_tree.html#aa32d08b8423a2ec4f812ab4652aee729">TreeID</a>;</div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="class_c_tree.html#a77f54ba1c9ccb0a930d54113febfc9bf">   37</a></span>&#160;        <span class="keywordtype">double</span> <a class="code" href="class_c_tree.html#a77f54ba1c9ccb0a930d54113febfc9bf">X</a>;</div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="class_c_tree.html#ab66316f10901fb30db1ab3da9a3fa169">   38</a></span>&#160;        <span class="keywordtype">double</span> <a class="code" href="class_c_tree.html#ab66316f10901fb30db1ab3da9a3fa169">Y</a>;</div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="class_c_tree.html#a84900d032b3fcee502d3c81133b0383b">   39</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="class_c_tree.html#a84900d032b3fcee502d3c81133b0383b">SpecID</a>;</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="keywordtype">double</span> R; <span class="comment">//ZOI Radius</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <span class="keywordtype">double</span> NCI; <span class="comment">// neighbourhood crowding index</span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="keywordtype">double</span> pSurv;  <span class="comment">//Survival probability</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="class_c_tree.html#a4f2c05162d9a7a4b5e61123fd1fd711d">   41</a></span>&#160;        <span class="keywordtype">double</span> <a class="code" href="class_c_tree.html#a4f2c05162d9a7a4b5e61123fd1fd711d">R</a>; <span class="comment">//ZOI Radius</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="class_c_tree.html#a2bd7186ed0defacb5fb347c43054ebaf">   42</a></span>&#160;        <span class="keywordtype">double</span> <a class="code" href="class_c_tree.html#a2bd7186ed0defacb5fb347c43054ebaf">NCI</a>; <span class="comment">// neighbourhood crowding index</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="class_c_tree.html#af423eccac64cde6757a79a2717299a9c">   43</a></span>&#160;        <span class="keywordtype">double</span> <a class="code" href="class_c_tree.html#af423eccac64cde6757a79a2717299a9c">pSurv</a>;  <span class="comment">//Survival probability</span></div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        std::list &lt;CCell*&gt; CellList; <span class="comment">//list of grid cells overlapped by the tree</span></div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        std::map&lt;int,double&gt; NNDistSpec; <span class="comment">//nearest neighbour distance to each species</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="class_c_tree.html#af6089f97f97c142ae7026a17f8493486">   45</a></span>&#160;        std::list &lt;CCell*&gt; <a class="code" href="class_c_tree.html#af6089f97f97c142ae7026a17f8493486">CellList</a>; <span class="comment">//list of grid cells overlapped by the tree</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="class_c_tree.html#aab7b5164e3e354d91472f841c9961c5c">   46</a></span>&#160;        std::map&lt;int,double&gt; <a class="code" href="class_c_tree.html#aab7b5164e3e354d91472f841c9961c5c">NNDistSpec</a>; <span class="comment">//nearest neighbour distance to each species</span></div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <a class="code" href="class_c_tree.html">CTree</a>(<span class="keywordtype">int</span> <span class="keywordtype">id</span>, <span class="keywordtype">double</span> x, <span class="keywordtype">double</span> y, <span class="keywordtype">int</span> spec, <span class="keywordtype">double</span> r, <span class="keywordtype">double</span> p_surv)</div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="class_c_tree.html#aacfc131f87bc882468e74b677d7a7e5f">   48</a></span>&#160;        <a class="code" href="class_c_tree.html#aacfc131f87bc882468e74b677d7a7e5f">CTree</a>(<span class="keywordtype">int</span> <span class="keywordtype">id</span>, <span class="keywordtype">double</span> x, <span class="keywordtype">double</span> y, <span class="keywordtype">int</span> spec, <span class="keywordtype">double</span> r, <span class="keywordtype">double</span> p_surv)</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        {</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                TreeID = id;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                X = x; Y = y;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                SpecID = spec;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                R = r;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                pSurv = p_surv;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                NNDistSpec.clear();</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                <a class="code" href="class_c_tree.html#aa32d08b8423a2ec4f812ab4652aee729">TreeID</a> = id;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                <a class="code" href="class_c_tree.html#a77f54ba1c9ccb0a930d54113febfc9bf">X</a> = x; <a class="code" href="class_c_tree.html#ab66316f10901fb30db1ab3da9a3fa169">Y</a> = y;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                <a class="code" href="class_c_tree.html#a84900d032b3fcee502d3c81133b0383b">SpecID</a> = spec;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                <a class="code" href="class_c_tree.html#a4f2c05162d9a7a4b5e61123fd1fd711d">R</a> = r;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                <a class="code" href="class_c_tree.html#af423eccac64cde6757a79a2717299a9c">pSurv</a> = p_surv;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                <a class="code" href="class_c_tree.html#aab7b5164e3e354d91472f841c9961c5c">NNDistSpec</a>.clear();</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        };</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        ~<a class="code" href="class_c_tree.html">CTree</a>()</div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="class_c_tree.html#a03282df290b747bb7a400919ec366af5">   58</a></span>&#160;        <a class="code" href="class_c_tree.html#a03282df290b747bb7a400919ec366af5">~CTree</a>()</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        {</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                CellList.clear();</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                NNDistSpec.clear();</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                <a class="code" href="class_c_tree.html#af6089f97f97c142ae7026a17f8493486">CellList</a>.clear();</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                <a class="code" href="class_c_tree.html#aab7b5164e3e354d91472f841c9961c5c">NNDistSpec</a>.clear();</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        };</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <span class="comment">/*</span></div>
@@ -156,29 +156,50 @@ $(document).ready(function(){initNavTree('_tree_8h_source.html',''); initResizab
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="comment">        }</span></div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="comment">        */</span></div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="keywordtype">void</span> GetPSurv2(<span class="keywordtype">double</span> a, <span class="keywordtype">double</span> b)</div>
+<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="class_c_tree.html#accc79580638589005568e50bf19b806e">   72</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_c_tree.html#accc79580638589005568e50bf19b806e">GetPSurv2</a>(<span class="keywordtype">double</span> a, <span class="keywordtype">double</span> b)</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        {</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                <span class="keywordflow">if</span> (NCI == 0.0) pSurv = b;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                <span class="keywordflow">else</span> pSurv = b - b*(NCI)/(a + NCI);</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                <span class="keywordflow">if</span> (<a class="code" href="class_c_tree.html#a2bd7186ed0defacb5fb347c43054ebaf">NCI</a> == 0.0) <a class="code" href="class_c_tree.html#af423eccac64cde6757a79a2717299a9c">pSurv</a> = b;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                <span class="keywordflow">else</span> <a class="code" href="class_c_tree.html#af423eccac64cde6757a79a2717299a9c">pSurv</a> = b - b*(<a class="code" href="class_c_tree.html#a2bd7186ed0defacb5fb347c43054ebaf">NCI</a>)/(a + <a class="code" href="class_c_tree.html#a2bd7186ed0defacb5fb347c43054ebaf">NCI</a>);</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        }</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;};</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="keyword">typedef</span> std::vector&lt;CTree*&gt;::iterator TreeIterV;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="keyword">typedef</span> std::list&lt;CTree*&gt;::iterator TreeIterL;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="keyword">typedef</span> std::list&lt;CSAR_Point*&gt;::iterator PointIterL;</div>
+<div class="line"><a name="l00080"></a><span class="lineno"><a class="line" href="_tree_8h.html#a335110e9c3276a546e56959c8ad70484">   80</a></span>&#160;<span class="keyword">typedef</span> std::vector&lt;CTree*&gt;::iterator <a class="code" href="_tree_8h.html#a335110e9c3276a546e56959c8ad70484">TreeIterV</a>;</div>
+<div class="line"><a name="l00081"></a><span class="lineno"><a class="line" href="_tree_8h.html#a429d9b1c1628cbc9a02a415dc9009c51">   81</a></span>&#160;<span class="keyword">typedef</span> std::list&lt;CTree*&gt;::iterator <a class="code" href="_tree_8h.html#a429d9b1c1628cbc9a02a415dc9009c51">TreeIterL</a>;</div>
+<div class="line"><a name="l00082"></a><span class="lineno"><a class="line" href="_tree_8h.html#a4f62c37d4d57d9f68846585ccf6e75ae">   82</a></span>&#160;<span class="keyword">typedef</span> std::list&lt;CSAR_Point*&gt;::iterator <a class="code" href="_tree_8h.html#a4f62c37d4d57d9f68846585ccf6e75ae">PointIterL</a>;</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="comment">//---------------------------------------------------------------------------</span></div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
+<div class="ttc" id="aclass_c_tree_html_af423eccac64cde6757a79a2717299a9c"><div class="ttname"><a href="class_c_tree.html#af423eccac64cde6757a79a2717299a9c">CTree::pSurv</a></div><div class="ttdeci">double pSurv</div><div class="ttdef"><b>Definition:</b> Tree.h:43</div></div>
+<div class="ttc" id="aclass_c_tree_html_af6089f97f97c142ae7026a17f8493486"><div class="ttname"><a href="class_c_tree.html#af6089f97f97c142ae7026a17f8493486">CTree::CellList</a></div><div class="ttdeci">std::list&lt; CCell * &gt; CellList</div><div class="ttdef"><b>Definition:</b> Tree.h:45</div></div>
+<div class="ttc" id="aclass_c_s_a_r___point_html_a3431b3888e6f30bb4baab4e7f2161097"><div class="ttname"><a href="class_c_s_a_r___point.html#a3431b3888e6f30bb4baab4e7f2161097">CSAR_Point::CSAR_Point</a></div><div class="ttdeci">CSAR_Point(double x, double y)</div><div class="ttdef"><b>Definition:</b> Tree.h:20</div></div>
+<div class="ttc" id="a_tree_8h_html_a429d9b1c1628cbc9a02a415dc9009c51"><div class="ttname"><a href="_tree_8h.html#a429d9b1c1628cbc9a02a415dc9009c51">TreeIterL</a></div><div class="ttdeci">std::list&lt; CTree * &gt;::iterator TreeIterL</div><div class="ttdef"><b>Definition:</b> Tree.h:81</div></div>
+<div class="ttc" id="aclass_c_tree_html_a2bd7186ed0defacb5fb347c43054ebaf"><div class="ttname"><a href="class_c_tree.html#a2bd7186ed0defacb5fb347c43054ebaf">CTree::NCI</a></div><div class="ttdeci">double NCI</div><div class="ttdef"><b>Definition:</b> Tree.h:42</div></div>
+<div class="ttc" id="aclass_c_tree_html_a03282df290b747bb7a400919ec366af5"><div class="ttname"><a href="class_c_tree.html#a03282df290b747bb7a400919ec366af5">CTree::~CTree</a></div><div class="ttdeci">~CTree()</div><div class="ttdef"><b>Definition:</b> Tree.h:58</div></div>
+<div class="ttc" id="aclass_c_tree_html_aa32d08b8423a2ec4f812ab4652aee729"><div class="ttname"><a href="class_c_tree.html#aa32d08b8423a2ec4f812ab4652aee729">CTree::TreeID</a></div><div class="ttdeci">int TreeID</div><div class="ttdef"><b>Definition:</b> Tree.h:36</div></div>
 <div class="ttc" id="aclass_c_tree_html"><div class="ttname"><a href="class_c_tree.html">CTree</a></div><div class="ttdef"><b>Definition:</b> Tree.h:34</div></div>
+<div class="ttc" id="aclass_c_tree_html_accc79580638589005568e50bf19b806e"><div class="ttname"><a href="class_c_tree.html#accc79580638589005568e50bf19b806e">CTree::GetPSurv2</a></div><div class="ttdeci">void GetPSurv2(double a, double b)</div><div class="ttdef"><b>Definition:</b> Tree.h:72</div></div>
+<div class="ttc" id="aclass_c_s_a_r___point_html_ad0474960551a57dd82c37f3d915facd0"><div class="ttname"><a href="class_c_s_a_r___point.html#ad0474960551a57dd82c37f3d915facd0">CSAR_Point::X</a></div><div class="ttdeci">double X</div><div class="ttdef"><b>Definition:</b> Tree.h:15</div></div>
+<div class="ttc" id="aclass_c_tree_html_a84900d032b3fcee502d3c81133b0383b"><div class="ttname"><a href="class_c_tree.html#a84900d032b3fcee502d3c81133b0383b">CTree::SpecID</a></div><div class="ttdeci">int SpecID</div><div class="ttdef"><b>Definition:</b> Tree.h:39</div></div>
+<div class="ttc" id="aclass_c_s_a_r___point_html_a936c50fc7f3287a3f4e87a07489ec179"><div class="ttname"><a href="class_c_s_a_r___point.html#a936c50fc7f3287a3f4e87a07489ec179">CSAR_Point::NNDistSpec</a></div><div class="ttdeci">std::map&lt; int, double &gt; NNDistSpec</div><div class="ttdef"><b>Definition:</b> Tree.h:18</div></div>
 <div class="ttc" id="aclass_c_s_a_r___point_html"><div class="ttname"><a href="class_c_s_a_r___point.html">CSAR_Point</a></div><div class="ttdef"><b>Definition:</b> Tree.h:13</div></div>
+<div class="ttc" id="aclass_c_s_a_r___point_html_a6e9a1e36ae14bc67b1db2e8add989038"><div class="ttname"><a href="class_c_s_a_r___point.html#a6e9a1e36ae14bc67b1db2e8add989038">CSAR_Point::~CSAR_Point</a></div><div class="ttdeci">~CSAR_Point()</div><div class="ttdef"><b>Definition:</b> Tree.h:26</div></div>
+<div class="ttc" id="a_tree_8h_html_a335110e9c3276a546e56959c8ad70484"><div class="ttname"><a href="_tree_8h.html#a335110e9c3276a546e56959c8ad70484">TreeIterV</a></div><div class="ttdeci">std::vector&lt; CTree * &gt;::iterator TreeIterV</div><div class="ttdef"><b>Definition:</b> Tree.h:80</div></div>
+<div class="ttc" id="aclass_c_tree_html_aab7b5164e3e354d91472f841c9961c5c"><div class="ttname"><a href="class_c_tree.html#aab7b5164e3e354d91472f841c9961c5c">CTree::NNDistSpec</a></div><div class="ttdeci">std::map&lt; int, double &gt; NNDistSpec</div><div class="ttdef"><b>Definition:</b> Tree.h:46</div></div>
+<div class="ttc" id="aclass_c_tree_html_a4f2c05162d9a7a4b5e61123fd1fd711d"><div class="ttname"><a href="class_c_tree.html#a4f2c05162d9a7a4b5e61123fd1fd711d">CTree::R</a></div><div class="ttdeci">double R</div><div class="ttdef"><b>Definition:</b> Tree.h:41</div></div>
+<div class="ttc" id="aclass_c_tree_html_a77f54ba1c9ccb0a930d54113febfc9bf"><div class="ttname"><a href="class_c_tree.html#a77f54ba1c9ccb0a930d54113febfc9bf">CTree::X</a></div><div class="ttdeci">double X</div><div class="ttdef"><b>Definition:</b> Tree.h:37</div></div>
+<div class="ttc" id="aclass_c_tree_html_aacfc131f87bc882468e74b677d7a7e5f"><div class="ttname"><a href="class_c_tree.html#aacfc131f87bc882468e74b677d7a7e5f">CTree::CTree</a></div><div class="ttdeci">CTree(int id, double x, double y, int spec, double r, double p_surv)</div><div class="ttdef"><b>Definition:</b> Tree.h:48</div></div>
+<div class="ttc" id="aclass_c_s_a_r___point_html_ab618bed0a6731b653c718489d7656450"><div class="ttname"><a href="class_c_s_a_r___point.html#ab618bed0a6731b653c718489d7656450">CSAR_Point::Y</a></div><div class="ttdeci">double Y</div><div class="ttdef"><b>Definition:</b> Tree.h:16</div></div>
+<div class="ttc" id="a_cell_8h_html"><div class="ttname"><a href="_cell_8h.html">Cell.h</a></div></div>
+<div class="ttc" id="aclass_c_tree_html_ab66316f10901fb30db1ab3da9a3fa169"><div class="ttname"><a href="class_c_tree.html#ab66316f10901fb30db1ab3da9a3fa169">CTree::Y</a></div><div class="ttdeci">double Y</div><div class="ttdef"><b>Definition:</b> Tree.h:38</div></div>
+<div class="ttc" id="a_tree_8h_html_a4f62c37d4d57d9f68846585ccf6e75ae"><div class="ttname"><a href="_tree_8h.html#a4f62c37d4d57d9f68846585ccf6e75ae">PointIterL</a></div><div class="ttdeci">std::list&lt; CSAR_Point * &gt;::iterator PointIterL</div><div class="ttdef"><b>Definition:</b> Tree.h:82</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><b>Tree.h</b></li>
-    <li class="footer">Generated on Tue Dec 15 2020 14:18:01 for Confetti2_scm by <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20 </li>
+    <li class="navelem"><a class="el" href="_tree_8h.html">Tree.h</a></li>
+    <li class="footer">Generated on Wed Dec 16 2020 15:19:59 for Confetti2_scm by <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20 </li>
   </ul>
 </div>
 </body>

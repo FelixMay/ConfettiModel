@@ -90,88 +90,643 @@ $(document).ready(function(){initNavTree('class_c_multi_fishers_n_c_hypergeometr
 <div class="title">CMultiFishersNCHypergeometric Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="stocc_8h_source.html">stocc.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a4c1004d1ea001300fc026642ca800366"><td class="memItemLeft" align="right" valign="top"><a id="a4c1004d1ea001300fc026642ca800366"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>CMultiFishersNCHypergeometric</b> (int32_t n, int32_t *m, double *odds, int colors, double accuracy=1E-9)</td></tr>
+<tr class="memitem:a4c1004d1ea001300fc026642ca800366"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_multi_fishers_n_c_hypergeometric.html#a4c1004d1ea001300fc026642ca800366">CMultiFishersNCHypergeometric</a> (<a class="el" href="randomc_8h.html#ab1967d8591af1a4e48c37fd2b0f184d0">int32_t</a> <a class="el" href="class_c_multi_fishers_n_c_hypergeometric.html#ac1e44a02c6da60fdd7be50100953bf25">n</a>, <a class="el" href="randomc_8h.html#ab1967d8591af1a4e48c37fd2b0f184d0">int32_t</a> *<a class="el" href="class_c_multi_fishers_n_c_hypergeometric.html#a81e6bc4dc1c28582d23ead5592f617b7">m</a>, double *<a class="el" href="class_c_multi_fishers_n_c_hypergeometric.html#a8d00acc2561b15986fc22c08c6c1f21d">odds</a>, int <a class="el" href="class_c_multi_fishers_n_c_hypergeometric.html#a19f7ae2ff81fd88efab40e58683778f3">colors</a>, double <a class="el" href="class_c_multi_fishers_n_c_hypergeometric.html#ad8db1054fbe362755aa3e556d102786f">accuracy</a>=1E-9)</td></tr>
 <tr class="separator:a4c1004d1ea001300fc026642ca800366"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3b36a76938feea92622701345dc0c4ea"><td class="memItemLeft" align="right" valign="top"><a id="a3b36a76938feea92622701345dc0c4ea"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>probability</b> (int32_t *x)</td></tr>
+<tr class="memitem:a3b36a76938feea92622701345dc0c4ea"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_multi_fishers_n_c_hypergeometric.html#a3b36a76938feea92622701345dc0c4ea">probability</a> (<a class="el" href="randomc_8h.html#ab1967d8591af1a4e48c37fd2b0f184d0">int32_t</a> *x)</td></tr>
 <tr class="separator:a3b36a76938feea92622701345dc0c4ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3d3cf562f448c2b03c0bbf5ae8faa093"><td class="memItemLeft" align="right" valign="top"><a id="a3d3cf562f448c2b03c0bbf5ae8faa093"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>mean</b> (double *mu)</td></tr>
+<tr class="memitem:a3d3cf562f448c2b03c0bbf5ae8faa093"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_multi_fishers_n_c_hypergeometric.html#a3d3cf562f448c2b03c0bbf5ae8faa093">mean</a> (double *mu)</td></tr>
 <tr class="separator:a3d3cf562f448c2b03c0bbf5ae8faa093"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9bf6de6a8bce7dcb57392e0b33461788"><td class="memItemLeft" align="right" valign="top"><a id="a9bf6de6a8bce7dcb57392e0b33461788"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>variance</b> (double *var)</td></tr>
+<tr class="memitem:a9bf6de6a8bce7dcb57392e0b33461788"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_multi_fishers_n_c_hypergeometric.html#a9bf6de6a8bce7dcb57392e0b33461788">variance</a> (double *var)</td></tr>
 <tr class="separator:a9bf6de6a8bce7dcb57392e0b33461788"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abaa828156d839a6e9f02d96d7ce1ff16"><td class="memItemLeft" align="right" valign="top"><a id="abaa828156d839a6e9f02d96d7ce1ff16"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>moments</b> (double *mean, double *stddev, int32_t *combinations=0)</td></tr>
+<tr class="memitem:abaa828156d839a6e9f02d96d7ce1ff16"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_multi_fishers_n_c_hypergeometric.html#abaa828156d839a6e9f02d96d7ce1ff16">moments</a> (double *<a class="el" href="class_c_multi_fishers_n_c_hypergeometric.html#a3d3cf562f448c2b03c0bbf5ae8faa093">mean</a>, double *stddev, <a class="el" href="randomc_8h.html#ab1967d8591af1a4e48c37fd2b0f184d0">int32_t</a> *combinations=0)</td></tr>
 <tr class="separator:abaa828156d839a6e9f02d96d7ce1ff16"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:a5588e29d42480a1ec0a42956bb03143a"><td class="memItemLeft" align="right" valign="top"><a id="a5588e29d42480a1ec0a42956bb03143a"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>lng</b> (int32_t *x)</td></tr>
+<tr class="memitem:a5588e29d42480a1ec0a42956bb03143a"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_multi_fishers_n_c_hypergeometric.html#a5588e29d42480a1ec0a42956bb03143a">lng</a> (<a class="el" href="randomc_8h.html#ab1967d8591af1a4e48c37fd2b0f184d0">int32_t</a> *x)</td></tr>
 <tr class="separator:a5588e29d42480a1ec0a42956bb03143a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7058e9821ac52d5d786f29365bad3f74"><td class="memItemLeft" align="right" valign="top"><a id="a7058e9821ac52d5d786f29365bad3f74"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>SumOfAll</b> (void)</td></tr>
+<tr class="memitem:a7058e9821ac52d5d786f29365bad3f74"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_multi_fishers_n_c_hypergeometric.html#a7058e9821ac52d5d786f29365bad3f74">SumOfAll</a> (void)</td></tr>
 <tr class="separator:a7058e9821ac52d5d786f29365bad3f74"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af1bd4346cbfd3c9e3d5f1696ff9c7b17"><td class="memItemLeft" align="right" valign="top"><a id="af1bd4346cbfd3c9e3d5f1696ff9c7b17"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>loop</b> (int32_t n, int c)</td></tr>
+<tr class="memitem:af1bd4346cbfd3c9e3d5f1696ff9c7b17"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_multi_fishers_n_c_hypergeometric.html#af1bd4346cbfd3c9e3d5f1696ff9c7b17">loop</a> (<a class="el" href="randomc_8h.html#ab1967d8591af1a4e48c37fd2b0f184d0">int32_t</a> <a class="el" href="class_c_multi_fishers_n_c_hypergeometric.html#ac1e44a02c6da60fdd7be50100953bf25">n</a>, int c)</td></tr>
 <tr class="separator:af1bd4346cbfd3c9e3d5f1696ff9c7b17"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
-<tr class="memitem:ac1e44a02c6da60fdd7be50100953bf25"><td class="memItemLeft" align="right" valign="top"><a id="ac1e44a02c6da60fdd7be50100953bf25"></a>
-int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>n</b></td></tr>
+<tr class="memitem:ac1e44a02c6da60fdd7be50100953bf25"><td class="memItemLeft" align="right" valign="top"><a class="el" href="randomc_8h.html#ab1967d8591af1a4e48c37fd2b0f184d0">int32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_multi_fishers_n_c_hypergeometric.html#ac1e44a02c6da60fdd7be50100953bf25">n</a></td></tr>
 <tr class="separator:ac1e44a02c6da60fdd7be50100953bf25"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad0defe6444379e76faf467fb9ad16b97"><td class="memItemLeft" align="right" valign="top"><a id="ad0defe6444379e76faf467fb9ad16b97"></a>
-int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>N</b></td></tr>
+<tr class="memitem:ad0defe6444379e76faf467fb9ad16b97"><td class="memItemLeft" align="right" valign="top"><a class="el" href="randomc_8h.html#ab1967d8591af1a4e48c37fd2b0f184d0">int32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_multi_fishers_n_c_hypergeometric.html#ad0defe6444379e76faf467fb9ad16b97">N</a></td></tr>
 <tr class="separator:ad0defe6444379e76faf467fb9ad16b97"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a81e6bc4dc1c28582d23ead5592f617b7"><td class="memItemLeft" align="right" valign="top"><a id="a81e6bc4dc1c28582d23ead5592f617b7"></a>
-int32_t *&#160;</td><td class="memItemRight" valign="bottom"><b>m</b></td></tr>
+<tr class="memitem:a81e6bc4dc1c28582d23ead5592f617b7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="randomc_8h.html#ab1967d8591af1a4e48c37fd2b0f184d0">int32_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_multi_fishers_n_c_hypergeometric.html#a81e6bc4dc1c28582d23ead5592f617b7">m</a></td></tr>
 <tr class="separator:a81e6bc4dc1c28582d23ead5592f617b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8d00acc2561b15986fc22c08c6c1f21d"><td class="memItemLeft" align="right" valign="top"><a id="a8d00acc2561b15986fc22c08c6c1f21d"></a>
-double *&#160;</td><td class="memItemRight" valign="bottom"><b>odds</b></td></tr>
+<tr class="memitem:a8d00acc2561b15986fc22c08c6c1f21d"><td class="memItemLeft" align="right" valign="top">double *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_multi_fishers_n_c_hypergeometric.html#a8d00acc2561b15986fc22c08c6c1f21d">odds</a></td></tr>
 <tr class="separator:a8d00acc2561b15986fc22c08c6c1f21d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a19f7ae2ff81fd88efab40e58683778f3"><td class="memItemLeft" align="right" valign="top"><a id="a19f7ae2ff81fd88efab40e58683778f3"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>colors</b></td></tr>
+<tr class="memitem:a19f7ae2ff81fd88efab40e58683778f3"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_multi_fishers_n_c_hypergeometric.html#a19f7ae2ff81fd88efab40e58683778f3">colors</a></td></tr>
 <tr class="separator:a19f7ae2ff81fd88efab40e58683778f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a132de210216655c7d883b58d98484357"><td class="memItemLeft" align="right" valign="top"><a id="a132de210216655c7d883b58d98484357"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>logodds</b> [MAXCOLORS]</td></tr>
+<tr class="memitem:a132de210216655c7d883b58d98484357"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_multi_fishers_n_c_hypergeometric.html#a132de210216655c7d883b58d98484357">logodds</a> [<a class="el" href="stocc_8h.html#a653a781f54d9d640c5dc8eb5360892a9">MAXCOLORS</a>]</td></tr>
 <tr class="separator:a132de210216655c7d883b58d98484357"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4b03b92680e8a61f59621e7dede2619c"><td class="memItemLeft" align="right" valign="top"><a id="a4b03b92680e8a61f59621e7dede2619c"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>mFac</b></td></tr>
+<tr class="memitem:a4b03b92680e8a61f59621e7dede2619c"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_multi_fishers_n_c_hypergeometric.html#a4b03b92680e8a61f59621e7dede2619c">mFac</a></td></tr>
 <tr class="separator:a4b03b92680e8a61f59621e7dede2619c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6e4e45d375038e86f679cad63ac9e749"><td class="memItemLeft" align="right" valign="top"><a id="a6e4e45d375038e86f679cad63ac9e749"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>scale</b></td></tr>
+<tr class="memitem:a6e4e45d375038e86f679cad63ac9e749"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_multi_fishers_n_c_hypergeometric.html#a6e4e45d375038e86f679cad63ac9e749">scale</a></td></tr>
 <tr class="separator:a6e4e45d375038e86f679cad63ac9e749"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8b555f4cd4f89702fc4b7d8947972637"><td class="memItemLeft" align="right" valign="top"><a id="a8b555f4cd4f89702fc4b7d8947972637"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>rsum</b></td></tr>
+<tr class="memitem:a8b555f4cd4f89702fc4b7d8947972637"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_multi_fishers_n_c_hypergeometric.html#a8b555f4cd4f89702fc4b7d8947972637">rsum</a></td></tr>
 <tr class="separator:a8b555f4cd4f89702fc4b7d8947972637"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad8db1054fbe362755aa3e556d102786f"><td class="memItemLeft" align="right" valign="top"><a id="ad8db1054fbe362755aa3e556d102786f"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>accuracy</b></td></tr>
+<tr class="memitem:ad8db1054fbe362755aa3e556d102786f"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_multi_fishers_n_c_hypergeometric.html#ad8db1054fbe362755aa3e556d102786f">accuracy</a></td></tr>
 <tr class="separator:ad8db1054fbe362755aa3e556d102786f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abdc3f701276290f15dbd1666796549dc"><td class="memItemLeft" align="right" valign="top"><a id="abdc3f701276290f15dbd1666796549dc"></a>
-int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>xi</b> [MAXCOLORS]</td></tr>
+<tr class="memitem:abdc3f701276290f15dbd1666796549dc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="randomc_8h.html#ab1967d8591af1a4e48c37fd2b0f184d0">int32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_multi_fishers_n_c_hypergeometric.html#abdc3f701276290f15dbd1666796549dc">xi</a> [<a class="el" href="stocc_8h.html#a653a781f54d9d640c5dc8eb5360892a9">MAXCOLORS</a>]</td></tr>
 <tr class="separator:abdc3f701276290f15dbd1666796549dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af9ed6055d8e58e0b3e7ca475d629fc7b"><td class="memItemLeft" align="right" valign="top"><a id="af9ed6055d8e58e0b3e7ca475d629fc7b"></a>
-int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>xm</b> [MAXCOLORS]</td></tr>
+<tr class="memitem:af9ed6055d8e58e0b3e7ca475d629fc7b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="randomc_8h.html#ab1967d8591af1a4e48c37fd2b0f184d0">int32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_multi_fishers_n_c_hypergeometric.html#af9ed6055d8e58e0b3e7ca475d629fc7b">xm</a> [<a class="el" href="stocc_8h.html#a653a781f54d9d640c5dc8eb5360892a9">MAXCOLORS</a>]</td></tr>
 <tr class="separator:af9ed6055d8e58e0b3e7ca475d629fc7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9d94ffa82bd8c1170ee40285ff5a074d"><td class="memItemLeft" align="right" valign="top"><a id="a9d94ffa82bd8c1170ee40285ff5a074d"></a>
-int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>remaining</b> [MAXCOLORS]</td></tr>
+<tr class="memitem:a9d94ffa82bd8c1170ee40285ff5a074d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="randomc_8h.html#ab1967d8591af1a4e48c37fd2b0f184d0">int32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_multi_fishers_n_c_hypergeometric.html#a9d94ffa82bd8c1170ee40285ff5a074d">remaining</a> [<a class="el" href="stocc_8h.html#a653a781f54d9d640c5dc8eb5360892a9">MAXCOLORS</a>]</td></tr>
 <tr class="separator:a9d94ffa82bd8c1170ee40285ff5a074d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a66922780ef4688ca2d7394ab52f8cb44"><td class="memItemLeft" align="right" valign="top"><a id="a66922780ef4688ca2d7394ab52f8cb44"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>sx</b> [MAXCOLORS]</td></tr>
+<tr class="memitem:a66922780ef4688ca2d7394ab52f8cb44"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_multi_fishers_n_c_hypergeometric.html#a66922780ef4688ca2d7394ab52f8cb44">sx</a> [<a class="el" href="stocc_8h.html#a653a781f54d9d640c5dc8eb5360892a9">MAXCOLORS</a>]</td></tr>
 <tr class="separator:a66922780ef4688ca2d7394ab52f8cb44"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4fe1a3ffdd39d336774010ee554886db"><td class="memItemLeft" align="right" valign="top"><a id="a4fe1a3ffdd39d336774010ee554886db"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>sxx</b> [MAXCOLORS]</td></tr>
+<tr class="memitem:a4fe1a3ffdd39d336774010ee554886db"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_multi_fishers_n_c_hypergeometric.html#a4fe1a3ffdd39d336774010ee554886db">sxx</a> [<a class="el" href="stocc_8h.html#a653a781f54d9d640c5dc8eb5360892a9">MAXCOLORS</a>]</td></tr>
 <tr class="separator:a4fe1a3ffdd39d336774010ee554886db"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aed9a080cd61ead7230cf4ef6a0cb05e6"><td class="memItemLeft" align="right" valign="top"><a id="aed9a080cd61ead7230cf4ef6a0cb05e6"></a>
-int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>sn</b></td></tr>
+<tr class="memitem:aed9a080cd61ead7230cf4ef6a0cb05e6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="randomc_8h.html#ab1967d8591af1a4e48c37fd2b0f184d0">int32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_multi_fishers_n_c_hypergeometric.html#aed9a080cd61ead7230cf4ef6a0cb05e6">sn</a></td></tr>
 <tr class="separator:aed9a080cd61ead7230cf4ef6a0cb05e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a4c1004d1ea001300fc026642ca800366"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4c1004d1ea001300fc026642ca800366">&#9670;&nbsp;</a></span>CMultiFishersNCHypergeometric()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">CMultiFishersNCHypergeometric::CMultiFishersNCHypergeometric </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="randomc_8h.html#ab1967d8591af1a4e48c37fd2b0f184d0">int32_t</a>&#160;</td>
+          <td class="paramname"><em>n</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="randomc_8h.html#ab1967d8591af1a4e48c37fd2b0f184d0">int32_t</a> *&#160;</td>
+          <td class="paramname"><em>m</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>odds</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>colors</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>accuracy</em> = <code>1E-9</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a5588e29d42480a1ec0a42956bb03143a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5588e29d42480a1ec0a42956bb03143a">&#9670;&nbsp;</a></span>lng()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double CMultiFishersNCHypergeometric::lng </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="randomc_8h.html#ab1967d8591af1a4e48c37fd2b0f184d0">int32_t</a> *&#160;</td>
+          <td class="paramname"><em>x</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af1bd4346cbfd3c9e3d5f1696ff9c7b17"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af1bd4346cbfd3c9e3d5f1696ff9c7b17">&#9670;&nbsp;</a></span>loop()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double CMultiFishersNCHypergeometric::loop </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="randomc_8h.html#ab1967d8591af1a4e48c37fd2b0f184d0">int32_t</a>&#160;</td>
+          <td class="paramname"><em>n</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>c</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3d3cf562f448c2b03c0bbf5ae8faa093"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3d3cf562f448c2b03c0bbf5ae8faa093">&#9670;&nbsp;</a></span>mean()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CMultiFishersNCHypergeometric::mean </td>
+          <td>(</td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>mu</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abaa828156d839a6e9f02d96d7ce1ff16"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abaa828156d839a6e9f02d96d7ce1ff16">&#9670;&nbsp;</a></span>moments()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double CMultiFishersNCHypergeometric::moments </td>
+          <td>(</td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>mean</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>stddev</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="randomc_8h.html#ab1967d8591af1a4e48c37fd2b0f184d0">int32_t</a> *&#160;</td>
+          <td class="paramname"><em>combinations</em> = <code>0</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3b36a76938feea92622701345dc0c4ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3b36a76938feea92622701345dc0c4ea">&#9670;&nbsp;</a></span>probability()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double CMultiFishersNCHypergeometric::probability </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="randomc_8h.html#ab1967d8591af1a4e48c37fd2b0f184d0">int32_t</a> *&#160;</td>
+          <td class="paramname"><em>x</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7058e9821ac52d5d786f29365bad3f74"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7058e9821ac52d5d786f29365bad3f74">&#9670;&nbsp;</a></span>SumOfAll()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CMultiFishersNCHypergeometric::SumOfAll </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9bf6de6a8bce7dcb57392e0b33461788"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9bf6de6a8bce7dcb57392e0b33461788">&#9670;&nbsp;</a></span>variance()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CMultiFishersNCHypergeometric::variance </td>
+          <td>(</td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>var</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="ad8db1054fbe362755aa3e556d102786f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad8db1054fbe362755aa3e556d102786f">&#9670;&nbsp;</a></span>accuracy</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double CMultiFishersNCHypergeometric::accuracy</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a19f7ae2ff81fd88efab40e58683778f3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a19f7ae2ff81fd88efab40e58683778f3">&#9670;&nbsp;</a></span>colors</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int CMultiFishersNCHypergeometric::colors</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a132de210216655c7d883b58d98484357"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a132de210216655c7d883b58d98484357">&#9670;&nbsp;</a></span>logodds</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double CMultiFishersNCHypergeometric::logodds[<a class="el" href="stocc_8h.html#a653a781f54d9d640c5dc8eb5360892a9">MAXCOLORS</a>]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a81e6bc4dc1c28582d23ead5592f617b7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a81e6bc4dc1c28582d23ead5592f617b7">&#9670;&nbsp;</a></span>m</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="randomc_8h.html#ab1967d8591af1a4e48c37fd2b0f184d0">int32_t</a>* CMultiFishersNCHypergeometric::m</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4b03b92680e8a61f59621e7dede2619c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4b03b92680e8a61f59621e7dede2619c">&#9670;&nbsp;</a></span>mFac</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double CMultiFishersNCHypergeometric::mFac</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad0defe6444379e76faf467fb9ad16b97"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad0defe6444379e76faf467fb9ad16b97">&#9670;&nbsp;</a></span>N</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="randomc_8h.html#ab1967d8591af1a4e48c37fd2b0f184d0">int32_t</a> CMultiFishersNCHypergeometric::N</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac1e44a02c6da60fdd7be50100953bf25"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac1e44a02c6da60fdd7be50100953bf25">&#9670;&nbsp;</a></span>n</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="randomc_8h.html#ab1967d8591af1a4e48c37fd2b0f184d0">int32_t</a> CMultiFishersNCHypergeometric::n</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8d00acc2561b15986fc22c08c6c1f21d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8d00acc2561b15986fc22c08c6c1f21d">&#9670;&nbsp;</a></span>odds</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double* CMultiFishersNCHypergeometric::odds</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9d94ffa82bd8c1170ee40285ff5a074d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9d94ffa82bd8c1170ee40285ff5a074d">&#9670;&nbsp;</a></span>remaining</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="randomc_8h.html#ab1967d8591af1a4e48c37fd2b0f184d0">int32_t</a> CMultiFishersNCHypergeometric::remaining[<a class="el" href="stocc_8h.html#a653a781f54d9d640c5dc8eb5360892a9">MAXCOLORS</a>]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8b555f4cd4f89702fc4b7d8947972637"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8b555f4cd4f89702fc4b7d8947972637">&#9670;&nbsp;</a></span>rsum</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double CMultiFishersNCHypergeometric::rsum</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6e4e45d375038e86f679cad63ac9e749"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6e4e45d375038e86f679cad63ac9e749">&#9670;&nbsp;</a></span>scale</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double CMultiFishersNCHypergeometric::scale</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aed9a080cd61ead7230cf4ef6a0cb05e6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aed9a080cd61ead7230cf4ef6a0cb05e6">&#9670;&nbsp;</a></span>sn</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="randomc_8h.html#ab1967d8591af1a4e48c37fd2b0f184d0">int32_t</a> CMultiFishersNCHypergeometric::sn</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a66922780ef4688ca2d7394ab52f8cb44"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a66922780ef4688ca2d7394ab52f8cb44">&#9670;&nbsp;</a></span>sx</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double CMultiFishersNCHypergeometric::sx[<a class="el" href="stocc_8h.html#a653a781f54d9d640c5dc8eb5360892a9">MAXCOLORS</a>]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4fe1a3ffdd39d336774010ee554886db"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4fe1a3ffdd39d336774010ee554886db">&#9670;&nbsp;</a></span>sxx</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double CMultiFishersNCHypergeometric::sxx[<a class="el" href="stocc_8h.html#a653a781f54d9d640c5dc8eb5360892a9">MAXCOLORS</a>]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abdc3f701276290f15dbd1666796549dc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abdc3f701276290f15dbd1666796549dc">&#9670;&nbsp;</a></span>xi</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="randomc_8h.html#ab1967d8591af1a4e48c37fd2b0f184d0">int32_t</a> CMultiFishersNCHypergeometric::xi[<a class="el" href="stocc_8h.html#a653a781f54d9d640c5dc8eb5360892a9">MAXCOLORS</a>]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af9ed6055d8e58e0b3e7ca475d629fc7b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af9ed6055d8e58e0b3e7ca475d629fc7b">&#9670;&nbsp;</a></span>xm</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="randomc_8h.html#ab1967d8591af1a4e48c37fd2b0f184d0">int32_t</a> CMultiFishersNCHypergeometric::xm[<a class="el" href="stocc_8h.html#a653a781f54d9d640c5dc8eb5360892a9">MAXCOLORS</a>]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li><a class="el" href="stocc_8h_source.html">stocc.h</a></li>
 </ul>
@@ -181,7 +736,7 @@ int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>sn</b></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_c_multi_fishers_n_c_hypergeometric.html">CMultiFishersNCHypergeometric</a></li>
-    <li class="footer">Generated on Tue Dec 15 2020 14:18:01 for Confetti2_scm by <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20 </li>
+    <li class="footer">Generated on Wed Dec 16 2020 15:19:59 for Confetti2_scm by <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20 </li>
   </ul>
 </div>
 </body>

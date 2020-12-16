@@ -7,21 +7,11 @@ using std::string;
 
 // ---------------------------------------------------------------------------
 CModelSettings::CModelSettings()
-{
-   //sad_file_name = "Input/MetacommunitySAD1.txt";
-
-   //map_file_name = "Input/HabitatMapBCI_Harms_nomixed.txt";
-   //rel_dens_file_name = "Input/RelativeDensityBCI_harms_nomixed_n50.txt";
-   //n_hab_types = 6;
-
-//   //Sinharaja settings
-//   map_cell_size = 500.0/26.0;//   map_file_name = "Input/HabitatMapBCI_Harms_nomixed.txt";
-//   rel_dens_file_name = "Input/RelativeDensityBCI_harms_nomixed_n50.txt";
-//   n_hab_types = 5;
-}
+{}
 
 // ---------------------------------------------------------------------------
 CModelSettings::~CModelSettings(){};
+
 
 // ---------------------------------------------------------------------------
 void CModelSettings::ReadSettings(std::string file_name)
@@ -46,16 +36,6 @@ void CModelSettings::ReadSettings(std::string file_name)
       InFile>>dummy>>bw1;
       InFile>>dummy>>bw2;
       InFile>>dummy>>minAbund;
-//      InFile>>dummy>>xmin;
-//      InFile>>dummy>>xmax;
-//      InFile>>dummy>>ymin;
-//      InFile>>dummy>>ymax;
-//      InFile>>dummy>>habitat;
-//      if (habitat == true){
-//         InFile>>dummy>>map_cell_size;//         InFile>>dummy>>map_file_name;
-//         InFile>>dummy>>rel_dens_file_name;
-//         InFile>>dummy>>n_hab_types;
-//      }
    }
    else std::cout<<"Error settings file"<<std::endl;
    InFile.close();
@@ -69,7 +49,6 @@ CPara::CPara(double theta1,
              double m1,
              double r_max1,
              double aRec1,
-             double aHab1,
              double aSurv1,
              double bSurv1,
              double m_dm_spec1,
@@ -85,7 +64,6 @@ CPara::CPara(double theta1,
    m{m1},
    r_max{r_max1},
    aRec{aRec1},
-   aHab{aHab1},
    aSurv{aSurv1},
    bSurv{bSurv1},
    m_dm_spec{m_dm_spec1},

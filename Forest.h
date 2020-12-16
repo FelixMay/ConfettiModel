@@ -23,8 +23,8 @@
 class CForest
 {
 public:
-	CPara *pPars;                /**< Object with ecological model parameters */
-	CModelSettings *pSettings;   /**< Object with technical model settings */
+	CPara *pPars;                //!< Object with ecological model parameters
+	CModelSettings *pSettings;   //!< Object with technical model settings
 
 	double m; /**< Immigration rate - probability that a recruit is from the metacommunity */
 

@@ -100,7 +100,6 @@ int main(int argc, char* argv[])
 		InFile>>pPara->m>>delim;
 		InFile>>pPara->r_max>>delim;
 		InFile>>pPara->aRec>>delim;
-		InFile>>pPara->aHab>>delim;
 		InFile>>pPara->aSurv>>delim;
 		InFile>>pPara->bSurv>>delim;
 		InFile>>pPara->m_dm_spec>>delim;
@@ -149,7 +148,6 @@ int main(int argc, char* argv[])
 			InFile>>pPara->m>>delim;
 			InFile>>pPara->r_max>>delim;
 			InFile>>pPara->aRec>>delim;
-			InFile>>pPara->aHab>>delim;
 			InFile>>pPara->aSurv>>delim;
 			InFile>>pPara->bSurv>>delim;
 			InFile>>pPara->m_dm_spec>>delim;

@@ -90,124 +90,1011 @@ $(document).ready(function(){initNavTree('class_c_wallenius_n_c_hypergeometric.h
 <div class="title">CWalleniusNCHypergeometric Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="stocc_8h_source.html">stocc.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ab3b1c3ca9c3e03944bb72d7b7f5c5023"><td class="memItemLeft" align="right" valign="top"><a id="ab3b1c3ca9c3e03944bb72d7b7f5c5023"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>CWalleniusNCHypergeometric</b> (int32_t n, int32_t m, int32_t N, double odds, double accuracy=1.E-8)</td></tr>
+<tr class="memitem:ab3b1c3ca9c3e03944bb72d7b7f5c5023"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_wallenius_n_c_hypergeometric.html#ab3b1c3ca9c3e03944bb72d7b7f5c5023">CWalleniusNCHypergeometric</a> (<a class="el" href="randomc_8h.html#ab1967d8591af1a4e48c37fd2b0f184d0">int32_t</a> <a class="el" href="class_c_wallenius_n_c_hypergeometric.html#af4562c271c55e5011ecdf4035ee73810">n</a>, <a class="el" href="randomc_8h.html#ab1967d8591af1a4e48c37fd2b0f184d0">int32_t</a> <a class="el" href="class_c_wallenius_n_c_hypergeometric.html#a5c984a414157aa5bdb96848048ea9084">m</a>, <a class="el" href="randomc_8h.html#ab1967d8591af1a4e48c37fd2b0f184d0">int32_t</a> <a class="el" href="class_c_wallenius_n_c_hypergeometric.html#aedaace8767e5691fd5f130b518874e7c">N</a>, double odds, double <a class="el" href="class_c_wallenius_n_c_hypergeometric.html#ae85dcdbbb5386c1d416f3844a5bde707">accuracy</a>=1.<a class="el" href="class_c_wallenius_n_c_hypergeometric.html#a57cc4ef757a2a39b3d602e5bf1415f7e">E</a>-8)</td></tr>
 <tr class="separator:ab3b1c3ca9c3e03944bb72d7b7f5c5023"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae45119e7d7e5aaa6d4f1d0836b98f4b6"><td class="memItemLeft" align="right" valign="top"><a id="ae45119e7d7e5aaa6d4f1d0836b98f4b6"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>SetParameters</b> (int32_t n, int32_t m, int32_t N, double odds)</td></tr>
+<tr class="memitem:ae45119e7d7e5aaa6d4f1d0836b98f4b6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_wallenius_n_c_hypergeometric.html#ae45119e7d7e5aaa6d4f1d0836b98f4b6">SetParameters</a> (<a class="el" href="randomc_8h.html#ab1967d8591af1a4e48c37fd2b0f184d0">int32_t</a> <a class="el" href="class_c_wallenius_n_c_hypergeometric.html#af4562c271c55e5011ecdf4035ee73810">n</a>, <a class="el" href="randomc_8h.html#ab1967d8591af1a4e48c37fd2b0f184d0">int32_t</a> <a class="el" href="class_c_wallenius_n_c_hypergeometric.html#a5c984a414157aa5bdb96848048ea9084">m</a>, <a class="el" href="randomc_8h.html#ab1967d8591af1a4e48c37fd2b0f184d0">int32_t</a> <a class="el" href="class_c_wallenius_n_c_hypergeometric.html#aedaace8767e5691fd5f130b518874e7c">N</a>, double odds)</td></tr>
 <tr class="separator:ae45119e7d7e5aaa6d4f1d0836b98f4b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa79358e7f1a759c7a528c6294f052323"><td class="memItemLeft" align="right" valign="top"><a id="aa79358e7f1a759c7a528c6294f052323"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>probability</b> (int32_t x)</td></tr>
+<tr class="memitem:aa79358e7f1a759c7a528c6294f052323"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_wallenius_n_c_hypergeometric.html#aa79358e7f1a759c7a528c6294f052323">probability</a> (<a class="el" href="randomc_8h.html#ab1967d8591af1a4e48c37fd2b0f184d0">int32_t</a> <a class="el" href="class_c_wallenius_n_c_hypergeometric.html#af39ef9b68884c61621df682060ca74f0">x</a>)</td></tr>
 <tr class="separator:aa79358e7f1a759c7a528c6294f052323"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab65ef8a6c63733664bca88be1982cf5e"><td class="memItemLeft" align="right" valign="top"><a id="ab65ef8a6c63733664bca88be1982cf5e"></a>
-int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>MakeTable</b> (double *table, int32_t MaxLength, int32_t *xfirst, int32_t *xlast, double cutoff=0.)</td></tr>
+<tr class="memitem:ab65ef8a6c63733664bca88be1982cf5e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="randomc_8h.html#ab1967d8591af1a4e48c37fd2b0f184d0">int32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_wallenius_n_c_hypergeometric.html#ab65ef8a6c63733664bca88be1982cf5e">MakeTable</a> (double *table, <a class="el" href="randomc_8h.html#ab1967d8591af1a4e48c37fd2b0f184d0">int32_t</a> MaxLength, <a class="el" href="randomc_8h.html#ab1967d8591af1a4e48c37fd2b0f184d0">int32_t</a> *xfirst, <a class="el" href="randomc_8h.html#ab1967d8591af1a4e48c37fd2b0f184d0">int32_t</a> *xlast, double cutoff=0.)</td></tr>
 <tr class="separator:ab65ef8a6c63733664bca88be1982cf5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad6cbbdef2698aab401370e8c8155eaae"><td class="memItemLeft" align="right" valign="top"><a id="ad6cbbdef2698aab401370e8c8155eaae"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>mean</b> (void)</td></tr>
+<tr class="memitem:ad6cbbdef2698aab401370e8c8155eaae"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_wallenius_n_c_hypergeometric.html#ad6cbbdef2698aab401370e8c8155eaae">mean</a> (void)</td></tr>
 <tr class="separator:ad6cbbdef2698aab401370e8c8155eaae"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a41098d7ca27b0e1cb567e2361afa066f"><td class="memItemLeft" align="right" valign="top"><a id="a41098d7ca27b0e1cb567e2361afa066f"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>variance</b> (void)</td></tr>
+<tr class="memitem:a41098d7ca27b0e1cb567e2361afa066f"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_wallenius_n_c_hypergeometric.html#a41098d7ca27b0e1cb567e2361afa066f">variance</a> (void)</td></tr>
 <tr class="separator:a41098d7ca27b0e1cb567e2361afa066f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a44dacaa83e8a46906410a080a8e8e36d"><td class="memItemLeft" align="right" valign="top"><a id="a44dacaa83e8a46906410a080a8e8e36d"></a>
-int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>mode</b> (void)</td></tr>
+<tr class="memitem:a44dacaa83e8a46906410a080a8e8e36d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="randomc_8h.html#ab1967d8591af1a4e48c37fd2b0f184d0">int32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_wallenius_n_c_hypergeometric.html#a44dacaa83e8a46906410a080a8e8e36d">mode</a> (void)</td></tr>
 <tr class="separator:a44dacaa83e8a46906410a080a8e8e36d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a76d6c814eafca1017e980ac523ed4651"><td class="memItemLeft" align="right" valign="top"><a id="a76d6c814eafca1017e980ac523ed4651"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>moments</b> (double *mean, double *var)</td></tr>
+<tr class="memitem:a76d6c814eafca1017e980ac523ed4651"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_wallenius_n_c_hypergeometric.html#a76d6c814eafca1017e980ac523ed4651">moments</a> (double *<a class="el" href="class_c_wallenius_n_c_hypergeometric.html#ad6cbbdef2698aab401370e8c8155eaae">mean</a>, double *var)</td></tr>
 <tr class="separator:a76d6c814eafca1017e980ac523ed4651"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1f5161c78a2e6a0c93efa73bc6dbaa14"><td class="memItemLeft" align="right" valign="top"><a id="a1f5161c78a2e6a0c93efa73bc6dbaa14"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>BernouilliH</b> (int32_t x, double h, double rh, <a class="el" href="class_stochastic_lib1.html">StochasticLib1</a> *sto)</td></tr>
+<tr class="memitem:a1f5161c78a2e6a0c93efa73bc6dbaa14"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_wallenius_n_c_hypergeometric.html#a1f5161c78a2e6a0c93efa73bc6dbaa14">BernouilliH</a> (<a class="el" href="randomc_8h.html#ab1967d8591af1a4e48c37fd2b0f184d0">int32_t</a> <a class="el" href="class_c_wallenius_n_c_hypergeometric.html#af39ef9b68884c61621df682060ca74f0">x</a>, double h, double rh, <a class="el" href="class_stochastic_lib1.html">StochasticLib1</a> *sto)</td></tr>
 <tr class="separator:a1f5161c78a2e6a0c93efa73bc6dbaa14"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:a974a3934722b9bc6b32462d4f95d0ed0"><td class="memItemLeft" align="right" valign="top"><a id="a974a3934722b9bc6b32462d4f95d0ed0"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>recursive</b> (void)</td></tr>
+<tr class="memitem:a974a3934722b9bc6b32462d4f95d0ed0"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_wallenius_n_c_hypergeometric.html#a974a3934722b9bc6b32462d4f95d0ed0">recursive</a> (void)</td></tr>
 <tr class="separator:a974a3934722b9bc6b32462d4f95d0ed0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aca02559f7b43e4bf32d65a3299603806"><td class="memItemLeft" align="right" valign="top"><a id="aca02559f7b43e4bf32d65a3299603806"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>binoexpand</b> (void)</td></tr>
+<tr class="memitem:aca02559f7b43e4bf32d65a3299603806"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_wallenius_n_c_hypergeometric.html#aca02559f7b43e4bf32d65a3299603806">binoexpand</a> (void)</td></tr>
 <tr class="separator:aca02559f7b43e4bf32d65a3299603806"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a83277537e6e7f98309a444b71025c5cc"><td class="memItemLeft" align="right" valign="top"><a id="a83277537e6e7f98309a444b71025c5cc"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>laplace</b> (void)</td></tr>
+<tr class="memitem:a83277537e6e7f98309a444b71025c5cc"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_wallenius_n_c_hypergeometric.html#a83277537e6e7f98309a444b71025c5cc">laplace</a> (void)</td></tr>
 <tr class="separator:a83277537e6e7f98309a444b71025c5cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5a03c1c6423cec9ed5d0b40d94590fbe"><td class="memItemLeft" align="right" valign="top"><a id="a5a03c1c6423cec9ed5d0b40d94590fbe"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>integrate</b> (void)</td></tr>
+<tr class="memitem:a5a03c1c6423cec9ed5d0b40d94590fbe"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_wallenius_n_c_hypergeometric.html#a5a03c1c6423cec9ed5d0b40d94590fbe">integrate</a> (void)</td></tr>
 <tr class="separator:a5a03c1c6423cec9ed5d0b40d94590fbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa88136f6742030f28ffa82ee438d00a8"><td class="memItemLeft" align="right" valign="top"><a id="aa88136f6742030f28ffa82ee438d00a8"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>lnbico</b> (void)</td></tr>
+<tr class="memitem:aa88136f6742030f28ffa82ee438d00a8"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_wallenius_n_c_hypergeometric.html#aa88136f6742030f28ffa82ee438d00a8">lnbico</a> (void)</td></tr>
 <tr class="separator:aa88136f6742030f28ffa82ee438d00a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aab5134a65b4425ca534ada49fc337701"><td class="memItemLeft" align="right" valign="top"><a id="aab5134a65b4425ca534ada49fc337701"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>findpars</b> (void)</td></tr>
+<tr class="memitem:aab5134a65b4425ca534ada49fc337701"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_wallenius_n_c_hypergeometric.html#aab5134a65b4425ca534ada49fc337701">findpars</a> (void)</td></tr>
 <tr class="separator:aab5134a65b4425ca534ada49fc337701"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad5469079c63bcdf62238a6746d285c48"><td class="memItemLeft" align="right" valign="top"><a id="ad5469079c63bcdf62238a6746d285c48"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>integrate_step</b> (double a, double b)</td></tr>
+<tr class="memitem:ad5469079c63bcdf62238a6746d285c48"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_wallenius_n_c_hypergeometric.html#ad5469079c63bcdf62238a6746d285c48">integrate_step</a> (double a, double b)</td></tr>
 <tr class="separator:ad5469079c63bcdf62238a6746d285c48"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5e291c2a2dd4557e69ecc6677e627c58"><td class="memItemLeft" align="right" valign="top"><a id="a5e291c2a2dd4557e69ecc6677e627c58"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>search_inflect</b> (double t_from, double t_to)</td></tr>
+<tr class="memitem:a5e291c2a2dd4557e69ecc6677e627c58"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_wallenius_n_c_hypergeometric.html#a5e291c2a2dd4557e69ecc6677e627c58">search_inflect</a> (double t_from, double t_to)</td></tr>
 <tr class="separator:a5e291c2a2dd4557e69ecc6677e627c58"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
-<tr class="memitem:aa6d205a1d7ba3d88a5cb3290fe91badd"><td class="memItemLeft" align="right" valign="top"><a id="aa6d205a1d7ba3d88a5cb3290fe91badd"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>omega</b></td></tr>
+<tr class="memitem:aa6d205a1d7ba3d88a5cb3290fe91badd"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_wallenius_n_c_hypergeometric.html#aa6d205a1d7ba3d88a5cb3290fe91badd">omega</a></td></tr>
 <tr class="separator:aa6d205a1d7ba3d88a5cb3290fe91badd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af4562c271c55e5011ecdf4035ee73810"><td class="memItemLeft" align="right" valign="top"><a id="af4562c271c55e5011ecdf4035ee73810"></a>
-int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>n</b></td></tr>
+<tr class="memitem:af4562c271c55e5011ecdf4035ee73810"><td class="memItemLeft" align="right" valign="top"><a class="el" href="randomc_8h.html#ab1967d8591af1a4e48c37fd2b0f184d0">int32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_wallenius_n_c_hypergeometric.html#af4562c271c55e5011ecdf4035ee73810">n</a></td></tr>
 <tr class="separator:af4562c271c55e5011ecdf4035ee73810"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5c984a414157aa5bdb96848048ea9084"><td class="memItemLeft" align="right" valign="top"><a id="a5c984a414157aa5bdb96848048ea9084"></a>
-int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>m</b></td></tr>
+<tr class="memitem:a5c984a414157aa5bdb96848048ea9084"><td class="memItemLeft" align="right" valign="top"><a class="el" href="randomc_8h.html#ab1967d8591af1a4e48c37fd2b0f184d0">int32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_wallenius_n_c_hypergeometric.html#a5c984a414157aa5bdb96848048ea9084">m</a></td></tr>
 <tr class="separator:a5c984a414157aa5bdb96848048ea9084"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aedaace8767e5691fd5f130b518874e7c"><td class="memItemLeft" align="right" valign="top"><a id="aedaace8767e5691fd5f130b518874e7c"></a>
-int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>N</b></td></tr>
+<tr class="memitem:aedaace8767e5691fd5f130b518874e7c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="randomc_8h.html#ab1967d8591af1a4e48c37fd2b0f184d0">int32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_wallenius_n_c_hypergeometric.html#aedaace8767e5691fd5f130b518874e7c">N</a></td></tr>
 <tr class="separator:aedaace8767e5691fd5f130b518874e7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af39ef9b68884c61621df682060ca74f0"><td class="memItemLeft" align="right" valign="top"><a id="af39ef9b68884c61621df682060ca74f0"></a>
-int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>x</b></td></tr>
+<tr class="memitem:af39ef9b68884c61621df682060ca74f0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="randomc_8h.html#ab1967d8591af1a4e48c37fd2b0f184d0">int32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_wallenius_n_c_hypergeometric.html#af39ef9b68884c61621df682060ca74f0">x</a></td></tr>
 <tr class="separator:af39ef9b68884c61621df682060ca74f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab5e148bc8d362cc72b85ae48031de1eb"><td class="memItemLeft" align="right" valign="top"><a id="ab5e148bc8d362cc72b85ae48031de1eb"></a>
-int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>xmin</b></td></tr>
+<tr class="memitem:ab5e148bc8d362cc72b85ae48031de1eb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="randomc_8h.html#ab1967d8591af1a4e48c37fd2b0f184d0">int32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_wallenius_n_c_hypergeometric.html#ab5e148bc8d362cc72b85ae48031de1eb">xmin</a></td></tr>
 <tr class="separator:ab5e148bc8d362cc72b85ae48031de1eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeb060acd633bff33c84b71a1d4810a3d"><td class="memItemLeft" align="right" valign="top"><a id="aeb060acd633bff33c84b71a1d4810a3d"></a>
-int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>xmax</b></td></tr>
+<tr class="memitem:aeb060acd633bff33c84b71a1d4810a3d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="randomc_8h.html#ab1967d8591af1a4e48c37fd2b0f184d0">int32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_wallenius_n_c_hypergeometric.html#aeb060acd633bff33c84b71a1d4810a3d">xmax</a></td></tr>
 <tr class="separator:aeb060acd633bff33c84b71a1d4810a3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae85dcdbbb5386c1d416f3844a5bde707"><td class="memItemLeft" align="right" valign="top"><a id="ae85dcdbbb5386c1d416f3844a5bde707"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>accuracy</b></td></tr>
+<tr class="memitem:ae85dcdbbb5386c1d416f3844a5bde707"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_wallenius_n_c_hypergeometric.html#ae85dcdbbb5386c1d416f3844a5bde707">accuracy</a></td></tr>
 <tr class="separator:ae85dcdbbb5386c1d416f3844a5bde707"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa83b3c50e3106c0d7149d12ea61b3245"><td class="memItemLeft" align="right" valign="top"><a id="aa83b3c50e3106c0d7149d12ea61b3245"></a>
-int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>xLastBico</b></td></tr>
+<tr class="memitem:aa83b3c50e3106c0d7149d12ea61b3245"><td class="memItemLeft" align="right" valign="top"><a class="el" href="randomc_8h.html#ab1967d8591af1a4e48c37fd2b0f184d0">int32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_wallenius_n_c_hypergeometric.html#aa83b3c50e3106c0d7149d12ea61b3245">xLastBico</a></td></tr>
 <tr class="separator:aa83b3c50e3106c0d7149d12ea61b3245"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afd7f6a543ad4da0c9ad4453034e0eef6"><td class="memItemLeft" align="right" valign="top"><a id="afd7f6a543ad4da0c9ad4453034e0eef6"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>bico</b></td></tr>
+<tr class="memitem:afd7f6a543ad4da0c9ad4453034e0eef6"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_wallenius_n_c_hypergeometric.html#afd7f6a543ad4da0c9ad4453034e0eef6">bico</a></td></tr>
 <tr class="separator:afd7f6a543ad4da0c9ad4453034e0eef6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad2340551e09215c92eafac4786c47f1c"><td class="memItemLeft" align="right" valign="top"><a id="ad2340551e09215c92eafac4786c47f1c"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>mFac</b></td></tr>
+<tr class="memitem:ad2340551e09215c92eafac4786c47f1c"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_wallenius_n_c_hypergeometric.html#ad2340551e09215c92eafac4786c47f1c">mFac</a></td></tr>
 <tr class="separator:ad2340551e09215c92eafac4786c47f1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aae1dee805918ccc4c402d29e47bcbd6c"><td class="memItemLeft" align="right" valign="top"><a id="aae1dee805918ccc4c402d29e47bcbd6c"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>xFac</b></td></tr>
+<tr class="memitem:aae1dee805918ccc4c402d29e47bcbd6c"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_wallenius_n_c_hypergeometric.html#aae1dee805918ccc4c402d29e47bcbd6c">xFac</a></td></tr>
 <tr class="separator:aae1dee805918ccc4c402d29e47bcbd6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9ce630e7f0efe8339c581eac7be1a29b"><td class="memItemLeft" align="right" valign="top"><a id="a9ce630e7f0efe8339c581eac7be1a29b"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>r</b></td></tr>
+<tr class="memitem:a9ce630e7f0efe8339c581eac7be1a29b"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_wallenius_n_c_hypergeometric.html#a9ce630e7f0efe8339c581eac7be1a29b">r</a></td></tr>
 <tr class="separator:a9ce630e7f0efe8339c581eac7be1a29b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa229fb7f452c3b07b539a6b720140fe7"><td class="memItemLeft" align="right" valign="top"><a id="aa229fb7f452c3b07b539a6b720140fe7"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>rd</b></td></tr>
+<tr class="memitem:aa229fb7f452c3b07b539a6b720140fe7"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_wallenius_n_c_hypergeometric.html#aa229fb7f452c3b07b539a6b720140fe7">rd</a></td></tr>
 <tr class="separator:aa229fb7f452c3b07b539a6b720140fe7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a34c6c4d6d85019987cb89a6eabefc446"><td class="memItemLeft" align="right" valign="top"><a id="a34c6c4d6d85019987cb89a6eabefc446"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>w</b></td></tr>
+<tr class="memitem:a34c6c4d6d85019987cb89a6eabefc446"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_wallenius_n_c_hypergeometric.html#a34c6c4d6d85019987cb89a6eabefc446">w</a></td></tr>
 <tr class="separator:a34c6c4d6d85019987cb89a6eabefc446"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae6fb2d9ae90aede71331e7c2887c5fec"><td class="memItemLeft" align="right" valign="top"><a id="ae6fb2d9ae90aede71331e7c2887c5fec"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>wr</b></td></tr>
+<tr class="memitem:ae6fb2d9ae90aede71331e7c2887c5fec"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_wallenius_n_c_hypergeometric.html#ae6fb2d9ae90aede71331e7c2887c5fec">wr</a></td></tr>
 <tr class="separator:ae6fb2d9ae90aede71331e7c2887c5fec"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a57cc4ef757a2a39b3d602e5bf1415f7e"><td class="memItemLeft" align="right" valign="top"><a id="a57cc4ef757a2a39b3d602e5bf1415f7e"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>E</b></td></tr>
+<tr class="memitem:a57cc4ef757a2a39b3d602e5bf1415f7e"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_wallenius_n_c_hypergeometric.html#a57cc4ef757a2a39b3d602e5bf1415f7e">E</a></td></tr>
 <tr class="separator:a57cc4ef757a2a39b3d602e5bf1415f7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a12e13f0bdb1f1140304c14e4672c47c7"><td class="memItemLeft" align="right" valign="top"><a id="a12e13f0bdb1f1140304c14e4672c47c7"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>phi2d</b></td></tr>
+<tr class="memitem:a12e13f0bdb1f1140304c14e4672c47c7"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_wallenius_n_c_hypergeometric.html#a12e13f0bdb1f1140304c14e4672c47c7">phi2d</a></td></tr>
 <tr class="separator:a12e13f0bdb1f1140304c14e4672c47c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a631594dc1195766bf68f577b67f243c0"><td class="memItemLeft" align="right" valign="top"><a id="a631594dc1195766bf68f577b67f243c0"></a>
-int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>xLastFindpars</b></td></tr>
+<tr class="memitem:a631594dc1195766bf68f577b67f243c0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="randomc_8h.html#ab1967d8591af1a4e48c37fd2b0f184d0">int32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_wallenius_n_c_hypergeometric.html#a631594dc1195766bf68f577b67f243c0">xLastFindpars</a></td></tr>
 <tr class="separator:a631594dc1195766bf68f577b67f243c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="ab3b1c3ca9c3e03944bb72d7b7f5c5023"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab3b1c3ca9c3e03944bb72d7b7f5c5023">&#9670;&nbsp;</a></span>CWalleniusNCHypergeometric()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">CWalleniusNCHypergeometric::CWalleniusNCHypergeometric </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="randomc_8h.html#ab1967d8591af1a4e48c37fd2b0f184d0">int32_t</a>&#160;</td>
+          <td class="paramname"><em>n</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="randomc_8h.html#ab1967d8591af1a4e48c37fd2b0f184d0">int32_t</a>&#160;</td>
+          <td class="paramname"><em>m</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="randomc_8h.html#ab1967d8591af1a4e48c37fd2b0f184d0">int32_t</a>&#160;</td>
+          <td class="paramname"><em>N</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>odds</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>accuracy</em> = <code>1.<a class="el" href="class_c_wallenius_n_c_hypergeometric.html#a57cc4ef757a2a39b3d602e5bf1415f7e">E</a>-8</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a1f5161c78a2e6a0c93efa73bc6dbaa14"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1f5161c78a2e6a0c93efa73bc6dbaa14">&#9670;&nbsp;</a></span>BernouilliH()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int CWalleniusNCHypergeometric::BernouilliH </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="randomc_8h.html#ab1967d8591af1a4e48c37fd2b0f184d0">int32_t</a>&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>h</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>rh</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_stochastic_lib1.html">StochasticLib1</a> *&#160;</td>
+          <td class="paramname"><em>sto</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aca02559f7b43e4bf32d65a3299603806"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aca02559f7b43e4bf32d65a3299603806">&#9670;&nbsp;</a></span>binoexpand()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double CWalleniusNCHypergeometric::binoexpand </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aab5134a65b4425ca534ada49fc337701"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aab5134a65b4425ca534ada49fc337701">&#9670;&nbsp;</a></span>findpars()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CWalleniusNCHypergeometric::findpars </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5a03c1c6423cec9ed5d0b40d94590fbe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5a03c1c6423cec9ed5d0b40d94590fbe">&#9670;&nbsp;</a></span>integrate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double CWalleniusNCHypergeometric::integrate </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad5469079c63bcdf62238a6746d285c48"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad5469079c63bcdf62238a6746d285c48">&#9670;&nbsp;</a></span>integrate_step()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double CWalleniusNCHypergeometric::integrate_step </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>b</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a83277537e6e7f98309a444b71025c5cc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a83277537e6e7f98309a444b71025c5cc">&#9670;&nbsp;</a></span>laplace()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double CWalleniusNCHypergeometric::laplace </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa88136f6742030f28ffa82ee438d00a8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa88136f6742030f28ffa82ee438d00a8">&#9670;&nbsp;</a></span>lnbico()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double CWalleniusNCHypergeometric::lnbico </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab65ef8a6c63733664bca88be1982cf5e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab65ef8a6c63733664bca88be1982cf5e">&#9670;&nbsp;</a></span>MakeTable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="randomc_8h.html#ab1967d8591af1a4e48c37fd2b0f184d0">int32_t</a> CWalleniusNCHypergeometric::MakeTable </td>
+          <td>(</td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>table</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="randomc_8h.html#ab1967d8591af1a4e48c37fd2b0f184d0">int32_t</a>&#160;</td>
+          <td class="paramname"><em>MaxLength</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="randomc_8h.html#ab1967d8591af1a4e48c37fd2b0f184d0">int32_t</a> *&#160;</td>
+          <td class="paramname"><em>xfirst</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="randomc_8h.html#ab1967d8591af1a4e48c37fd2b0f184d0">int32_t</a> *&#160;</td>
+          <td class="paramname"><em>xlast</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>cutoff</em> = <code>0.</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad6cbbdef2698aab401370e8c8155eaae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad6cbbdef2698aab401370e8c8155eaae">&#9670;&nbsp;</a></span>mean()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double CWalleniusNCHypergeometric::mean </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a44dacaa83e8a46906410a080a8e8e36d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a44dacaa83e8a46906410a080a8e8e36d">&#9670;&nbsp;</a></span>mode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="randomc_8h.html#ab1967d8591af1a4e48c37fd2b0f184d0">int32_t</a> CWalleniusNCHypergeometric::mode </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a76d6c814eafca1017e980ac523ed4651"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a76d6c814eafca1017e980ac523ed4651">&#9670;&nbsp;</a></span>moments()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double CWalleniusNCHypergeometric::moments </td>
+          <td>(</td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>mean</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>var</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa79358e7f1a759c7a528c6294f052323"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa79358e7f1a759c7a528c6294f052323">&#9670;&nbsp;</a></span>probability()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double CWalleniusNCHypergeometric::probability </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="randomc_8h.html#ab1967d8591af1a4e48c37fd2b0f184d0">int32_t</a>&#160;</td>
+          <td class="paramname"><em>x</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a974a3934722b9bc6b32462d4f95d0ed0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a974a3934722b9bc6b32462d4f95d0ed0">&#9670;&nbsp;</a></span>recursive()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double CWalleniusNCHypergeometric::recursive </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5e291c2a2dd4557e69ecc6677e627c58"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5e291c2a2dd4557e69ecc6677e627c58">&#9670;&nbsp;</a></span>search_inflect()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double CWalleniusNCHypergeometric::search_inflect </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>t_from</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>t_to</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae45119e7d7e5aaa6d4f1d0836b98f4b6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae45119e7d7e5aaa6d4f1d0836b98f4b6">&#9670;&nbsp;</a></span>SetParameters()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CWalleniusNCHypergeometric::SetParameters </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="randomc_8h.html#ab1967d8591af1a4e48c37fd2b0f184d0">int32_t</a>&#160;</td>
+          <td class="paramname"><em>n</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="randomc_8h.html#ab1967d8591af1a4e48c37fd2b0f184d0">int32_t</a>&#160;</td>
+          <td class="paramname"><em>m</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="randomc_8h.html#ab1967d8591af1a4e48c37fd2b0f184d0">int32_t</a>&#160;</td>
+          <td class="paramname"><em>N</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>odds</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a41098d7ca27b0e1cb567e2361afa066f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a41098d7ca27b0e1cb567e2361afa066f">&#9670;&nbsp;</a></span>variance()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double CWalleniusNCHypergeometric::variance </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="ae85dcdbbb5386c1d416f3844a5bde707"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae85dcdbbb5386c1d416f3844a5bde707">&#9670;&nbsp;</a></span>accuracy</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double CWalleniusNCHypergeometric::accuracy</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afd7f6a543ad4da0c9ad4453034e0eef6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afd7f6a543ad4da0c9ad4453034e0eef6">&#9670;&nbsp;</a></span>bico</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double CWalleniusNCHypergeometric::bico</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a57cc4ef757a2a39b3d602e5bf1415f7e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a57cc4ef757a2a39b3d602e5bf1415f7e">&#9670;&nbsp;</a></span>E</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double CWalleniusNCHypergeometric::E</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5c984a414157aa5bdb96848048ea9084"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5c984a414157aa5bdb96848048ea9084">&#9670;&nbsp;</a></span>m</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="randomc_8h.html#ab1967d8591af1a4e48c37fd2b0f184d0">int32_t</a> CWalleniusNCHypergeometric::m</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad2340551e09215c92eafac4786c47f1c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad2340551e09215c92eafac4786c47f1c">&#9670;&nbsp;</a></span>mFac</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double CWalleniusNCHypergeometric::mFac</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aedaace8767e5691fd5f130b518874e7c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aedaace8767e5691fd5f130b518874e7c">&#9670;&nbsp;</a></span>N</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="randomc_8h.html#ab1967d8591af1a4e48c37fd2b0f184d0">int32_t</a> CWalleniusNCHypergeometric::N</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af4562c271c55e5011ecdf4035ee73810"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af4562c271c55e5011ecdf4035ee73810">&#9670;&nbsp;</a></span>n</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="randomc_8h.html#ab1967d8591af1a4e48c37fd2b0f184d0">int32_t</a> CWalleniusNCHypergeometric::n</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa6d205a1d7ba3d88a5cb3290fe91badd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa6d205a1d7ba3d88a5cb3290fe91badd">&#9670;&nbsp;</a></span>omega</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double CWalleniusNCHypergeometric::omega</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a12e13f0bdb1f1140304c14e4672c47c7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a12e13f0bdb1f1140304c14e4672c47c7">&#9670;&nbsp;</a></span>phi2d</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double CWalleniusNCHypergeometric::phi2d</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9ce630e7f0efe8339c581eac7be1a29b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9ce630e7f0efe8339c581eac7be1a29b">&#9670;&nbsp;</a></span>r</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double CWalleniusNCHypergeometric::r</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa229fb7f452c3b07b539a6b720140fe7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa229fb7f452c3b07b539a6b720140fe7">&#9670;&nbsp;</a></span>rd</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double CWalleniusNCHypergeometric::rd</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a34c6c4d6d85019987cb89a6eabefc446"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a34c6c4d6d85019987cb89a6eabefc446">&#9670;&nbsp;</a></span>w</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double CWalleniusNCHypergeometric::w</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae6fb2d9ae90aede71331e7c2887c5fec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae6fb2d9ae90aede71331e7c2887c5fec">&#9670;&nbsp;</a></span>wr</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double CWalleniusNCHypergeometric::wr</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af39ef9b68884c61621df682060ca74f0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af39ef9b68884c61621df682060ca74f0">&#9670;&nbsp;</a></span>x</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="randomc_8h.html#ab1967d8591af1a4e48c37fd2b0f184d0">int32_t</a> CWalleniusNCHypergeometric::x</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aae1dee805918ccc4c402d29e47bcbd6c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aae1dee805918ccc4c402d29e47bcbd6c">&#9670;&nbsp;</a></span>xFac</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double CWalleniusNCHypergeometric::xFac</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa83b3c50e3106c0d7149d12ea61b3245"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa83b3c50e3106c0d7149d12ea61b3245">&#9670;&nbsp;</a></span>xLastBico</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="randomc_8h.html#ab1967d8591af1a4e48c37fd2b0f184d0">int32_t</a> CWalleniusNCHypergeometric::xLastBico</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a631594dc1195766bf68f577b67f243c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a631594dc1195766bf68f577b67f243c0">&#9670;&nbsp;</a></span>xLastFindpars</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="randomc_8h.html#ab1967d8591af1a4e48c37fd2b0f184d0">int32_t</a> CWalleniusNCHypergeometric::xLastFindpars</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aeb060acd633bff33c84b71a1d4810a3d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb060acd633bff33c84b71a1d4810a3d">&#9670;&nbsp;</a></span>xmax</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="randomc_8h.html#ab1967d8591af1a4e48c37fd2b0f184d0">int32_t</a> CWalleniusNCHypergeometric::xmax</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab5e148bc8d362cc72b85ae48031de1eb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab5e148bc8d362cc72b85ae48031de1eb">&#9670;&nbsp;</a></span>xmin</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="randomc_8h.html#ab1967d8591af1a4e48c37fd2b0f184d0">int32_t</a> CWalleniusNCHypergeometric::xmin</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li><a class="el" href="stocc_8h_source.html">stocc.h</a></li>
 </ul>
@@ -217,7 +1104,7 @@ int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>xLastFindpars</b><
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_c_wallenius_n_c_hypergeometric.html">CWalleniusNCHypergeometric</a></li>
-    <li class="footer">Generated on Tue Dec 15 2020 14:18:01 for Confetti2_scm by <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20 </li>
+    <li class="footer">Generated on Wed Dec 16 2020 15:19:59 for Confetti2_scm by <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20 </li>
   </ul>
 </div>
 </body>
