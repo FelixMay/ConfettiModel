@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['m_17',['m',['../class_c_forest.html#aeb989c1932f5d47a5b7864c412de68fe',1,'CForest']]]
+  ['interactmat_17',['InteractMat',['../class_c_forest.html#a71e6cf8cc238d3bf0c4754cc6963103d',1,'CForest']]]
 ];

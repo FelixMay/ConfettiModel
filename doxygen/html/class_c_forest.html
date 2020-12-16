@@ -152,8 +152,11 @@ std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><
 <tr class="memitem:a39e630bdb1a27ba7d72879cbfa9f0b25"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_forest.html#a39e630bdb1a27ba7d72879cbfa9f0b25">CForest</a> (int seed, <a class="el" href="class_c_model_settings.html">CModelSettings</a> *pset)</td></tr>
 <tr class="memdesc:a39e630bdb1a27ba7d72879cbfa9f0b25"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor for Forest object.  <a href="class_c_forest.html#a39e630bdb1a27ba7d72879cbfa9f0b25">More...</a><br /></td></tr>
 <tr class="separator:a39e630bdb1a27ba7d72879cbfa9f0b25"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acac5dc18944ebfe2c05b9ccc4e01653f"><td class="memItemLeft" align="right" valign="top"><a id="acac5dc18944ebfe2c05b9ccc4e01653f"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>FileOpen</b> (std::string label)</td></tr>
+<tr class="memitem:a96123dafea0a87e6c20541739408fa6f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_forest.html#a96123dafea0a87e6c20541739408fa6f">~CForest</a> ()</td></tr>
+<tr class="memdesc:a96123dafea0a87e6c20541739408fa6f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deconstructor for forest class.  <a href="class_c_forest.html#a96123dafea0a87e6c20541739408fa6f">More...</a><br /></td></tr>
+<tr class="separator:a96123dafea0a87e6c20541739408fa6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acac5dc18944ebfe2c05b9ccc4e01653f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_forest.html#acac5dc18944ebfe2c05b9ccc4e01653f">FileOpen</a> (std::string label)</td></tr>
+<tr class="memdesc:acac5dc18944ebfe2c05b9ccc4e01653f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Open output files.  <a href="class_c_forest.html#acac5dc18944ebfe2c05b9ccc4e01653f">More...</a><br /></td></tr>
 <tr class="separator:acac5dc18944ebfe2c05b9ccc4e01653f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae18f9c66f916f59f8eb97d61db5f8667"><td class="memItemLeft" align="right" valign="top"><a id="ae18f9c66f916f59f8eb97d61db5f8667"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>CreateHabitatMap</b> ()</td></tr>
@@ -255,30 +258,6 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a79829283525591bd4e1db8aa6ea18f7b"><td class="memItemLeft" align="right" valign="top"><a id="a79829283525591bd4e1db8aa6ea18f7b"></a>
 <a class="el" href="class_c_cell.html">CCell</a> **&#160;</td><td class="memItemRight" valign="bottom"><b>Grid</b></td></tr>
 <tr class="separator:a79829283525591bd4e1db8aa6ea18f7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a84341a414e7221f14c27858803f2be7c"><td class="memItemLeft" align="right" valign="top"><a id="a84341a414e7221f14c27858803f2be7c"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>MapCellSize</b></td></tr>
-<tr class="separator:a84341a414e7221f14c27858803f2be7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3deb449f75301a737fea14f0295ce3d1"><td class="memItemLeft" align="right" valign="top"><a id="a3deb449f75301a737fea14f0295ce3d1"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>MapXcells</b></td></tr>
-<tr class="separator:a3deb449f75301a737fea14f0295ce3d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a902c6b2d099cd2ffb17bd352ae73750a"><td class="memItemLeft" align="right" valign="top"><a id="a902c6b2d099cd2ffb17bd352ae73750a"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>MapYcells</b></td></tr>
-<tr class="separator:a902c6b2d099cd2ffb17bd352ae73750a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abf6fc8e6b65f29ccebc77dec69ce4e2f"><td class="memItemLeft" align="right" valign="top"><a id="abf6fc8e6b65f29ccebc77dec69ce4e2f"></a>
-int **&#160;</td><td class="memItemRight" valign="bottom"><b>Map</b></td></tr>
-<tr class="separator:abf6fc8e6b65f29ccebc77dec69ce4e2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a159a20eb08ab2ac80b518ea2db092293"><td class="memItemLeft" align="right" valign="top"><a id="a159a20eb08ab2ac80b518ea2db092293"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>nHabTypes</b></td></tr>
-<tr class="separator:a159a20eb08ab2ac80b518ea2db092293"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae54b2427b52332e7ef8cf9ac416627c6"><td class="memItemLeft" align="right" valign="top"><a id="ae54b2427b52332e7ef8cf9ac416627c6"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>smooth_habitat</b></td></tr>
-<tr class="separator:ae54b2427b52332e7ef8cf9ac416627c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa0f1c9402bd192c9686c3976784bf0a4"><td class="memItemLeft" align="right" valign="top"><a id="aa0f1c9402bd192c9686c3976784bf0a4"></a>
-double ***&#160;</td><td class="memItemRight" valign="bottom"><b>HabitatProp</b></td></tr>
-<tr class="separator:aa0f1c9402bd192c9686c3976784bf0a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab535c06ea197cb7c09c23c421d5447bd"><td class="memItemLeft" align="right" valign="top"><a id="ab535c06ea197cb7c09c23c421d5447bd"></a>
-std::vector&lt; std::vector&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>RelHabDensData</b></td></tr>
-<tr class="separator:ab535c06ea197cb7c09c23c421d5447bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4b754436afde4be4b577098a1440eb52"><td class="memItemLeft" align="right" valign="top"><a id="a4b754436afde4be4b577098a1440eb52"></a>
 CRandomMersenne *&#160;</td><td class="memItemRight" valign="bottom"><b>RandGen1</b></td></tr>
 <tr class="separator:a4b754436afde4be4b577098a1440eb52"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -384,9 +363,6 @@ int64_t&#160;</td><td class="memItemRight" valign="bottom"><b>BD_total</b></td><
 <tr class="memitem:afe57f4dfdd59021b4b256ab8c024b4c0"><td class="memItemLeft" align="right" valign="top"><a id="afe57f4dfdd59021b4b256ab8c024b4c0"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>SAD</b> [MaxSAD]</td></tr>
 <tr class="separator:afe57f4dfdd59021b4b256ab8c024b4c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6b37b7a4e970eb827afa051adc18e015"><td class="memItemLeft" align="right" valign="top"><a id="a6b37b7a4e970eb827afa051adc18e015"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>SAD_Win</b> [MaxSAD]</td></tr>
-<tr class="separator:a6b37b7a4e970eb827afa051adc18e015"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
@@ -430,6 +406,53 @@ static const int&#160;</td><td class="memItemRight" valign="bottom"><b>MaxSAD</b
   <table class="params">
     <tr><td class="paramname">seed</td><td>The seed for the random number generator </td></tr>
     <tr><td class="paramname">pset</td><td>Settings for all model runs </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a96123dafea0a87e6c20541739408fa6f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a96123dafea0a87e6c20541739408fa6f">&#9670;&nbsp;</a></span>~CForest()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">CForest::~CForest </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Deconstructor for forest class. </p>
+<p>The purpose of this function is to deallocate memory and clean up after simulations </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="acac5dc18944ebfe2c05b9ccc4e01653f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acac5dc18944ebfe2c05b9ccc4e01653f">&#9670;&nbsp;</a></span>FileOpen()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CForest::FileOpen </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>label</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Open output files. </p>
+<p>This function opens the output files for diversity indices, spatial biodiversity patterns, including point-pattern statistics </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname"></td><td></td></tr>
   </table>
   </dd>
 </dl>
@@ -702,7 +725,7 @@ static const int&#160;</td><td class="memItemRight" valign="bottom"><b>MaxSAD</b
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_c_forest.html">CForest</a></li>
-    <li class="footer">Generated on Tue Dec 15 2020 14:04:05 for Confetti2_scm by <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20 </li>
+    <li class="footer">Generated on Tue Dec 15 2020 14:18:01 for Confetti2_scm by <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20 </li>
   </ul>
 </div>
 </body>

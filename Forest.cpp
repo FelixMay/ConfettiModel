@@ -50,10 +50,6 @@ CForest::CForest(int seed, CModelSettings* pset){
 //	if (pSettings->metaSAD == 3)
 //      ReadSADFile();
 
-	//Read habitat map file
-	//if (pSettings->habitat == true)
-   //   CreateHabitatMap();
-
 	// Grid
 	XCells = Xmax / pSettings->cellSize;
 	YCells = Ymax / pSettings->cellSize;
@@ -119,6 +115,12 @@ CForest::CForest(int seed, CModelSettings* pset){
 	irep = 1;
 }
 
+
+//! \brief Deconstructor for forest class
+//!
+//! The purpose of this function is to deallocate memory
+//! and clean up after simulations
+//!
 // ---------------------------------------------------------------------------
 CForest::~CForest() {
 	for (TreeIterV itree = TreeList.begin(); itree != TreeList.end(); ++itree)
@@ -129,22 +131,6 @@ CForest::~CForest() {
 	SpecAbund.clear();
 	SARq_scales.clear();
 	SpecPars.clear();
-
-	for (int x = 0; x < MapXcells; ++x)
-		delete[] Map[x];
-	delete[] Map;
-
-   //  Deallocate 3D array
-   /*
-   if (pSettings->habitat == true){
-      for(int x = 0; x < MapXcells; ++x){
-         for(int y = 0; y < MapYcells; ++y)
-            delete[] HabitatProp[x][y];
-         delete[] HabitatProp[x];
-      }
-      delete[] HabitatProp;
-   }
-   */
 
 	for (int x = 0; x < XCells; ++x)
 		delete[] Grid[x];
@@ -216,140 +202,11 @@ CForest::~CForest() {
 //	}
 //}
 
-// ----------------------------------------------------------------------------
-/*
-void CForest::CreateHabitatMap()
-{
-   MapCellSize = pSettings->map_cell_size;
-	MapXcells = Xmax/MapCellSize;
-	MapYcells = Ymax/MapCellSize;
-	nHabTypes = pSettings->n_hab_types;
-
-	Map = new int*[MapXcells];
-	for (int x = 0; x < MapXcells; ++x)
-		Map[x] = new int [MapYcells];
-
-	ifstream MapFile;
-	MapFile.open(pSettings->map_file_name.c_str());
-
-   int hab_type = -99;
-
-	if (MapFile.good()){
-      for (int x = 0; x < MapXcells; ++x){
-         for (int y = 0; y < MapYcells; ++y){
-            MapFile>>hab_type;
-            Map[x][y] = hab_type;
-         }
-      }
-      MapFile.close();
-	}
-	else cout<<"Error habitat map file"<<endl;
-
-	//Calculate habitat proportions in neighborhood
-   int smooth_habitat = 1; //9 neighbors
-
-   HabitatProp = new double**[MapXcells];
-   for (int x = 0; x < MapXcells; ++x){
-		HabitatProp[x] = new double*[MapYcells];
-		for (int y = 0; y < MapYcells; ++y)
-		   HabitatProp[x][y] = new double [nHabTypes];
-   }
-
-   //init
-   for (int x = 0; x < MapXcells; ++x)
-		for (int y = 0; y < MapYcells; ++y)
-         for (int ihab = 0; ihab < nHabTypes; ihab++)
-            HabitatProp[x][y][ihab] = 0.0;
-
-   //calculate
-   int* hab_prop = new int[nHabTypes];
-   int ncells;
-
-   int x2, y2;
-
-   for (int x = 0; x < MapXcells; ++x){
-      for (int y = 0; y < MapYcells; ++y){
-
-         for (int ihab=0; ihab < nHabTypes; ihab++)
-            hab_prop[ihab] = 0;
-
-         // loop over neighboring cells
-         ncells = 0;
-         for (int dx = -smooth_habitat; dx <= smooth_habitat; dx++) {
-            for (int dy = -smooth_habitat; dy <= smooth_habitat; dy++) {
-
-               //boundary condition
-               x2 = x + dx;
-               y2 = y + dy;
-               if (((x2 >= 0) && (x2 < MapXcells)) && ((y2 >= 0) && (y2 < MapYcells))){
-                  hab_type = Map[x2][y2];
-                  if (hab_type < nHabTypes)
-                     hab_prop[hab_type]++;
-                  ncells++;
-               }
-
-            } // for dy
-         } // for dx
-
-         for (int ihab=0; ihab < nHabTypes; ihab++)
-            HabitatProp[x][y][ihab] = static_cast<double>(hab_prop[ihab])/ncells;
-
-      } //for y
-   } // for x
-
-   delete[] hab_prop;
-
-//   ofstream SmoothMap;
-//   SmoothMap.open("Output/SmoothMap.txt");
-//
-//   SmoothMap<<"X\tY\t";
-//   for (int ihab=0; ihab < nHabTypes; ihab++)
-//      SmoothMap<<"Hab"<<ihab<<"\t";
-//   SmoothMap<<endl;
-//
-//   // write out realized habitat map
-//   for (int x = 0; x < MapXcells; ++x){
-//      for (int y = 0; y < MapYcells; ++y){
-//         SmoothMap<<x*MapCellSize<<"\t"
-//                  <<y*MapCellSize<<"\t";
-//         for (int ihab=0; ihab < nHabTypes; ihab++)
-//            SmoothMap<<HabitatProp[x][y][ihab]<<"\t";
-//         SmoothMap<<"\n";
-//      }
-//   }
-//
-//   SmoothMap.close();
-
-	// read species relative densities calculated from the data
-	ifstream RelHabDensFile;
-	RelHabDensFile.open(pSettings->rel_dens_file_name.c_str());
-
-	vector<double> rel_dens_spec(nHabTypes,0.0);
-	string dummy;
-
-	if (RelHabDensFile.good()) {
-
-		getline(RelHabDensFile,dummy);
-		RelHabDensFile>>dummy;
-		for (int ihab=0; ihab < nHabTypes; ihab++)
-			RelHabDensFile>>rel_dens_spec[ihab];
-		RelHabDensData.push_back(rel_dens_spec);
-
-		while (RelHabDensFile.good()){
-			RelHabDensFile>>dummy;
-			for (int ihab=0; ihab < nHabTypes; ihab++)
-				RelHabDensFile>>rel_dens_spec[ihab];
-			RelHabDensData.push_back(rel_dens_spec);
-		}
-	}
-	else cout<<"Error relative density habitat file"<<endl;
-
-	RelHabDensFile.close();
-}
-*/
-
-
-
+//! \brief Open output files
+//!
+//! This function opens the output files for diversity indices, spatial biodiversity patterns,
+//! including point-pattern statistics, species abundances etc.
+//! \param label Alphanumeric label that is added to each base filename
 // ----------------------------------------------------------------------------
 void CForest::FileOpen(string label) {
 	string FileName;
@@ -537,6 +394,7 @@ void CForest::FileOpen(string label) {
 	//TestFile.open("Output/Test.txt");
 }
 
+//! \brief Helper function to clean the tree list
 // ---------------------------------------------------------------------------
 void CForest::clearTrees()
 {
@@ -547,6 +405,7 @@ void CForest::clearTrees()
 	SpecAbund.clear();
 }
 
+//! \brief Helper function to clean all species specific parameters
 // ---------------------------------------------------------------------------
 void CForest::clearSpecies()
 {
@@ -558,6 +417,7 @@ void CForest::clearSpecies()
 	SpecPars.clear();
 }
 
+//! \brief Calculate the Euclidian distance between (x1, y1) and (x2, y
 // ---------------------------------------------------------------------------
 inline double CForest::Distance(double x1, double y1, double x2, double y2) {
 	return sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
@@ -571,13 +431,18 @@ return ((x1-x2)*(x1-x2) + (y1-y2)*(y1-y2));
 }
  */
 
+ //! \brief Adjust coordinates according to periodic boundary conditions
+ //!
+ //! This considers the landscape as a torus with wrapped around edges
 // ---------------------------------------------------------------------------
 inline void CForest::PeriodBound(double& xx, double& yy) {
 	xx = Xmax * (xx / Xmax - floor(xx / Xmax));
 	yy = Ymax * (yy / Ymax - floor(yy / Ymax));
 }
 
+
 // ---------------------------------------------------------------------------
+/*
 inline void CForest::BoundIntGrid(int& xx, int& yy, int Xmax, int Ymax) {
 	xx = xx % Xmax;
 	if (xx < 0)
@@ -587,7 +452,9 @@ inline void CForest::BoundIntGrid(int& xx, int& yy, int Xmax, int Ymax) {
 	if (yy < 0)
 		yy = Ymax + yy;
 }
+*/
 
+//! \brief Adjust grid cell coordinates according to periodic boundary conditions
 // ---------------------------------------------------------------------------
 inline void CForest::BoundGrid(int& xx, int& yy, double& xb, double& yb) {
 	if (xx >= XCells) {
@@ -609,6 +476,12 @@ inline void CForest::BoundGrid(int& xx, int& yy, double& xb, double& yb) {
 	}
 }
 
+//! \brief Draw a random species from the metacommunity
+//!
+//! The probability of drawing a species is equal to its
+//! relative abundance in the metacommunity
+//! \return The ID number of the species
+
 // ---------------------------------------------------------------------------
 inline int CForest::GetRandSpec() {
 
@@ -626,6 +499,15 @@ inline int CForest::GetRandSpec() {
 
 	return(ispec);
 }
+
+//! \brief
+//!
+//! \param
+//! \param
+//! \return
+//!
+//!
+
 
 // ---------------------------------------------------------------------------
 vector<double> CForest::SeqConstruct(int J, double theta, double m) {
@@ -768,7 +650,7 @@ void CForest::initSpecies()
 	}
 	SpecMax = CumRelAbundMeta.size();
 
-	double meanD_spec, sdD_spec, JC_spec, trait;
+	double meanD_spec, sdD_spec, JC_spec, muEnvir_spec;
 
 	//Init species parameters
 
@@ -818,9 +700,9 @@ void CForest::initSpecies()
 		meanD_spec = pPars->m_dm_spec;
 		sdD_spec = pPars->sd_dm_spec;
 
-		muEnvir = RandGen1->Random();
+		muEnvir_spec = RandGen1->Random();
 
-		SpecPars[ispec] = CSpecPara(meanD_spec, sdD_spec, muEnvir);
+		SpecPars[ispec] = CSpecPara(meanD_spec, sdD_spec, muEnvir_spec);
 
 		//habitat associations
 		/*

@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['ycells_31',['YCells',['../class_c_forest.html#a072292b76e92ff9706fdc989dfe482aa',1,'CForest']]],
-  ['ymax_32',['Ymax',['../class_c_forest.html#a034cd500d264fdcb09e5e351e17bf7fb',1,'CForest']]]
+  ['xcells_30',['XCells',['../class_c_forest.html#aa1038d8660c8d92845010059d3a36cd7',1,'CForest']]],
+  ['xmax_31',['Xmax',['../class_c_forest.html#a5beb61fe876005b3d16c95a2be1db498',1,'CForest']]]
 ];

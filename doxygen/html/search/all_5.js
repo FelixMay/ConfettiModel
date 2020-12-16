@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['ntrees_18',['NTrees',['../class_c_forest.html#aeb98e3076fc6598575430dc30dc0d1ae',1,'CForest']]]
+  ['m_18',['m',['../class_c_forest.html#aeb989c1932f5d47a5b7864c412de68fe',1,'CForest']]]
 ];

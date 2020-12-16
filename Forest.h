@@ -55,23 +55,6 @@ public:
 
 	CCell **Grid;
 
-	//HabitatMap
-	double MapCellSize;
-	int MapXcells;
-	int MapYcells;
-	int **Map;
-	int nHabTypes;
-
-	int smooth_habitat; //number of neighborhood grid cells for habitat proportion calculation
-	                    // 1 ... 9 neighbors
-	                    // 2 ... 25 neighbors
-
-   double ***HabitatProp; //Habitat grid with proportions of nHabTypes habitats
-                          //Dimensions MapXCells x MapYCells x nHabTypes
-
-	//relative habitat densities from the field data
-	std::vector<std::vector<double> > RelHabDensData;
-
 	//random number generators
 	CRandomMersenne *RandGen1;
 	StochasticLib1 *RandGen2;
@@ -143,7 +126,6 @@ public:
 
 	static const int MaxSAD = 12;
 	int SAD[MaxSAD];      //Species abundance distributions as octave curve 2^0 - 2^11
-	int SAD_Win[MaxSAD];  //SAD in sampling window
 
 	//Private functions
 	inline int GetRandSpec(); //draw a species from the species pool
@@ -152,7 +134,7 @@ public:
 	inline double Distance(double x1, double y1, double x2, double y2);
 
 	inline void PeriodBound(double& xx, double& yy);
-	inline void BoundIntGrid(int& xx, int& yy, int Xmax, int Ymax);
+//	inline void BoundIntGrid(int& xx, int& yy, int Xmax, int Ymax);
 	inline void BoundGrid(int& xx, int& yy, double& xb, double& yb);
 
 	inline double FracRingInWin(double x, double y, double R);
