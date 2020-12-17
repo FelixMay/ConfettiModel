@@ -93,9 +93,9 @@ public:
 	double metaCV = 1.0;        //!> Coefficient of Variation (CV) of abundances for log-normal metacommunity
 	double m = 0.1;             //!> Immigration rate
 	double r_max = 10.0;        //!> Neighbourhood radius for tree-tree interactions
-	double aRec = 0.005;        //!> Model parameter for relationship between competition and recruitment
-	double aSurv = 999.0;       //!> Model parameter for relationship between competition and survival
-	double bSurv = 0.89;        //!> Survival rate without competition
+	double aRec = 0.005;        //!> Model parameter for relationship between competition and recruitment probability
+	//double aSurv = 999.0;       //!> Model parameter for relationship between competition and survival (not used in current version!)
+	//double bSurv = 0.89;        //!> Survival rate without competition (not used in current version!)
 	double m_dm_spec = 30.0;    //!> Mean dispersal distance of all species /(no interspecific variation in dispersal in the current model version)
 	double sd_dm_spec = 0.0;    //!> Standard deviation of dispersal distance
 	double m_JCspec = 1.0;      //!> Ratio of conspecific relative to heterospecific competition (= 1 when CNDD = HNDD)
@@ -114,8 +114,8 @@ public:
          double m1,
          double r_max1,
          double aRec1,
-         double aSurv1,
-         double bSurv1,
+         //double aSurv1,
+         //double bSurv1,
          double m_dm_spec1,
          double sd_dm_spec1,
          double m_JCspec1,

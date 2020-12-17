@@ -40,18 +40,18 @@ public:
 
 	double R; //ZOI Radius
 	double NCI; // neighbourhood crowding index
-	double pSurv;  //Survival probability
+	//double pSurv;  //Survival probability
 
 	std::list <CCell*> CellList; //list of grid cells overlapped by the tree
 	std::map<int,double> NNDistSpec; //nearest neighbour distance to each species
 
-	CTree(int id, double x, double y, int spec, double r, double p_surv)
+	CTree(int id, double x, double y, int spec, double r)
 	{
 		TreeID = id;
 		X = x; Y = y;
 		SpecID = spec;
 		R = r;
-		pSurv = p_surv;
+		//pSurv = p_surv;
 		NNDistSpec.clear();
 	};
 
@@ -69,11 +69,13 @@ public:
 	}
 	*/
 
+	/*
 	void GetPSurv2(double a, double b)
 	{
 		if (NCI == 0.0) pSurv = b;
 		else pSurv = b - b*(NCI)/(a + NCI);
 	}
+	*/
 };
 
 

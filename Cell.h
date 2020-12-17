@@ -15,7 +15,6 @@ class CCell
 public:
 	int X;
 	int Y;
-	int HabitatType;
 
 	//int nTreesOverlap; //number of trees overlapping the cell
 	//double ProbRecruit;
@@ -25,7 +24,6 @@ public:
 	CCell(){
 		X = 0;
 		Y = 0;
-		HabitatType = - 99;
 
 		//nTreesOverlap = 0;
 		//ProbRecruit = 0;
@@ -33,11 +31,10 @@ public:
 
 	~CCell() {TreeList.clear();};
 
-	void InitCell(int x, int y, int hab_type)
+	void InitCell(int x, int y)
 	{
 		X=x;
 		Y=y;
-		HabitatType = hab_type;
 		//nTreesOverlap = 0;
 		//ProbRecruit = 0;
 		TreeList.clear();

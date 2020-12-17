@@ -1,5 +1,5 @@
 nRep				1
-nGen 				10
+nGen 				1000
 steps_out			0
 R_mode				0
 cellSize			5.0

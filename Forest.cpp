@@ -222,7 +222,7 @@ void CForest::FileOpen(string label) {
 			DivFile.clear();
 			DivFile.open(FileName.c_str(), std::ios::out);
 			DivFile << "SimNr, RepNr, theta, Jm, metaSR, metaCV, m, Rmax, aRec, "
-                 << "aSurv, bSurv, m_dm_spec, sd_dm_spec, m_Jcspec, cv_Jcspec, sigmaC,"
+                 << "aSurv, bSurv, m_dm_spec, sd_dm_spec, m_Jcspec, cv_Jcspec, niche_breadth,"
                  << "BD_total, BD_step, NSpec, Shannon, PIE" << endl;
 		}
 	}
@@ -770,7 +770,7 @@ void CForest::initTrees() {
 	// Init Grid Cells
 	for (iX1 = 0; iX1 < XCells; ++iX1)
 		for (iY1 = 0; iY1 < YCells; ++iY1)
-			Grid[iX1][iY1].InitCell(iX1, iY1,1);
+			Grid[iX1][iY1].InitCell(iX1, iY1);
 
 	//grid_steps = (int) ceil(2.0 * Pars->r_max / CellSize);
 	grid_steps = (int) ceil(pPars->r_max / pSettings->cellSize);
@@ -788,7 +788,8 @@ void CForest::initTrees() {
 
 		SpecID = GetRandSpec();
 
-		pTree1 = new CTree(TreeID, x, y, SpecID, pPars->r_max, pPars->bSurv);
+		//pTree1 = new CTree(TreeID, x, y, SpecID, pPars->r_max, pPars->bSurv);
+		pTree1 = new CTree(TreeID, x, y, SpecID, pPars->r_max);
 		TreeList.push_back(pTree1);
 		++TreeID;
 
@@ -998,28 +999,18 @@ double CForest::GetProbRecruit(double x1, double y1, int spec_id)
 	else prob_rec1 = 1.0 - densNCI/(pPars->aRec + densNCI);
 
    // Habitat effect
-	/*
-	if (pSettings->habitat == true){
+   // Recruitment probability depends on environmental parameter at location x,y
 
-      iX1 = (int) floor(x1 / MapCellSize);
-      iY1 = (int) floor(y1 / MapCellSize);
+   // Get environmental value at x,y
+   double E = -cos(2/Xmax*Pi*x1);  // just one mountain range in the plot
+   double mu = SpecPars[spec_id].muEnvir;
 
-      //calculate average recruitment probability in habitat here
-      //int hab_type =  Map[iX1][iY1];
-      //double rel_dens =  SpecPars[spec_id].RelHabDens[hab_type];
+   double prob_envir = exp( -pow(E - SpecPars[spec_id].muEnvir, 2) / (2 * pow(pPars->niche_breadth, 2)));
 
-      double rel_dens = 0;
-      for (int ihab = 0; ihab < nHabTypes; ++ihab)
-         rel_dens += HabitatProp[iX1][iY1][ihab] * SpecPars[spec_id].RelHabDens[ihab];
+   // recruitment probability depending on environmental parameter and niche breadth (Gravel et al. 2006)
+   //double prob_envir = exp(-(E - SpecPars[spec_id].muEnvir)^2/(2*pPars->niche_breadth^2));
 
-      if (pPars->aHab > 0.0001)
-         prob_rec2 = prob_rec1*pow(rel_dens,pPars->aHab);
-      else prob_rec2 = prob_rec1;
-   }
-   */
-   //else {
-      prob_rec2 = prob_rec1;
-   //}
+   prob_rec2 = prob_rec1*prob_envir;
 
 	return(prob_rec2);
 }
@@ -1247,10 +1238,10 @@ bool CForest::BirthDeathAsync() {
 	// choose random tree´and kill this tree
 	pTree = TreeList[RandGen1->IRandom(0, TreeList.size() - 1)];
 
-	double pkill = 1.0 - pTree->pSurv;
+	//double pkill = 1.0 - pTree->pSurv;
 	//double pkill = 1.0 - Pars->bSurv;
 
-	if (RandGen1->Random() < pkill) {
+	//if (RandGen1->Random() < pkill) {
 		//kill = true;
 		++BD_5years;
 		++BD_total;
@@ -1314,7 +1305,7 @@ bool CForest::BirthDeathAsync() {
 			stop = true;
 		}
 		//cout<<ntrials<<endl;
-	}
+	//}
 
 	return(stop);
 }
@@ -1352,7 +1343,7 @@ void CForest::OneRun(int isim, int irep)
 	}
 
 	int64_t BD_min = pSettings->nGen * TreeList.size();
-	int64_t BD_max = BD_min * 10;
+//	int64_t BD_max = BD_min * 10;
 	int int_out = pSettings->nGen / 10;
 
 	int istep = 0;
@@ -1374,9 +1365,9 @@ void CForest::OneRun(int isim, int irep)
 //	while ((BD_total < BD_max) && (nSpecAvgOld >= nSpecAvgNew) &&
 //          (nspec > 1)         && (cvShannon > 0.01)) {
 
-   while (((BD_total < BD_min) || ((cvShannon > 0.01) && (nspec > 1))) && (BD_total < BD_max)){
+//   while (((BD_total < BD_min) || ((cvShannon > 0.01) && (nspec > 1))) && (BD_total < BD_max)){
 
-//    while (BD_total < BD_max){
+   while (BD_total < BD_min){
 		// one loop representing five years = NTrees test for survival/mortality
 		BD_5years = 0;
 		for (int i = 0; i < NTrees; ++i) {
@@ -1459,8 +1450,8 @@ void CForest::WriteOutput(int isim, int irep) {
            << pPars->m << ", "
            << pPars->r_max << ", "
            << pPars->aRec << ", "
-           << pPars->aSurv << ", "
-           << pPars->bSurv<< ", "
+       //    << pPars->aSurv << ", "
+       //    << pPars->bSurv<< ", "
            << pPars->m_dm_spec << ", "
            << pPars->sd_dm_spec << ", "
            << pPars->m_JCspec << ", "
