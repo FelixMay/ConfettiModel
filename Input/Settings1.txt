@@ -1,13 +1,13 @@
-nRep				1
+nRep				5
 nGen 				1000
 steps_out			0
 R_mode				0
 cellSize			5.0
-metaSAD				2
+metaSAD				1
 
-nTrees				400
-Xext				100.0
-Yext				100.0
+nTrees				10000
+Xext				500.0
+Yext				500.0
 
 rmax				100.0
 bw1					1.0

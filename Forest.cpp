@@ -222,7 +222,8 @@ void CForest::FileOpen(string label) {
 			DivFile.clear();
 			DivFile.open(FileName.c_str(), std::ios::out);
 			DivFile << "SimNr, RepNr, theta, Jm, metaSR, metaCV, m, Rmax, aRec, "
-                 << "aSurv, bSurv, m_dm_spec, sd_dm_spec, m_Jcspec, cv_Jcspec, niche_breadth,"
+                 //<< "aSurv, bSurv,
+                 << "m_dm_spec, sd_dm_spec, m_Jcspec, cv_Jcspec, niche_breadth, n_hills,"
                  << "BD_total, BD_step, NSpec, Shannon, PIE" << endl;
 		}
 	}
@@ -1002,13 +1003,11 @@ double CForest::GetProbRecruit(double x1, double y1, int spec_id)
    // Recruitment probability depends on environmental parameter at location x,y
 
    // Get environmental value at x,y
-   double E = -cos(2/Xmax*Pi*x1);  // just one mountain range in the plot
+   double E = -cos(2 * pPars->n_hills/Xmax*Pi*x1)/2 + 0.5;  // just one mountain range in the plot
    double mu = SpecPars[spec_id].muEnvir;
 
-   double prob_envir = exp( -pow(E - SpecPars[spec_id].muEnvir, 2) / (2 * pow(pPars->niche_breadth, 2)));
-
    // recruitment probability depending on environmental parameter and niche breadth (Gravel et al. 2006)
-   //double prob_envir = exp(-(E - SpecPars[spec_id].muEnvir)^2/(2*pPars->niche_breadth^2));
+   double prob_envir = exp( -pow(E - SpecPars[spec_id].muEnvir, 2) / (2 * pow(pPars->niche_breadth, 2)));
 
    prob_rec2 = prob_rec1*prob_envir;
 
@@ -1343,7 +1342,7 @@ void CForest::OneRun(int isim, int irep)
 	}
 
 	int64_t BD_min = pSettings->nGen * TreeList.size();
-//	int64_t BD_max = BD_min * 10;
+ //  int64_t BD_max = BD_min * 10;
 	int int_out = pSettings->nGen / 10;
 
 	int istep = 0;
@@ -1362,12 +1361,10 @@ void CForest::OneRun(int isim, int irep)
    double cvShannon = 1.0;
 
 	//while (nspec > 1){
-//	while ((BD_total < BD_max) && (nSpecAvgOld >= nSpecAvgNew) &&
-//          (nspec > 1)         && (cvShannon > 0.01)) {
+	while ((cvShannon > 0.01) && (nspec > 1)){
+   //while (((BD_total < BD_min) || ((cvShannon > 0.01) && (nspec > 1))) && (BD_total < BD_max)){
 
-//   while (((BD_total < BD_min) || ((cvShannon > 0.01) && (nspec > 1))) && (BD_total < BD_max)){
-
-   while (BD_total < BD_min){
+ //  while (BD_total < BD_min){
 		// one loop representing five years = NTrees test for survival/mortality
 		BD_5years = 0;
 		for (int i = 0; i < NTrees; ++i) {
@@ -1427,7 +1424,8 @@ void CForest::OneRun(int isim, int irep)
       GetPPA();
 		GetSARq();
 		WriteOutput(isim, irep);
-		//WriteTrees(isim, irep, istep);
+		WriteTrees(isim, irep, istep);
+		writeSpecies(isim, irep);
 	}
 }
 
@@ -1457,6 +1455,7 @@ void CForest::WriteOutput(int isim, int irep) {
            << pPars->m_JCspec << ", "
            << pPars->cv_JCspec << ", "
            << pPars->niche_breadth << ", "
+           << pPars->n_hills << ", "
            << BD_total << ", "
            << BD_5years << ", "
            << nspec << ", "
@@ -1547,25 +1546,19 @@ void CForest::WriteOutput(int isim, int irep) {
 void CForest::writeSpecies(int isim, int irep) {
 
 	string FileName = "Output/SpeciesOut_sim" + IntToString(isim) +
-                                      "_rep" + IntToString(irep) + ".txt";
+                                      "_rep" + IntToString(irep) + ".csv";
 
 	ofstream OutFile(FileName.c_str());
 
-	OutFile  << "SpecID" << "\t"
-			   << "MetaRelAbund" << "\t"
-			   << "muDisp" << "\t"
-			   << "sigmaDisp" << "\t"
-			   << "trait" << "\t"
-			   << "CNDD" << "\t"
-            << "LocalAbund"  << "\t"
-            << "Kcon10" << "\t"
+	OutFile  << "SpecID" << ","
+			   << "MetaRelAbund" << ","
+			   << "muDisp" << ","
+			   << "sigmaDisp" << ","
+			   << "muEnvir" << ","
+			   << "CNDD" << ","
+            << "LocalAbund"  << ","
+            << "Kcon10" << ","
             << "Kcon50";
-
-   /*
-   if (pSettings->habitat)
-      for (int ihab=0; ihab < nHabTypes; ++ihab)
-         OutFile << "\t" << "RelDens" <<ihab;
-   */
 
    OutFile <<endl;
 
@@ -1588,22 +1581,17 @@ void CForest::writeSpecies(int isim, int irep) {
 		   Kcon50 = 0.0;
       }
 
-		OutFile << i <<"\t"
-				  << relabund <<"\t"
-				  << SpecPars[i].muDisp << "\t"
-				  << SpecPars[i].sigmaDisp << "\t"
-				  << SpecPars[i].muEnvir << "\t"
-				  //<< SpecPars[i].comp_trait << "\t"
-				  << InteractMat[i][i] << "\t"
-				  << SpecAbund[i] << "\t"
-              << Kcon10 << "\t"
+		OutFile << i <<","
+				  << relabund <<","
+				  << SpecPars[i].muDisp << ","
+				  << SpecPars[i].sigmaDisp << ","
+				  << SpecPars[i].muEnvir << ","
+				  << InteractMat[i][i] << ","
+				  << SpecAbund[i] << ","
+              << Kcon10 << ","
               << Kcon50;
 
-      /*
-      if (pSettings->habitat)
-         for (int ihab=0; ihab < nHabTypes; ++ihab)
-            OutFile << "\t" << SpecPars[i].RelHabDens[ihab];
-      */
+
       OutFile << endl;
 	}
 	OutFile.close();

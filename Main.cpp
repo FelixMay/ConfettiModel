@@ -106,7 +106,8 @@ int main(int argc, char* argv[])
 		InFile>>pPara->sd_dm_spec>>delim;
 		InFile>>pPara->m_JCspec>>delim;
 		InFile>>pPara->cv_JCspec>>delim;
-		InFile>>pPara->niche_breadth;
+		InFile>>pPara->niche_breadth>>delim;
+		InFile>>pPara->n_hills;
 
 		while (InFile.good()) {
 
@@ -154,7 +155,9 @@ int main(int argc, char* argv[])
 			InFile>>pPara->sd_dm_spec>>delim;
 			InFile>>pPara->m_JCspec>>delim;
 			InFile>>pPara->cv_JCspec>>delim;
-			InFile>>pPara->niche_breadth;
+			InFile>>pPara->niche_breadth>>delim;
+			InFile>>pPara->n_hills;
+
 		}
 	}
 	else cout<<"Error SimFile"<<endl;

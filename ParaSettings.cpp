@@ -55,7 +55,8 @@ CPara::CPara(double theta1,
              double sd_dm_spec1,
              double m_JCspec1,
              double cv_JCspec1,
-             double niche_breadth1
+             double niche_breadth1,
+             int    n_hills1
              ) :
    theta{theta1},
    Jm{Jm1},
@@ -67,11 +68,12 @@ CPara::CPara(double theta1,
    //aSurv{aSurv1},
    //bSurv{bSurv1},
    m_dm_spec{m_dm_spec1},
-   sd_dm_spec{sd_dm_spec},
+   sd_dm_spec{sd_dm_spec1},
    m_JCspec{m_JCspec1},
    cv_JCspec{cv_JCspec1},
    sd_JCspec{m_JCspec * cv_JCspec1},
-   niche_breadth{niche_breadth1}
+   niche_breadth{niche_breadth1},
+   n_hills{n_hills1}
 {
 }
 

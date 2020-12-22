@@ -103,6 +103,7 @@ public:
 	double sd_JCspec = 0.0;     //!> Standard deviation of interspecific variation in CNDD = mJC_spec * cv_JCspec
 	double niche_breadth = 1.0; //!> Niche breadth (see Gravel et al. 2005 EcolLett, Eq. 3)
                                //Niche breadth i equal for all species in the current version, but could be species-specific
+   int    n_hills = 1;         //!> Number of hills in the landscape in the cosinus-function landscapes
 
 	//double sigma_comp = 0.0; // niche width for species competition, see Scheffer and van Nes (2006) PNAS Eq. 4
 
@@ -120,7 +121,8 @@ public:
          double sd_dm_spec1,
          double m_JCspec1,
          double cv_JCspec1,
-         double niche_breadth
+         double niche_breadth1,
+         int    n_hills1
          //double sigma_comp1
         );
 	~CPara(){};
