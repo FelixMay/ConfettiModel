@@ -1332,17 +1332,17 @@ double CForest::getQueueCV(deque<double> &queue)
 }
 
 // ---------------------------------------------------------------------------
-void CForest::OneRun(int isim, int irep)
+void CForest::OneRun(std::string label, int isim, int irep)
 {
 	if (pSettings->steps_out){
 		GetPPA();
 		GetSARq();
 		WriteOutput(isim, irep);
-		WriteTrees(isim, irep, 0);
+		WriteTrees(label, isim, irep, 0);
 	}
 
 	int64_t BD_min = pSettings->nGen * TreeList.size();
- //  int64_t BD_max = BD_min * 10;
+   int64_t BD_max = BD_min * 10;
 	int int_out = pSettings->nGen / 10;
 
 	int istep = 0;
@@ -1361,8 +1361,8 @@ void CForest::OneRun(int isim, int irep)
    double cvShannon = 1.0;
 
 	//while (nspec > 1){
-	while ((cvShannon > 0.01) && (nspec > 1)){
-   //while (((BD_total < BD_min) || ((cvShannon > 0.01) && (nspec > 1))) && (BD_total < BD_max)){
+	//while ((cvShannon > 0.01) && (nspec > 1)){
+   while (((BD_total < BD_min) || ((cvShannon > 0.01) && (nspec > 1))) && (BD_total < BD_max)){
 
  //  while (BD_total < BD_min){
 		// one loop representing five years = NTrees test for survival/mortality
@@ -1394,7 +1394,7 @@ void CForest::OneRun(int isim, int irep)
 				GetPPA();
 				GetSARq();
 				WriteOutput(isim, irep);
-				WriteTrees(isim, irep, istep);
+				WriteTrees(label, isim, irep, istep);
 			}
 		}
 	}  // while BD_total < BD_max
@@ -1424,7 +1424,7 @@ void CForest::OneRun(int isim, int irep)
       GetPPA();
 		GetSARq();
 		WriteOutput(isim, irep);
-		WriteTrees(isim, irep, istep);
+		WriteTrees(label, isim, irep, istep);
 		writeSpecies(isim, irep);
 	}
 }
@@ -1615,11 +1615,12 @@ void CForest::writeInteractMat(int isim, int irep) {
 }
 
 // ---------------------------------------------------------------------------
-void CForest::WriteTrees(int isim, int irep, int istep) {
+void CForest::WriteTrees(std::string label, int isim, int irep, int istep) {
 
-	string FileName = "Output/Trees_sim" + IntToString(isim) +
-	                               "_rep" + IntToString(irep) +
-	                               "_step" + IntToString(istep) + ".csv";
+	string FileName = "Output/Trees" + label +
+                                     "_sim" + IntToString(isim) +
+	                                  "_rep" + IntToString(irep) +
+                                     "_step" + IntToString(istep) + ".csv";
 
 	ofstream OutFile1(FileName.c_str());
 	OutFile1 //<< "Nr;"

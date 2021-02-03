@@ -128,7 +128,7 @@ int main(int argc, char* argv[])
 
             pForest->initTrees();
 
-				pForest->OneRun(isim, irep);
+				pForest->OneRun(OutFileID, isim, irep);
 
 				//pForest->GetPPA();
 				//pForest->writeSpecies(isim, irep);

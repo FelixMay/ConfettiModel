@@ -170,7 +170,7 @@ public:
 	void clearTrees();
 	void clearSpecies();
 	//void Loop1(int NSteps, bool output);
-	void WriteTrees(int isim, int irep, int istep);
+	void WriteTrees(std::string label, int isim, int irep, int istep);
 	void writeSpecies(int isim, int irep = 0);
 	void writeInteractMat(int isim, int irep = 0);
 	void WriteOutput(int isim, int irep);
@@ -180,7 +180,7 @@ public:
 	double getQueueCV(std::deque<double> &queue);
 	int GetSAD();
 	void GetSARq();
-	void OneRun(int isim, int irep);
+	void OneRun(std::string label, int isim, int irep);
 
 	std::string IntToString(int i)
 	{
