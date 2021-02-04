@@ -1,2 +1,2 @@
 SimNr,theta,Jm,metaSR,metaCV,m,Rmax,aRec,aSurv,bSurv,m_dm_spec,sd_dm_spec,m_Jcspec,cv_Jcspec,niche_breadth,n_hills
-1,0,4000000,500,1,0,10,9999,0.1,0.5,40,0,1,0,9999,1
+1,0,4000000,500,1,0,10,9999,10,1,40,0,10,0,9999,1

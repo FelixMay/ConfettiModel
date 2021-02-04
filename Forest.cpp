@@ -155,11 +155,11 @@ CForest::~CForest() {
 
 	// File
 	DivFile.close();
-	SAD_File.close();
+	//SAD_File.close();
 	SARq_File.close();
 	PropConFile.close();
 	PCF_File.close();
-	//AbundFile.close();
+	AbundFile.close();
 
 	//SAR2_File.close();
    //	Kcon20_File.close();
@@ -222,7 +222,7 @@ void CForest::FileOpen(string label) {
 			DivFile.clear();
 			DivFile.open(FileName.c_str(), std::ios::out);
 			DivFile << "SimNr, RepNr, theta, Jm, metaSR, metaCV, m, Rmax, aRec, "
-                 //<< "aSurv, bSurv,
+                 << "aSurv, bSurv,"
                  << "m_dm_spec, sd_dm_spec, m_Jcspec, cv_Jcspec, niche_breadth, n_hills,"
                  << "BD_total, BD_step, NSpec, Shannon, PIE" << endl;
 		}
@@ -1236,11 +1236,11 @@ bool CForest::BirthDeathAsync() {
 	// choose random tree´and kill this tree
 	pTree = TreeList[RandGen1->IRandom(0, TreeList.size() - 1)];
 
-	//double pkill = 1.0 - pTree->pSurv;
+	double pkill = 1.0 - pTree->pSurv;
 	//double pkill = 1.0 - Pars->bSurv;
 
-	//if (RandGen1->Random() < pkill) {
-		//kill = true;
+	if (RandGen1->Random() < pkill) {
+
 		++BD_5years;
 		++BD_total;
 
@@ -1303,7 +1303,7 @@ bool CForest::BirthDeathAsync() {
 			stop = true;
 		}
 		//cout<<ntrials<<endl;
-	//}
+	} // if kill
 
 	return(stop);
 }
@@ -1447,8 +1447,8 @@ void CForest::WriteOutput(int isim, int irep) {
            << pPars->m << ", "
            << pPars->r_max << ", "
            << pPars->aRec << ", "
-       //    << pPars->aSurv << ", "
-       //    << pPars->bSurv<< ", "
+           << pPars->aSurv << ", "
+           << pPars->bSurv<< ", "
            << pPars->m_dm_spec << ", "
            << pPars->sd_dm_spec << ", "
            << pPars->m_JCspec << ", "
@@ -1466,13 +1466,13 @@ void CForest::WriteOutput(int isim, int irep) {
 //		SAD_File << SAD[i] << "; ";
 //	SAD_File << SAD[MaxSAD-1] << endl;
 //
-//	for (int ibin1 = 0; ibin1 < (nBins1-1); ++ibin1) {
-//		PCF_File << PCF_all[ibin1] << "; ";
-//		PropConFile << PropCon[ibin1] << "; ";
+	for (int ibin1 = 0; ibin1 < (nBins1-1); ++ibin1) {
+		PCF_File << PCF_all[ibin1] << ", ";
+		PropConFile << PropCon[ibin1] << ", ";
 //		//SARp_File << SAR[ibin1] << "; ";
-//	}
-//	PCF_File << PCF_all[nBins1-1] << endl;
-//   PropConFile << PropCon[nBins1-1] << endl;
+	}
+	PCF_File << PCF_all[nBins1-1] << endl;
+   PropConFile << PropCon[nBins1-1] << endl;
    //SARp_File << SAR[nBins1-1] << endl;
 
 	// Species data ------------------------------------------------------------
