@@ -840,7 +840,6 @@ void CForest::initTrees() {
 	NTrees = TreeList.size();
 	 */
 
-   /*
    int iX2, iY2;
    CTree* pTree2;
 
@@ -891,10 +890,12 @@ void CForest::initTrees() {
 //									if (pTree1->SpecID == pTree2->SpecID)
 //										pTree1->NCI = pTree1->NCI + (SpecPars[pTree1->SpecID].JCfac
 //																		  * (1.0 - d12/Pars->r_max));
-//
 //									else
 //										pTree1->NCI = pTree1->NCI + (1.0 - d12/Pars->r_max);
 
+                           // see Forest.cpp line 981
+                           pTree1->NCI = pTree1->NCI + InteractMat[pTree1->SpecID][pTree2->SpecID]/d12;
+                           pTree2->NCI = pTree2->NCI + InteractMat[pTree2->SpecID][pTree1->SpecID]/d12;
 
                            //pTree1->NCI = pTree1->NCI + InteractMat[pTree1->SpecID][pTree2->SpecID]*(1.0 - d12/Pars->r_max);
                            //pTree2->NCI = pTree2->NCI + InteractMat[pTree2->SpecID][pTree1->SpecID]*(1.0 - d12/Pars->r_max);
@@ -916,8 +917,7 @@ void CForest::initTrees() {
 
 	// calculate mortality for each tree;
 	for (TreeIterV itree = TreeList.begin(); itree != TreeList.end(); ++itree)
-		(*itree)->GetPSurv2(Pars->aSurv, Pars->bSurv);
-   */
+		(*itree)->GetPSurv2(pPars->aSurv, pPars->bSurv);
 }
 
 // ---------------------------------------------------------------------------
@@ -1024,7 +1024,6 @@ void CForest::AddTree(CTree* pTree1)
 
 	Grid[iX1][iY1].TreeList.push_back(pTree1);
 
-   /*
    double d12, dmin, xbound, ybound;
 	int iX2, iY2;
 
@@ -1060,7 +1059,6 @@ void CForest::AddTree(CTree* pTree1)
 
 							if (d12<0.0001) d12 = 0.0001;
 
-
 //							if (pTree1->SpecID == pTree2->SpecID){
 //								pTree1->NCI = pTree1->NCI + (SpecPars[pTree1->SpecID].JCfac
 //																  * (1.0 - d12/Pars->r_max));
@@ -1072,10 +1070,13 @@ void CForest::AddTree(CTree* pTree1)
 //								pTree2->NCI = pTree2->NCI + (1.0 - d12/Pars->r_max);
 //							}
 
-							pTree1->NCI = pTree1->NCI + InteractMat[pTree1->SpecID][pTree2->SpecID]*(1.0 - d12/Pars->r_max);
-							pTree2->NCI = pTree2->NCI + InteractMat[pTree2->SpecID][pTree1->SpecID]*(1.0 - d12/Pars->r_max);
+							//pTree1->NCI = pTree1->NCI + InteractMat[pTree1->SpecID][pTree2->SpecID]*(1.0 - d12/Pars->r_max);
+							//pTree2->NCI = pTree2->NCI + InteractMat[pTree2->SpecID][pTree1->SpecID]*(1.0 - d12/Pars->r_max);
 
-							pTree2->GetPSurv2(Pars->aSurv, Pars->bSurv);
+							pTree1->NCI = pTree1->NCI + InteractMat[pTree1->SpecID][pTree2->SpecID]/d12;
+                     pTree2->NCI = pTree2->NCI + InteractMat[pTree2->SpecID][pTree1->SpecID]/d12;
+
+							pTree2->GetPSurv2(pPars->aSurv, pPars->bSurv);
 
 						} // if overlap
 					} // if tree1 != tree2
@@ -1085,9 +1086,7 @@ void CForest::AddTree(CTree* pTree1)
 		} // end dx
 	} // end dy
 
-	pTree1->GetPSurv2(Pars->aSurv, Pars->bSurv);
-
-*/
+	pTree1->GetPSurv2(pPars->aSurv, pPars->bSurv);
 
 }
 
@@ -1101,7 +1100,7 @@ void CForest::RemoveTree(CTree* pTree1) {
 
 	// remove tree from competition grid ----------------------------------------
 	// and update competition indices of neighbor
-	/*
+
 	int iX2, iY2;
 	double xbound, ybound;
 	double dmin, d12;
@@ -1145,12 +1144,13 @@ void CForest::RemoveTree(CTree* pTree1) {
 //								//pTree2->NCI = pTree2->NCI - 1.0/pow(d12,Pars->beta_r);
 //
 
-							pTree2->NCI = pTree2->NCI - InteractMat[pTree2->SpecID][pTree1->SpecID]*(1.0 - d12/Pars->r_max);
+							//pTree2->NCI = pTree2->NCI - InteractMat[pTree2->SpecID][pTree1->SpecID]*(1.0 - d12/Pars->r_max);
+							pTree2->NCI = pTree2->NCI - InteractMat[pTree2->SpecID][pTree1->SpecID]/d12;
 
 							if (pTree2->NCI < 0.0)
 								pTree2->NCI = 0.0;
 
-							pTree2->GetPSurv2(Pars->aSurv, Pars->bSurv);
+							pTree2->GetPSurv2(pPars->aSurv, pPars->bSurv);
 
 						} // if overlap
 					} // if tree1 != tree2
@@ -1159,7 +1159,6 @@ void CForest::RemoveTree(CTree* pTree1) {
 		} // end dx
 	} // end dy
 
-*/
 	pTree1->NCI = 0;
 
 	Grid[iX1][iY1].TreeList.remove(pTree1);

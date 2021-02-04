@@ -40,7 +40,7 @@ public:
 
 	double R; //ZOI Radius
 	double NCI; // neighbourhood crowding index
-	//double pSurv;  //Survival probability
+	double pSurv;  //Survival probability
 
 	std::list <CCell*> CellList; //list of grid cells overlapped by the tree
 	std::map<int,double> NNDistSpec; //nearest neighbour distance to each species
@@ -69,13 +69,11 @@ public:
 	}
 	*/
 
-	/*
 	void GetPSurv2(double a, double b)
 	{
 		if (NCI == 0.0) pSurv = b;
 		else pSurv = b - b*(NCI)/(a + NCI);
 	}
-	*/
 };
 
 
