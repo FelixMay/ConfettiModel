@@ -1423,11 +1423,11 @@ void CForest::OneRun(std::string label, int isim, int irep)
 		//WriteTrees(isim,irep,icensus+1);
 	}
 
-	if ((!pSettings->steps_out && !pSettings->R_mode) && (nCensusOut==0)){
+	if ((!pSettings->steps_out) && (nCensusOut == 0)){
       GetPPA();
 		GetSARq();
 		WriteOutput(isim, irep);
-		WriteTrees(label, isim, irep, istep);
+		//WriteTrees(label, isim, irep, istep);
 		//writeSpecies(isim, irep);
 	}
 }

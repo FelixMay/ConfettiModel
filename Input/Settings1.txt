@@ -1,7 +1,6 @@
 nRep				3
 nGen 				100
 steps_out			0
-R_mode				0
 cellSize			5.0
 metaSAD				1
 

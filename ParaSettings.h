@@ -43,7 +43,6 @@ public:
    int nRep = 1;  //number replicates
 	int nGen = 100;  //number generations (# complete turnover of community)
 	bool steps_out = false;
-	bool R_mode = false;
 	double cellSize = 5.0;  // size of neighborhood grid in meters
 
    //metacommunity

@@ -24,7 +24,6 @@ void CModelSettings::ReadSettings(std::string file_name)
       InFile>>dummy>>nRep;
       InFile>>dummy>>nGen;
       InFile>>dummy>>steps_out;
-      InFile>>dummy>>R_mode;
       InFile>>dummy>>cellSize;
       InFile>>dummy>>metaSAD;
       //InFile>>dummy>>sad_file_name;
