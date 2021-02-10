@@ -268,6 +268,8 @@ void CForest::FileOpen(string label) {
 		else {
 			PCF_File.clear();
 			PCF_File.open(FileName.c_str(), std::ios::out);
+			PCF_File << "SimNr, RepNr, ";
+
 			for (int ibin1 = 0; ibin1 < (nBins1-1); ibin1++)
 				PCF_File << rvec1[ibin1] << ", ";
 			PCF_File << rvec1[nBins1-1] << endl;
@@ -283,6 +285,8 @@ void CForest::FileOpen(string label) {
 		else {
 			PropConFile.clear();
 			PropConFile.open(FileName.c_str(), std::ios::out);
+			PropConFile << "SimNr, RepNr, ";
+
 			for (int ibin1 = 0; ibin1 < (nBins1-1); ibin1++)
 				PropConFile << rvec1[ibin1] << ", ";
 			PropConFile << rvec1[nBins1-1] <<endl;
@@ -655,9 +659,9 @@ void CForest::initSpecies()
 
 	//Init species parameters
 
-	//double sigma_dm = sqrt(log(1.0 + (pPars->sd_dm_spec*pPars->sd_dm_spec)
-	//											 /(pPars->m_dm_spec*pPars->m_dm_spec)));
-	//double mu_dm = log(pPars->m_dm_spec) - 0.5 * sigma_dm*sigma_dm;
+	double sigma_dm = sqrt(log(1.0 + (pPars->sd_dm_spec*pPars->sd_dm_spec)
+												 /(pPars->m_dm_spec*pPars->m_dm_spec)));
+	double mu_dm = log(pPars->m_dm_spec) - 0.5 * sigma_dm*sigma_dm;
 
 	pPars->sd_JCspec = pPars->m_JCspec * pPars->cv_JCspec;
 
@@ -694,12 +698,12 @@ void CForest::initSpecies()
 		//sdD_spec = meanD_spec;
 
 		// difference among species
-		//meanD_spec = exp(RandGen2->Normal(mu_dm,sigma_dm));
-		//sdD_spec = meanD_spec;
+		meanD_spec = exp(RandGen2->Normal(mu_dm, sigma_dm));
+		sdD_spec = meanD_spec;
 
 		//no difference among species
-		meanD_spec = pPars->m_dm_spec;
-		sdD_spec = pPars->sd_dm_spec;
+		//meanD_spec = pPars->m_dm_spec;
+		//sdD_spec = pPars->sd_dm_spec;
 
 		muEnvir_spec = RandGen1->Random();
 
@@ -1393,7 +1397,7 @@ void CForest::OneRun(std::string label, int isim, int irep)
 				GetPPA();
 				GetSARq();
 				WriteOutput(isim, irep);
-				WriteTrees(label, isim, irep, istep);
+				//WriteTrees(label, isim, irep, istep);
 			}
 		}
 	}  // while BD_total < BD_max
@@ -1424,7 +1428,7 @@ void CForest::OneRun(std::string label, int isim, int irep)
 		GetSARq();
 		WriteOutput(isim, irep);
 		WriteTrees(label, isim, irep, istep);
-		writeSpecies(isim, irep);
+		//writeSpecies(isim, irep);
 	}
 }
 
@@ -1464,8 +1468,12 @@ void CForest::WriteOutput(int isim, int irep) {
  //  GetSAD();
 //	for (int i = 0; i < (MaxSAD-1); ++i)
 //		SAD_File << SAD[i] << "; ";
-//	SAD_File << SAD[MaxSAD-1] << endl;
+//	SAD_File << SAD[MaxSAD-1] << endl
 //
+
+	PCF_File << isim << ", " << irep << ", ";
+	PropConFile << isim << ", " << irep << ", ";
+
 	for (int ibin1 = 0; ibin1 < (nBins1-1); ++ibin1) {
 		PCF_File << PCF_all[ibin1] << ", ";
 		PropConFile << PropCon[ibin1] << ", ";
@@ -1536,7 +1544,7 @@ void CForest::WriteOutput(int isim, int irep) {
       SARq_File << isim << ", " << irep << ", "
                 << SARq_scales[iscale] << ", "
                 << SARq_m[iscale] << ", "
-                << SARq_m[iscale]
+                << SARq_sd[iscale]
                 << endl;
    }
 }
