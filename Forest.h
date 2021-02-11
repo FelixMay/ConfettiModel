@@ -121,8 +121,9 @@ public:
 	//std::ofstream TestFile;
 
 	//Output Variables
-	int BD_5years;   //counter for birth-death events per loop
-	int64_t BD_total;
+	//int BD_5years;   //counter for birth-death events per loop
+	int64_t BD_trials;  //counter for birth-death trials (with and without death)
+	int64_t BD_total;    //counter for birth-death events (only WITH death)
 
 	static const int MaxSAD = 12;
 	int SAD[MaxSAD];      //Species abundance distributions as octave curve 2^0 - 2^11

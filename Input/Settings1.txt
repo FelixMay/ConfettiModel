@@ -1,4 +1,4 @@
-nRep				3
+nRep				1
 nGen 				100
 steps_out			0
 cellSize			5.0

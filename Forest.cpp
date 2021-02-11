@@ -224,7 +224,7 @@ void CForest::FileOpen(string label) {
 			DivFile << "SimNr, RepNr, theta, Jm, metaSR, metaCV, m, Rmax, aRec, "
                  << "aSurv, bSurv,"
                  << "m_dm_spec, sd_dm_spec, m_Jcspec, cv_Jcspec, niche_breadth, n_hills,"
-                 << "BD_total, BD_step, NSpec, Shannon, PIE" << endl;
+                 << "BD_total, Mort, NSpec, Shannon, PIE" << endl;
 		}
 	}
 
@@ -769,8 +769,9 @@ void CForest::initTrees() {
 
 	int iX1, iY1;
 
-	BD_5years = 0;
+	//BD_5years = 0;
 	BD_total = 0;
+	BD_trials = 0;
 
 	// Init Grid Cells
 	for (iX1 = 0; iX1 < XCells; ++iX1)
@@ -1235,7 +1236,6 @@ bool CForest::BirthDeathAsync() {
 	double ProbRecruit;
 	// int iX, iY;
 
-	// BD_5years = 0;
 
 	// choose random tree´and kill this tree
 	pTree = TreeList[RandGen1->IRandom(0, TreeList.size() - 1)];
@@ -1245,7 +1245,7 @@ bool CForest::BirthDeathAsync() {
 
 	if (RandGen1->Random() < pkill) {
 
-		++BD_5years;
+		//++BD_5years;
 		++BD_total;
 
 		RemoveTree(pTree);
@@ -1346,9 +1346,10 @@ void CForest::OneRun(std::string label, int isim, int irep)
 
 	int64_t BD_min = pSettings->nGen * TreeList.size();
    int64_t BD_max = BD_min * 10;
-	int int_out = pSettings->nGen / 10;
 
-	int istep = 0;
+	//int int_out = pSettings->nGen / 10;
+
+	//int istep = 0;
 	bool stoprun = false;
 
    deque<int> nSpecQueue;
@@ -1363,23 +1364,32 @@ void CForest::OneRun(std::string label, int isim, int irep)
 
    double cvShannon = 1.0;
 
+   int BD_out = 0;
+
 	//while (nspec > 1){
 	//while ((cvShannon > 0.01) && (nspec > 1)){
    while (((BD_total < BD_min) || ((cvShannon > 0.01) && (nspec > 1))) && (BD_total < BD_max)){
 
  //  while (BD_total < BD_min){
 		// one loop representing five years = NTrees test for survival/mortality
-		BD_5years = 0;
-		for (int i = 0; i < NTrees; ++i) {
-			stoprun = BirthDeathAsync();
-			if (stoprun == true) break;
-		}
+		//BD_5years = 0;
 
-      //nspec = SpecAbund.size();
-		if (stoprun == true) break;
-         ++istep;
+		//for (int i = 0; i < NTrees; ++i) {
+      stoprun = BirthDeathAsync();
+      if (stoprun == true) break;
+		//}
 
-		if (istep % int_out == 0) {
+      BD_trials++;
+      //if (BD_trials % NTrees == 0)
+      //   BD_5years = 0;
+
+      // write output after every nGen/10 generations
+      if ((BD_total % (NTrees * pSettings->nGen/10) == 0) &
+          (BD_total > BD_out)){
+
+      //++istep;
+
+		//if (istep % int_out == 0) {
 
 			GetDiversity(nspec, shannon, pie);
 			if (shannonQueue.size() >= lengthQueue)
@@ -1387,7 +1397,7 @@ void CForest::OneRun(std::string label, int isim, int irep)
          shannonQueue.push_back(shannon);
          cvShannon = getQueueCV(shannonQueue);
 
-         cout << "     Step " << istep <<"\t"
+         cout << "     Generation " << BD_total/NTrees <<"\t"
               << "BD total " << BD_total <<"\t"
               << "Species " << nspec <<"\t"
               << "cvShannon " << cvShannon
@@ -1399,6 +1409,8 @@ void CForest::OneRun(std::string label, int isim, int irep)
 				WriteOutput(isim, irep);
 				//WriteTrees(label, isim, irep, istep);
 			}
+
+			BD_out = BD_total;
 		}
 	}  // while BD_total < BD_max
 
@@ -1406,7 +1418,7 @@ void CForest::OneRun(std::string label, int isim, int irep)
 
 	for (int icensus = 0; icensus < nCensusOut; ++icensus) {
 		// one loop representing five years = NTrees test for survival/mortality
-		BD_5years = 0;
+		//BD_5years = 0;
 		for (int i = 0; i < NTrees; ++i) {
 			stoprun = BirthDeathAsync();
 			if (stoprun == true) break;
@@ -1414,7 +1426,7 @@ void CForest::OneRun(std::string label, int isim, int irep)
 
 		if (stoprun == true) break;
 
-		++istep;
+		//++istep;
 
 		cout << "     Step " << BD_total << endl;
 		GetPPA();
@@ -1442,6 +1454,8 @@ void CForest::WriteOutput(int isim, int irep) {
 	GetDiversity(nspec, shannon, simpson);
 	double PIE = 1.0 - simpson; //Probability of Interspecific Encounter
 
+	double mortality_rate = static_cast<double>(BD_total)/BD_trials;
+
 	DivFile << isim  << ", "
            << irep  << ", "
            << pPars->theta << ", "
@@ -1460,7 +1474,7 @@ void CForest::WriteOutput(int isim, int irep) {
            << pPars->niche_breadth << ", "
            << pPars->n_hills << ", "
            << BD_total << ", "
-           << BD_5years << ", "
+           << mortality_rate << ", "
            << nspec << ", "
            << shannon << ", "
            << PIE << endl;
