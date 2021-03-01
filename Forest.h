@@ -147,6 +147,7 @@ public:
 	void GetSRLocal(double sq_size, double& m_SR, double& sd_SR);
 
 	double GetProbRecruit(double x0, double y0, int spec_id);
+	double GetProbSurv(double NCI, double X, int spec_id);
 
 	void AddTree(CTree* pTree1);
 	void RemoveTree(CTree* pTree1);

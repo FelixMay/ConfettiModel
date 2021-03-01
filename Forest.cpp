@@ -921,8 +921,10 @@ void CForest::initTrees() {
 	} // grid x
 
 	// calculate mortality for each tree;
-	for (TreeIterV itree = TreeList.begin(); itree != TreeList.end(); ++itree)
-		(*itree)->GetPSurv2(pPars->aSurv, pPars->bSurv);
+	for (TreeIterV itree = TreeList.begin(); itree != TreeList.end(); ++itree){
+		//(*itree)->GetPSurv2(pPars->aSurv, pPars->bSurv);
+		(*itree)->pSurv = GetProbSurv((*itree)->NCI, (*itree)->X, (*itree)->SpecID);
+   }
 }
 
 // ---------------------------------------------------------------------------
@@ -1008,6 +1010,7 @@ double CForest::GetProbRecruit(double x1, double y1, int spec_id)
    // Recruitment probability depends on environmental parameter at location x,y
 
    // Get environmental value at x,y
+   /*
    double E = -cos(2 * pPars->n_hills/Xmax*Pi*x1)/2 + 0.5;  // just one mountain range in the plot
    double mu = SpecPars[spec_id].muEnvir;
 
@@ -1015,8 +1018,30 @@ double CForest::GetProbRecruit(double x1, double y1, int spec_id)
    double prob_envir = exp( -pow(E - SpecPars[spec_id].muEnvir, 2) / (2 * pow(pPars->niche_breadth, 2)));
 
    prob_rec2 = prob_rec1*prob_envir;
+   */
+   prob_rec2 = prob_rec1; //Ignore environmental effect
 
 	return(prob_rec2);
+}
+
+// ---------------------------------------------------------------------------
+// calculate survival probability depending on competition and environment
+double CForest::GetProbSurv(double NCI, double X, int spec_id)
+{
+   double prob_comp = 1.0;
+
+   if (NCI == 0.0) prob_comp = pPars->bSurv;
+   else prob_comp = pPars->bSurv - pPars->bSurv*(NCI)/(pPars->aSurv + NCI);
+
+   double E = -cos(2.0 * pPars->n_hills/Xmax * Pi * X)/2.0 + 0.5;
+   double mu = SpecPars[spec_id].muEnvir;
+
+   // recruitment probability depending on environmental parameter and niche breadth (Gravel et al. 2006)
+   double prob_envir = exp( -pow(E - SpecPars[spec_id].muEnvir, 2.0) / (2.0 * pow(pPars->niche_breadth, 2.0)));
+
+   double prob_surv = prob_comp * prob_envir;
+
+   return(prob_surv);
 }
 
 // ---------------------------------------------------------------------------
@@ -1081,7 +1106,8 @@ void CForest::AddTree(CTree* pTree1)
 							pTree1->NCI = pTree1->NCI + InteractMat[pTree1->SpecID][pTree2->SpecID]/d12;
                      pTree2->NCI = pTree2->NCI + InteractMat[pTree2->SpecID][pTree1->SpecID]/d12;
 
-							pTree2->GetPSurv2(pPars->aSurv, pPars->bSurv);
+							//pTree2->GetPSurv2(pPars->aSurv, pPars->bSurv);
+							pTree2->pSurv = GetProbSurv(pTree2->NCI, pTree2->X, pTree2->SpecID);
 
 						} // if overlap
 					} // if tree1 != tree2
@@ -1091,8 +1117,8 @@ void CForest::AddTree(CTree* pTree1)
 		} // end dx
 	} // end dy
 
-	pTree1->GetPSurv2(pPars->aSurv, pPars->bSurv);
-
+	//pTree1->GetPSurv2(pPars->aSurv, pPars->bSurv);
+	pTree1->pSurv = GetProbSurv(pTree1->NCI, pTree1->X, pTree1->SpecID);
 }
 
 // ---------------------------------------------------------------------------
@@ -1155,7 +1181,8 @@ void CForest::RemoveTree(CTree* pTree1) {
 							if (pTree2->NCI < 0.0)
 								pTree2->NCI = 0.0;
 
-							pTree2->GetPSurv2(pPars->aSurv, pPars->bSurv);
+							//pTree2->GetPSurv2(pPars->aSurv, pPars->bSurv);
+							pTree2->pSurv = GetProbSurv(pTree2->NCI, pTree2->X, pTree2->SpecID);
 
 						} // if overlap
 					} // if tree1 != tree2

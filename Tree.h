@@ -69,11 +69,13 @@ public:
 	}
 	*/
 
+	/*
 	void GetPSurv2(double a, double b)
 	{
 		if (NCI == 0.0) pSurv = b;
 		else pSurv = b - b*(NCI)/(a + NCI);
 	}
+	*/
 };
 
 
